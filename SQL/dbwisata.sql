@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 05:22 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 27, 2023 at 06:05 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -115,6 +115,28 @@ INSERT INTO `pesanan` (`id`, `id_destinasi`, `kode_pesanan`, `tanggal_pesanan`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `testimoni`
+--
+
+CREATE TABLE `testimoni` (
+  `id` int(11) NOT NULL,
+  `id_pesanan` int(11) NOT NULL,
+  `foto_testi` varchar(255) NOT NULL,
+  `komentar` longtext NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `testimoni`
+--
+
+INSERT INTO `testimoni` (`id`, `id_pesanan`, `foto_testi`, `komentar`, `created_at`, `updated_at`) VALUES
+(1, 1, 'fototesti.jpg', 'ini tempatnya kewreeeen bangettttttt guys', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -169,6 +191,13 @@ ALTER TABLE `pesanan`
   ADD KEY `id_destinasi` (`id_destinasi`);
 
 --
+-- Indexes for table `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pesanan` (`id_pesanan`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -203,6 +232,12 @@ ALTER TABLE `pesanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `testimoni`
+--
+ALTER TABLE `testimoni`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -230,6 +265,12 @@ ALTER TABLE `pembayaran`
 --
 ALTER TABLE `pesanan`
   ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`id_destinasi`) REFERENCES `destinasi` (`id`);
+
+--
+-- Constraints for table `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD CONSTRAINT `testimoni_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
