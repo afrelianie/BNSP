@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,7 @@ Route::get('/', function () {
     ///////////  ADMIN /////////////
     Route::prefix('admin')->group(function(){
         Route::get('home', [AdminController::class, 'index'])->name('home');
+        // Route::get('user', [UserController::class, 'index']);
+        Route::resource('user', UserController::class);
         
     });
