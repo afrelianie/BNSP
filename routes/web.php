@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DestinasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,6 @@ Route::get('/', function () {
         Route::get('home', [AdminController::class, 'index'])->name('home');
         // Route::get('user', [UserController::class, 'index']);
         Route::resource('user', UserController::class);
+        Route::resource('destinasi', DestinasiController::class);
         
     });
