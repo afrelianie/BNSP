@@ -7,6 +7,7 @@ use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\Detail_PesananController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,7 @@ Route::get('/', function () {
 
          // ini adalah route untuk bagian detail_pesanan
          Route::resource('detail_pesanan', Detail_PesananController::class);
+
+         // ini adalah route untuk bagian detail_testimoni
+         Route::resource('testimoni', TestimoniController::class); 
     });
