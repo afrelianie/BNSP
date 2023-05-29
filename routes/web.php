@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,19 @@ Route::get('/', function () {
 
     ///////////  ADMIN /////////////
     Route::prefix('admin')->group(function(){
+
+        //menggunakan routing ke controller
+        //mengarahkan ke controller AdminController
+
+        // ini adalah route untuk bagian home
         Route::get('home', [AdminController::class, 'index'])->name('home');
-        // Route::get('user', [UserController::class, 'index']);
+        
+        // ini adalah route untuk bagian user
         Route::resource('user', UserController::class);
+       
+        // ini adalah route untuk bagian destinasi
         Route::resource('destinasi', DestinasiController::class);
         
+        // ini adalah route untuk bagian 
+        Route::resource('pembayaran', PembayaranController::class);
     });
