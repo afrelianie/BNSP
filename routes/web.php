@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,6 @@ Route::get('/', function () {
         // Route::get('user', [UserController::class, 'index']);
         Route::resource('user', UserController::class);
         Route::resource('destinasi', DestinasiController::class);
+        Route::resource('pesanan', PesananController::class);
         
     });
