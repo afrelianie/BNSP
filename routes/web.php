@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\Detail_PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,7 @@ Route::get('/', function () {
         
         // ini adalah route untuk bagian pembayaran
         Route::resource('pembayaran', PembayaranController::class);
+
+         // ini adalah route untuk bagian detail_pesanan
+         Route::resource('detail_pesanan', Detail_PesananController::class);
     });
