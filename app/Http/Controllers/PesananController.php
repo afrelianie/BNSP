@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\PesananController;
 use App\Models\PesananModel;
 use Illuminate\Http\Request;
+use App\Models\Detail_Pesanan;
 use Iluminate\Support\Facades\DB;
 
 class PesananController extends Controller

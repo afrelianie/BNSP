@@ -11,55 +11,74 @@ class UserController extends Controller
    
     public function index()
     {
-
         $data['list_user'] = user::all();
         return view('admin.user.index', $data);
-        
     }
 
-    
+
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function Store()
     {
-        //
+        $user = new user;
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->no_hp = request('no_hp');
+        $user->role = request('role');
+        $user->alamat = request('alamat');
+        $user->password = bcrypt(request('password'));
+        $user->save();
+        return redirect('admin/user')->with('success', 'Berhasil Ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function Show(user $user)
     {
-        //
+        $data['user'] = $user;
+        return view('user.show', $data);
+    }
+    
+    public function edit(user $user)
+    {
+        $data['user'] = $user;
+        return view('admin.user.edit', $data);
+    }
+    
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'name' => 'required|min:3|max:37',
+        ]);
+
+        if($request->input('password')) {
+            $user_data = [
+            'name' => $request->name,
+            'password' => bcrypt($request->password)
+            ];
+        }
+        else{
+            $user_data = [
+            'name' => $request->name,
+            ];
+        }
+
+        $user = User::find($id);
+        $user->update($user_data);
+
+        return redirect('admin/user')->with('success','Berhasil Diupdate');
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function destroy(user $user)
     {
-        //
+        $user->delete();
+        return redirect('admin/user')->with('danger', 'data berhasil dihapus');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+   
 }

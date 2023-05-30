@@ -19,14 +19,27 @@
 </div>
 @endif
 
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Table Destinasi</h3>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-md-11">
+
+        <div class="card">
+          <div class="container">
+              <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="col-6">
+                      <h5 class="card-header">Tabel Detail Pesanan</h5>
+                  </div>
+                  <div class="col-6">
+                      <a href="" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
+                  </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+          </div>
+
+          <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
                   <tr>
                     <th>No</th>
                     <th>Nama Destinasi</th>
@@ -36,8 +49,8 @@
                     <th>Alamat</th>
                     <th>Action</th>
                   </tr>
-                  </thead>
-                  <tbody>
+                </thead>
+                <tbody>
                    
                     @foreach ($data_destinasi as $destinasi)
                     <tr>
@@ -78,10 +91,11 @@
                         </td>
                     </tr>
                     @endforeach
-                  </tbody>
-                </table>
-              </div>
+                </tbody>
+              </table>
           </div>
-     
+        </div>
+    </div>
+</div>
 
 @endsection

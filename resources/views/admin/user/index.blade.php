@@ -23,10 +23,21 @@
 
 
 
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+        
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <div class="card">
+          <div class="container">
+              <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="col-6">
+                      <h5 class="card-header">Tabel Detail Pesanan</h5>
+                  </div>
+                  <div class="col-6">
+                      <a href="{{ url('admin/user/create')}}" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
+                  </div>
               </div>
+          </div>
+
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -49,8 +60,11 @@
                          <td> {{ $user->alamat }} </td>
                         <td>
                             <div class="btn btn-group">
-                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                                <a href="{{ url('admin/user/show', encrypt($user->id)) }}"
+                                    class="btn btn-success"><i class="fa fa-eye"></i></a>
+                                <a href="{{ url('admin/user', encrypt($user->id)) }}/edit"
+                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
+  
                                           <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$user->id}}">
                                    Hapus
@@ -74,11 +88,6 @@
                                    </div>
                                    </div>
                                    </div>
-
-                                                    
-
-                                                    
-                                                </form>
   
                             </div>
                         </td>
@@ -90,8 +99,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
-          </div>
-     
+      </div>
+    </div>
+  </div>   
     
 
 @endsection
