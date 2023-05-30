@@ -41,7 +41,7 @@
                     @foreach ($data_pesanan as $pesanan)
                     <tr>
                          <td> {{ $loop->iteration }} </td>
-                         <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
+                         <td> {{ $pesanan->id_pesanan }} </td>
                          <td> {{ $pesanan->tanggal_pesanan }} </td>
                          <td> {{ $pesanan->harga }} </td>
                          <td> {{ $pesanan->status }} </td>

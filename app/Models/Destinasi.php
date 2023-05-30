@@ -27,8 +27,4 @@ class Destinasi extends Model
             return $this->hasMany(DetailModel::class, 'id');
         }
     
-    public function pesanan()
-        {
-            return $this->hasMany(PesananModel::class, 'id');
-        }
 }
