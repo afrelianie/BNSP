@@ -26,5 +26,8 @@ class PesananModel extends Model
     {
         return $this->hasMany(DetailModel::class, 'id');
     }
+    public function destinasi(){
+        return $this->belongsTo(Destinasi::class, 'id');
+    }
     
 }
