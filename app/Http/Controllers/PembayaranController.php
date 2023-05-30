@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pembayaran;
+use App\Models\PesananModel;
+use App\Models\DetailModel;
 use Iluminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+
     public function index()
     {
-        //
         $data['data_pembayaran'] = pembayaran::all();
         return view('admin.pembayaran.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //

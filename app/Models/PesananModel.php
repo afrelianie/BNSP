@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 class PesananModel extends Model
 {
-    use HasFactory;
     protected $table = 'pesanan'; //ini pemanggilan nama table
     protected $primaryKey = 'id';
     protected $fillabel = [
@@ -18,4 +20,11 @@ class PesananModel extends Model
         'status',
 
     ];
+
+   
+    public function detailpesanan()
+    {
+        return $this->hasMany(DetailModel::class, 'id');
+    }
+    
 }

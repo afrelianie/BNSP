@@ -14,7 +14,7 @@ class DestinasiController extends Controller
     public function index()
     {
         //
-        $data['data_destinasi'] = destinasi::all();
+        $data['data_destinasi'] = Destinasi::all();
         return view('admin.destinasi.index', $data);
     }
 
