@@ -29,10 +29,10 @@
           <div class="container">
               <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="col-6">
-                      <h5 class="card-header">Tabel Detail Pesanan</h5>
+                      <h5 class="card-header">Tabel Destinasi Wisata</h5>
                   </div>
                   <div class="col-6">
-                      <a href="" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
+                      <a href="{{url('admin/create/store')}}" class="btn btn-dark float-right">Tambah Data &nbsp;<i class="fa fa-plus"></i></a>
                   </div>
               </div>
           </div>
@@ -62,8 +62,8 @@
                          <td> {{ $destinasi->alamat_destinasi }} </td>
                         <td>
                             <div class="btn btn-group">
-                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>&nbsp; &nbsp;
                                           <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$destinasi->id}}">
                                    <i class="fa fa-edit"> Hapus </i>

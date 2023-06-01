@@ -44,6 +44,7 @@ Route::get('/', function () {
         
         // ini adalah route untuk bagian destinasi
         Route::resource('destinasi', DestinasiController::class);
+        Route::get('/destinasi/create', [DestinasiController::class, 'create']);
 
         // ini adalah route untuk bagian pesanan
         Route::resource('pesanan', PesananController::class);
