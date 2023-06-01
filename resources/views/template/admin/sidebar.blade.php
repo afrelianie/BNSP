@@ -31,7 +31,7 @@
           </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('admin/destinasi')}}" class="nav-link">
               <i class="nav-icon fas fa-map"></i>
               <p>Sejarah</p>
             </a>
@@ -59,6 +59,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{url('admin/pembayaran')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pembayaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{url('admin/testimoni')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Testimoni</p>
@@ -74,7 +80,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{url('admin/user')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Pengguna</p>
             </a>
