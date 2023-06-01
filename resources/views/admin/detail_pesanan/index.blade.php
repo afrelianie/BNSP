@@ -61,11 +61,11 @@
                         <td> {{ $data->gambar }} </td>
                         <td>
                            <div class="btn btn-group">
-                                <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                                <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                                <a href="" class="btn btn-info btn-sm"><i class="fa fa-info"> Detail </i></a> &nbsp; &nbsp;
+                                <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
                                         
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$data->id}}">
-                                  <i class="fa fa-edit"> Hapus </i>
+                                  <i class="fa fa-delete"> Hapus </i>
                                 </button>
                                   
                             <div class="modal fade" id="exampleModal{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

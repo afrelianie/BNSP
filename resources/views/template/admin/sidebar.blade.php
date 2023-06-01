@@ -47,15 +47,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('admin/destinasi')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tempat Wisata</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('admin/pesanan')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pesanan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/testimoni')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Testimoni</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/user')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>User</p>
                 </a>
               </li>
             </ul>

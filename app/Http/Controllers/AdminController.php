@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Destinasi;
+use App\Models\PesananModel;
+use App\Models\Testimoni;
+use App\Models\User;
 class AdminController extends Controller
 {
    
     public function index()
     {
-        return view('admin.home');
+        $destinasi = Destinasi::count();
+        $pesanan = PesananModel::count();
+        $testimoni = Testimoni::count();
+        $user = User::count();
+        return view('admin.home',compact('destinasi','pesanan','testimoni','user'));
     }
 
     
