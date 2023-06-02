@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="col-6">
-                    <h5 class="card-header">Tabel Detail Pesanan</h5>
+                    <h5 class="card-header">Tabel Detail Pembayaran</h5>
                 </div>
                 <div class="col-6">
                     <a href="" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
@@ -52,7 +52,7 @@
                   @foreach ($data_pembayaran as $pembayaran)
                     <tr>
                       <td> {{ $loop->iteration }} </td>
-                      <td> {{ $pembayaran->id_pesanan }} </td>
+                      <td> {{ $pembayaran->pesanan->status }} </td>
                       <td> {{ $pembayaran->tanggal_pesanan }} </td>
                       <td> {{ $pembayaran->total_pembayaran }} </td>
                          

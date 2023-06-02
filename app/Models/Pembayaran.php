@@ -18,7 +18,9 @@ class Pembayaran extends Model
         'total_pembayaran',
     ];
 
-   
+    public function pesanan(){
+        return $this->belongsTo(PesananModel::class, 'id');
+    }
 
 
 }

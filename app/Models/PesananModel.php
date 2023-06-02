@@ -21,11 +21,17 @@ class PesananModel extends Model
 
     ];
 
-   
+   //mengirim data dari table sendiri ke table yg berelasi
     public function detailpesanan()
     {
         return $this->hasMany(DetailModel::class, 'id');
     }
+    public function pembayaran()
+    {
+        return $this->hasMany(PembayaranModel::class, 'id');
+    }
+
+    //mengambil data dari table lain yg berelasi dengan table ini
     public function destinasi(){
         return $this->belongsTo(Destinasi::class, 'id');
     }
