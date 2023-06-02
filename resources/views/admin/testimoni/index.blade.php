@@ -29,7 +29,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Pesanan</th>
+                    <th>ID Pesanan</th>
                     <th>Foto Testimoni</th>
                     <th>Komentar</th>
                     <th>Action</th>

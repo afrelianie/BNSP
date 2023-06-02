@@ -30,9 +30,8 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Destinasi </th>
+                    <th>Kode Pesanan</th>
                     <th>Tanggal Pesanan</th>
-                    <th>Harga</th>
-                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -42,9 +41,8 @@
                     <tr>
                          <td> {{ $loop->iteration }} </td>
                          <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
+                         <td>{{ $pesanan->kode_pesanan }}</td>
                          <td> {{ $pesanan->tanggal_pesanan }} </td>
-                         <td> {{ $pesanan->harga }} </td>
-                         <td> {{ $pesanan->status }} </td>
                         <td>
                             <div class="btn btn-group">
                                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
