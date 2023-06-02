@@ -16,8 +16,7 @@ class PesananModel extends Model
         'id_destinasi',
         'kode_pesanan',
         'tanggal_pesanan',
-        'harga',
-        'status',
+    
 
     ];
 

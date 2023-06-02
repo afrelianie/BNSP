@@ -18,6 +18,7 @@ class Destinasi extends Model
         'sejarah',
         'keunggulan',
         'alamat_destinasi',
+        'harga',
 
     ];
 

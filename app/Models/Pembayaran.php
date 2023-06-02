@@ -14,8 +14,8 @@ class Pembayaran extends Model
     protected $primaryKey = 'id';
     protected $fillabel = [
         'id_pesanan',
-        'tanggal_pesanan',
-        'total_pembayaran',
+        'bukti_bayar',
+        'status',
     ];
 
     public function pesanan(){

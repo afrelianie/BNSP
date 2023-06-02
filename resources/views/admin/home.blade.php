@@ -42,7 +42,7 @@
                 <div class="icon">
                   <i class="fas fa-receipt"></i>
                 </div>
-                <a href="{{url('admin/pesanan')}}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{url('admin/pembayaran')}}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -156,25 +156,6 @@ var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->id}},
 });
 </script>
 
-<script>
-  // Pie Chart Example
-var lbl2 = [@foreach ($ar_pembayaran as $pembayaran)'{{$pembayaran->total_pembayaran}}',
-@endforeach];
-var jml = [@foreach ($ar_pembayaran as $pembayaran){{$pembayaran->jumlah}},
-@endforeach];
-document.addEventListener("DOMContentLoaded",()=>{
-    new Chart(document.querySelector('#pieChart'),{
-  type: 'pie',
-  data: {
-    labels: lbl2,
-    datasets: [{
-      data: jml,
-      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-    }],
-  },
-});
-});
 
-</script>
 
 @endsection
