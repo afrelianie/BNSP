@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 06:05 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:8889
+-- Generation Time: Jun 02, 2023 at 02:14 PM
+-- Server version: 5.7.39
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbcompro`
+-- Database: `dbwisata`
 --
 
 -- --------------------------------------------------------
@@ -34,37 +34,17 @@ CREATE TABLE `destinasi` (
   `sejarah` longtext NOT NULL,
   `keunggulan` longtext NOT NULL,
   `alamat_destinasi` varchar(255) NOT NULL,
+  `harga` double NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `destinasi`
 --
 
-INSERT INTO `destinasi` (`id`, `nama_destinasi`, `foto_destinasi`, `sejarah`, `keunggulan`, `alamat_destinasi`, `created_at`, `updated_at`) VALUES
-(1, 'Jawa Timur Park 1', 'jatimpark1.jpg', 'Jatim Park 1 adalah salah satu taman rekreasi yang terletak di Kota Batu, Jawa Timur, Indonesia. Jatim Park 1 didirikan pada tanggal 16 Juli 2002 oleh Bapak Ir. Soekarwo, yang saat itu menjabat sebagai Bupati Malang. Taman rekreasi ini didirikan dengan tujuan untuk memberikan hiburan dan edukasi kepada masyarakat, terutama anak-anak dan keluarga. Seiring berjalannya waktu, Jatim Park 1 mengalami berbagai pengembangan dan penambahan atraksi. Berbagai wahana dan fasilitas ditambahkan untuk memberikan pengalaman yang lebih menarik bagi pengunjung. Taman rekreasi ini juga terus meningkatkan kualitas layanan dan fasilitasnya. Taman rekreasi ini juga telah meraih berbagai penghargaan dan sertifikat, seperti \"The Best Tourism Object\" dari Pemerintah Provinsi Jawa Timur.\r\n\r\n', 'Keunggulan Jatim Park 1 yaitu mengusung konsep edukasi dan rekreasi, menawarkan beragam atraksi yang dapat dinikmati oleh pengunjung dari segala usia dan taman rekreasi ini dikelilingi oleh lingkungan alam yang indah. Dengan pepohonan hijau dan pemandangan alam yang menawan, Jatim Park 1 menciptakan atmosfer yang menyegarkan dan nyaman bagi pengunjung.\r\n', 'Jl. Kartika No.2, Kota Wisata Batu, Ngaglik, Batu, Jawa Timur, Indonesia.\r\n\r\n', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detailpesanan`
---
-
-CREATE TABLE `detailpesanan` (
-  `id` int(11) NOT NULL,
-  `id_pesanan` int(11) NOT NULL,
-  `id_destinasi` int(11) NOT NULL,
-  `harga` double NOT NULL,
-  `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `detailpesanan`
---
-
-INSERT INTO `detailpesanan` (`id`, `id_pesanan`, `id_destinasi`, `harga`, `gambar`) VALUES
-(1, 1, 1, 1000000, 'bukti1.jpg');
+INSERT INTO `destinasi` (`id`, `nama_destinasi`, `foto_destinasi`, `sejarah`, `keunggulan`, `alamat_destinasi`, `harga`, `created_at`, `updated_at`) VALUES
+(1, 'Jawa Timur Park 1', 'jatimpark1.jpg', 'Jatim Park 1 adalah salah satu taman rekreasi yang terletak di Kota Batu, Jawa Timur, Indonesia. Jatim Park 1 didirikan pada tanggal 16 Juli 2002 oleh Bapak Ir. Soekarwo, yang saat itu menjabat sebagai Bupati Malang. Taman rekreasi ini didirikan dengan tujuan untuk memberikan hiburan dan edukasi kepada masyarakat, terutama anak-anak dan keluarga. Seiring berjalannya waktu, Jatim Park 1 mengalami berbagai pengembangan dan penambahan atraksi. Berbagai wahana dan fasilitas ditambahkan untuk memberikan pengalaman yang lebih menarik bagi pengunjung. Taman rekreasi ini juga terus meningkatkan kualitas layanan dan fasilitasnya. Taman rekreasi ini juga telah meraih berbagai penghargaan dan sertifikat, seperti \"The Best Tourism Object\" dari Pemerintah Provinsi Jawa Timur.\r\n\r\n', 'Keunggulan Jatim Park 1 yaitu mengusung konsep edukasi dan rekreasi, menawarkan beragam atraksi yang dapat dinikmati oleh pengunjung dari segala usia dan taman rekreasi ini dikelilingi oleh lingkungan alam yang indah. Dengan pepohonan hijau dan pemandangan alam yang menawan, Jatim Park 1 menciptakan atmosfer yang menyegarkan dan nyaman bagi pengunjung.\r\n', 'Jl. Kartika No.2, Kota Wisata Batu, Ngaglik, Batu, Jawa Timur, Indonesia.\r\n\r\n', 2000000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,18 +55,18 @@ INSERT INTO `detailpesanan` (`id`, `id_pesanan`, `id_destinasi`, `harga`, `gamba
 CREATE TABLE `pembayaran` (
   `id` int(11) NOT NULL,
   `id_pesanan` int(11) NOT NULL,
-  `tanggal_pesanan` date NOT NULL,
-  `total_pembayaran` double(10,0) NOT NULL,
+  `bukti_bayar` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id`, `id_pesanan`, `tanggal_pesanan`, `total_pembayaran`, `created_at`, `updated_at`) VALUES
-(1, 1, '2023-05-26', 1500000, NULL, NULL);
+INSERT INTO `pembayaran` (`id`, `id_pesanan`, `bukti_bayar`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'bukti1.pdf', 'Lunas', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -99,18 +79,16 @@ CREATE TABLE `pesanan` (
   `id_destinasi` int(11) NOT NULL,
   `kode_pesanan` varchar(255) NOT NULL,
   `tanggal_pesanan` date NOT NULL,
-  `harga` double NOT NULL,
-  `status` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id`, `id_destinasi`, `kode_pesanan`, `tanggal_pesanan`, `harga`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, '111', '2023-05-26', 1000000, NULL, NULL, NULL);
+INSERT INTO `pesanan` (`id`, `id_destinasi`, `kode_pesanan`, `tanggal_pesanan`, `created_at`, `updated_at`) VALUES
+(1, 1, '111', '2023-05-26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +103,7 @@ CREATE TABLE `testimoni` (
   `komentar` longtext NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `testimoni`
@@ -142,11 +120,11 @@ INSERT INTO `testimoni` (`id`, `id_pesanan`, `foto_testi`, `komentar`, `created_
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -167,14 +145,6 @@ INSERT INTO `users` (`id`, `name`, `role`, `email`, `alamat`, `password`, `creat
 --
 ALTER TABLE `destinasi`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `detailpesanan`
---
-ALTER TABLE `detailpesanan`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pesanan` (`id_pesanan`,`id_destinasi`),
-  ADD KEY `id_destinasi` (`id_destinasi`);
 
 --
 -- Indexes for table `pembayaran`
@@ -214,12 +184,6 @@ ALTER TABLE `destinasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `detailpesanan`
---
-ALTER TABLE `detailpesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -246,13 +210,6 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `detailpesanan`
---
-ALTER TABLE `detailpesanan`
-  ADD CONSTRAINT `detailpesanan_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id`),
-  ADD CONSTRAINT `detailpesanan_ibfk_2` FOREIGN KEY (`id_destinasi`) REFERENCES `destinasi` (`id`);
 
 --
 -- Constraints for table `pembayaran`
