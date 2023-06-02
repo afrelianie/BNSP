@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Destinasi;
 use App\Models\PesananModel;
 use App\Models\Testimoni;
+use App\Models\Pembayaran;
+use DB;
 use App\Models\User;
 class AdminController extends Controller
 {
@@ -15,8 +17,14 @@ class AdminController extends Controller
         $destinasi = Destinasi::count();
         $pesanan = PesananModel::count();
         $testimoni = Testimoni::count();
+        $pembayaran = Pembayaran::count();
         $user = User::count();
-        return view('admin.home',compact('destinasi','pesanan','testimoni','user'));
+        $ar_destinasi = DB::table('destinasi')->select('nama_destinasi', 'id')->get();
+        $ar_pembayaran = DB::table('pembayaran')
+        ->selectRaw('total_pembayaran ,count(total_pembayaran) as jumlah')
+        ->groupBy('total_pembayaran')
+        ->get();
+        return view('admin.home',compact('destinasi','pesanan','testimoni','pembayaran','user','ar_destinasi','ar_pembayaran'));
     }
 
     
