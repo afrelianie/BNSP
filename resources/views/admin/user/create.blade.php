@@ -6,24 +6,6 @@
 
 
 
-@if(count($errors)>0)
-@foreach ($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-@endif
-
-@if (Session::has('success'))
-<div class="alert alert-success" role="alert">
-    {{ Session('success') }}
-</div>
-@endif
-
-
-
-
-
   
 
 <div class="row justify-content-center">
@@ -36,15 +18,14 @@
             </div> 
         </div>
         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ url('admin/user/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('put')
-
+               
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nama</label>
-                            <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                            <input type="text" name="name" class="form-control" placeholder="Nama Pengguna">
                             @error('name')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror
@@ -53,7 +34,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                            <input type="email" name="email" class="form-control" placeholder="Email Pengguna">
                             @error('email')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror
@@ -65,7 +46,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nomor Hp</label>
-                            <input type="text" name="no_hp" class="form-control" value="{{ $user->no_hp }}">
+                            <input type="text" name="no_hp" class="form-control" placeholder="Nomor Hp Anda">
                             @error('no_hp')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror
@@ -74,7 +55,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Password</label>
-                            <input type="password" name="password" class="form-control">
+                            <input type="password" name="password" class="form-control" placeholder="Buat Password">
                             @error('password')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror
@@ -82,14 +63,29 @@
                     </div>
                 </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Alamat Pemilik Usaha</label>
-                        <textarea name="alamat_pribadi" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Alamat Pemilik Usaha">{{ $user->alamat_pribadi }}</textarea>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Alamat Pengguna</label>
+                            <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Alamat Pengguna"></textarea>
+                        </div>
+                        @error('alamat')
+                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                        @enderror
+                    </div> 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Level Pengguna</label>
+                            <select name="role" class="form-control">
+                                <option value="" selected disabled>-- Pilih Level Pengguna --</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            @error('role')
+                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
-                    @error('alamat')
-                        <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                    @enderror
                 </div>
 
                 <div class="modal-footer">

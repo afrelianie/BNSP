@@ -62,7 +62,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('admin/user') }}" class="nav-link {{ request ()->is('admin/user') ? 'active' : ''}}">
               <i class="nav-icon fas fa-users"></i>
               <p>Pengguna</p>
             </a>

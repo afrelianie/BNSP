@@ -21,16 +21,25 @@ class UserController extends Controller
         return view('admin.user.create');
     }
 
-    public function Store()
+    public function store(Request $request)
     {
-        $user = new user;
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->no_hp = request('no_hp');
-        $user->role = request('role');
-        $user->alamat = request('alamat');
-        $user->password = bcrypt(request('password'));
-        $user->save();
+        // dd(request()->all());
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'no_hp' => ['required'],
+            'alamat' => ['required'],
+            'password' => ['required'],
+            'role' => ['required']
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'password' => $request->password,
+            'role' => $request->role,
+        ]);
         return redirect('admin/user')->with('success', 'Berhasil Ditambahkan');
     }
 
@@ -74,8 +83,9 @@ class UserController extends Controller
     }
 
 
-    public function destroy(user $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         $user->delete();
         return redirect('admin/user')->with('danger', 'data berhasil dihapus');
     }

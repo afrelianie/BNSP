@@ -29,7 +29,7 @@ Route::get('/', function () {
             Route::post('user/store', 'store');
             Route::get('user/{id}/edit', 'edit');
             Route::post('user/update/{id}', 'update');
-            Route::post('user/delete/{id}', 'delete');
+            Route::post('user/destroy/{id}', 'destroy');
             Route::get('user/show/{id}', 'show');
         });
        
