@@ -29,7 +29,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Pesanan</th>
+                    <th>ID Pesanan</th>
                     <th>Foto Testimoni</th>
                     <th>Komentar</th>
                     <th>Action</th>
@@ -46,8 +46,8 @@
                          
                         <td>
                             <div class="btn btn-group">
-                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
                                           <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$testimoni->id}}">
                                    <i class="fa fa-edit"> Hapus </i>

@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="col-6">
-                    <h5 class="card-header">Tabel Detail Pesanan</h5>
+                    <h5 class="card-header">Tabel Detail Pembayaran</h5>
                 </div>
                 <div class="col-6">
                     <a href="" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
@@ -42,8 +42,8 @@
                   <tr>
                     <th>No</th>
                     <th>ID Pesanan</th>
-                    <th>Tanggal Pesanan</th>
-                    <th>Total Pembayaran</th>
+                    <th>Bukti Pembayaran</th>
+                    <th>Status Pembayaran</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -52,14 +52,14 @@
                   @foreach ($data_pembayaran as $pembayaran)
                     <tr>
                       <td> {{ $loop->iteration }} </td>
-                      <td> {{ $pembayaran->id_pesanan }} </td>
-                      <td> {{ $pembayaran->tanggal_pesanan }} </td>
-                      <td> {{ $pembayaran->total_pembayaran }} </td>
+                      <td> {{ $pembayaran->pesanan->kode_pesanan }} </td>
+                      <td> {{ $pembayaran->bukti_bayar }} </td>
+                      <td> {{ $pembayaran->status }} </td>
                          
                       <td>
                         <div class="btn btn-group">
-                          <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                          <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                          <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                          <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pembayaran->id}}">
                                   <i class="fa fa-edit"> Hapus </i>

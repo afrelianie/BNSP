@@ -30,9 +30,8 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Destinasi </th>
+                    <th>Kode Pesanan</th>
                     <th>Tanggal Pesanan</th>
-                    <th>Harga</th>
-                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -41,14 +40,13 @@
                     @foreach ($data_pesanan as $pesanan)
                     <tr>
                          <td> {{ $loop->iteration }} </td>
-                         <td> {{ $pesanan->id_pesanan }} </td>
+                         <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
+                         <td>{{ $pesanan->kode_pesanan }}</td>
                          <td> {{ $pesanan->tanggal_pesanan }} </td>
-                         <td> {{ $pesanan->harga }} </td>
-                         <td> {{ $pesanan->status }} </td>
                         <td>
                             <div class="btn btn-group">
-                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> 
-                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>
+                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
                                           <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pesanan->id}}">
                                    <i class="fa fa-edit"> Hapus </i>
