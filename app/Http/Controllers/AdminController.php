@@ -20,11 +20,11 @@ class AdminController extends Controller
         $pembayaran = Pembayaran::count();
         $user = User::count();
         $ar_destinasi = DB::table('destinasi')->select('nama_destinasi', 'harga')->get();
-        // $ar_user = DB::table('destinasi')
-        // ->selectRaw('id ,count(id) as jumlah')
-        // ->groupBy('id')
-        // ->get();
-        return view('admin.home',compact('destinasi','pesanan','testimoni','pembayaran','user','ar_destinasi'));
+        $ar_user = DB::table('users')
+        ->selectRaw('role, count(role) as jumlah')
+        ->groupBy('role')
+        ->get();
+        return view('admin.home',compact('destinasi','pesanan','testimoni','pembayaran','user','ar_destinasi','ar_user'));
     }
 
     

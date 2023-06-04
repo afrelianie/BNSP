@@ -32,26 +32,26 @@ class DestinasiController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request()->all());
+        // dd(request()->all());
         $request->validate([
             'nama_destinasi' => ['required'],
             'foto_destinasi' => ['required'],
-            'alamat' => ['required'],
+            'alamat_destinasi' => ['required'],
             'harga' => ['required'],
-            // 'sejarah' => ['required'],
-            // 'keunggulan' => ['required'],
+            'sejarah' => ['required'],
+            'keunggulan' => ['required'],
         ]);
-        $image = $request->image;
+        $image = $request->foto_destinasi;
         $new_image = time() . $image->getClientOriginalName();
         $destinasi = Destinasi::create([
             'nama_destinasi' => $request->nama_destinasi,
-            // 'foto_destinasi' => $request->foto_destinasi,
-            'alamat' => $request->alamat,
+            'alamat_destinasi' => $request->alamat_destinasi,
             'harga' => $request->harga,
-            'foto_destinasi' => 'public/foto/' . $new_image,
-            // 'sejarah' => $request->sejarah,
-            // 'keunggulan' => $request->keunggulan,
+            'foto_destinasi' => 'foto/' . $new_image,
+            'sejarah' => $request->sejarah,
+            'keunggulan' => $request->keunggulan,
         ]);
+        $image->move('foto/', $new_image);
         return redirect('admin/destinasi')->with('success', 'Berhasil Ditambahkan');
 
         
@@ -84,8 +84,10 @@ class DestinasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        DB::table('pesanan')->where('id', $id)->delete();
+        return redirect('admin/pesanan')->with('danger', 'data berhasil dihapus');
     }
 }

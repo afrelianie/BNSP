@@ -55,7 +55,17 @@ Route::get('/', function () {
         });
 
         // ini adalah route untuk bagian pesanan
-        Route::resource('pesanan', PesananController::class);
+        //Route::resource('pesanan', PesananController::class);
+        Route::controller(PesananController::class)->group(function(){
+            Route::get('pesanan', 'index');
+            Route::get('pesanan/create', 'create');
+            Route::post('pesanan/store', 'store');
+            Route::get('pesanan/{id}/edit', 'edit');
+            Route::post('pesanan/update/{id}', 'update');
+            Route::post('pesanan/destroy/{id}', 'destroy');
+            Route::get('pesanan/show/{id}', 'show');
+
+        });
         
         // ini adalah route untuk bagian pembayaran
         Route::resource('pembayaran', PembayaranController::class);
