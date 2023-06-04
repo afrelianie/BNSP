@@ -90,7 +90,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
+                                        Price List Book
                                     </div>
                                     <div class="card-body"><canvas id="barChart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -107,7 +107,7 @@
 // Bar Chart Example
 var lbl = [@foreach($ar_destinasi as $destinasi)'{{$destinasi->nama_destinasi}}',
 @endforeach];
-var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->id}},
+var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->harga}},
 @endforeach];
 // var ctx = document.getElementById("myBarChart");
 // var myLineChart = new Chart(ctx, {
@@ -118,7 +118,7 @@ var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->id}},
   data: {
     labels: lbl,
     datasets: [{
-      label: "Omzet Penjualan",
+      label: "Price List",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
       data: hrt,
@@ -140,7 +140,7 @@ var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->id}},
       yAxes: [{
         ticks: {
           min: 0,
-          max: 10,
+          max: 20000000,
           maxTicksLimit: 5
         },
         gridLines: {

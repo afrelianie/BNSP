@@ -32,7 +32,29 @@ class DestinasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(request()->all());
+        $request->validate([
+            'nama_destinasi' => ['required'],
+            'foto_destinasi' => ['required'],
+            'alamat' => ['required'],
+            'harga' => ['required'],
+            // 'sejarah' => ['required'],
+            // 'keunggulan' => ['required'],
+        ]);
+        $image = $request->image;
+        $new_image = time() . $image->getClientOriginalName();
+        $destinasi = Destinasi::create([
+            'nama_destinasi' => $request->nama_destinasi,
+            // 'foto_destinasi' => $request->foto_destinasi,
+            'alamat' => $request->alamat,
+            'harga' => $request->harga,
+            'foto_destinasi' => 'public/foto/' . $new_image,
+            // 'sejarah' => $request->sejarah,
+            // 'keunggulan' => $request->keunggulan,
+        ]);
+        return redirect('admin/destinasi')->with('success', 'Berhasil Ditambahkan');
+
+        
     }
 
     /**

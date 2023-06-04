@@ -43,8 +43,16 @@ Route::get('/', function () {
         Route::get('home', [AdminController::class, 'index'])->name('home');
         
         // ini adalah route untuk bagian destinasi
-        Route::resource('destinasi', DestinasiController::class);
-        Route::get('/destinasi/create', [DestinasiController::class, 'create']);
+        Route::controller(DestinasiController::class)->group(function(){
+            Route::get('destinasi', 'index');
+            Route::get('destinasi/create', 'create');
+            Route::post('destinasi/store', 'store');
+            Route::get('destinasi/{id}/edit', 'edit');
+            Route::post('destinasi/update/{id}', 'update');
+            Route::post('destinasi/destroy/{id}', 'destroy');
+            Route::get('destinasi/show/{id}', 'show');
+
+        });
 
         // ini adalah route untuk bagian pesanan
         Route::resource('pesanan', PesananController::class);

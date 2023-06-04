@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
+
 class Destinasi extends Model
 {
     use HasFactory;
     protected $table = 'destinasi'; //ini pemanggilan nama table
     protected $primaryKey = 'id';
-    protected $fillabel = [
+    protected $fillable = [
         'nama_destinasi',
         'foto_destinasi',
-        'sejarah',
-        'keunggulan',
+        // 'sejarah',
+        // 'keunggulan',
         'alamat_destinasi',
         'harga',
 

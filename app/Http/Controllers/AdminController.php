@@ -19,10 +19,10 @@ class AdminController extends Controller
         $testimoni = Testimoni::count();
         $pembayaran = Pembayaran::count();
         $user = User::count();
-        $ar_destinasi = DB::table('destinasi')->select('nama_destinasi', 'id')->get();
-        // $ar_pembayaran = DB::table('pembayaran')
-        // ->selectRaw('total_pembayaran ,count(total_pembayaran) as jumlah')
-        // ->groupBy('total_pembayaran')
+        $ar_destinasi = DB::table('destinasi')->select('nama_destinasi', 'harga')->get();
+        // $ar_user = DB::table('destinasi')
+        // ->selectRaw('id ,count(id) as jumlah')
+        // ->groupBy('id')
         // ->get();
         return view('admin.home',compact('destinasi','pesanan','testimoni','pembayaran','user','ar_destinasi'));
     }

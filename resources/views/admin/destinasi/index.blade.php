@@ -32,7 +32,7 @@
                       <h5 class="card-header">Tabel Destinasi Wisata</h5>
                   </div>
                   <div class="col-6">
-                      <a href="{{url('admin/create/store')}}" class="btn btn-dark float-right">Tambah Data &nbsp;<i class="fa fa-plus"></i></a>
+                      <a href="{{url('admin/destinasi/create')}}" class="btn btn-dark float-right">Tambah Data &nbsp;<i class="fa fa-plus"></i></a>
                   </div>
               </div>
           </div>
@@ -57,7 +57,7 @@
                          <td> {{ $destinasi->nama_destinasi }} </td>
                          <td> {{ $destinasi->foto_destinasi }} </td>
                          <td> {{ $destinasi->alamat_destinasi }} </td>
-                         <td> {{$destinasi->harga}}</td>
+                         <td> {{ $destinasi->harga}}</td>
                         <td>
                             <div class="btn btn-group">
                                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
