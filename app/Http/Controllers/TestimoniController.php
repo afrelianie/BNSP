@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Testimoni;
+use App\Models\PesananModel;
 use DB;
 class TestimoniController extends Controller
 {
@@ -37,7 +38,10 @@ class TestimoniController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //$pesanan = PesananModel::all();
+        $pesanan = PesananModel::all();
+        $testimoni = Testimoni::findOrfail($id);
+        return view('admin.testimoni.show', compact('testimoni', 'pesanan'));
     }
 
     /**

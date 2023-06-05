@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pembayaran;
 use App\Models\PesananModel;
-use App\Models\DetailModel;
+
 use Iluminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
@@ -38,6 +38,11 @@ class PembayaranController extends Controller
     public function show(string $id)
     {
         //
+        $pesanan = PesananModel::all();
+        $pembayaran = Pembayaran::findOrfail($id);
+        return view('admin.pembayaran.show', compact('pembayaran', 'pesanan'));
+
+        
     }
 
     /**

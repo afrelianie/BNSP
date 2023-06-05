@@ -16,4 +16,10 @@ class Testimoni extends Model
         'foto_testi',
         'komentar',
         ];
+
+
+        public function pesanan(){
+            return $this->belongsTo(PesananModel::class, 'id');
+        }
+
 }
