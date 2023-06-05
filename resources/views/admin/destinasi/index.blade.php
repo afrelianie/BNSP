@@ -60,7 +60,7 @@
                          <td> {{ $destinasi->harga}}</td>
                         <td>
                             <div class="btn btn-group">
-                                   <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                                   <a href="{{url('admin/destinasi/show/'.$destinasi->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
                                    <a href="{{ url('admin/destinasi', $destinasi->id) }}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a>&nbsp; &nbsp;
                                           <!-- Button trigger modal -->
                                     @include('template.delete', [
