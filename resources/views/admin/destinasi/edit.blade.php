@@ -14,13 +14,13 @@
             </div> 
         </div>
         <div class="card-body">
-            <form action="{{ url('admin/destinasi/store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('admin/destinasi/update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Nama Destinasi</label>
-                            <input type="text" name="nama_destinasi" class="form-control" placeholder="Nama Destinasi">
+                            <input type="text" name="nama_destinasi" class="form-control" value="" placeholder="Nama Destinasi">
                             @error('nama_destinasi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror

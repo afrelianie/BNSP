@@ -76,7 +76,7 @@
                                 <div class="card mb-4">
                                 <div class="card-header">
                                         <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
+                                        Jumlah Pengguna
                                     </div>
                                     <div class="card-body"><canvas id="pieChart" width="100%" height="50"></canvas></div>
                                    <!-- <div class="card-header">
@@ -155,7 +155,25 @@ var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->harga}},
 });
 });
 </script>
-
+<script>
+//             var ctx = document.getElementById("myPieChart");
+// var myPieChart = new Chart(ctx, 
+var lbl2 = [@foreach ($ar_user as $role) '{{$role->role}}',
+@endforeach];
+var jml = [@foreach($ar_user as $role) {{$role->jumlah}}, @endforeach];
+document.addEventListener("DOMContentLoaded", () => {
+    new Chart(document.querySelector('#pieChart'), {
+  type: 'pie',
+  data: {
+    labels: lbl2,
+    datasets: [{
+      data: jml,
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+    }],
+  },
+    });
+});
+</script>
 
 
 @endsection
