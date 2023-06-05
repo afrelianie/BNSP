@@ -55,7 +55,7 @@ Route::get('/', function () {
         });
 
         // ini adalah route untuk bagian pesanan
-        //Route::resource('pesanan', PesananController::class);
+        //Route 'pesanan'
         Route::controller(PesananController::class)->group(function(){
             Route::get('pesanan', 'index');
             Route::get('pesanan/create', 'create');
@@ -68,12 +68,16 @@ Route::get('/', function () {
         });
         
         // ini adalah route untuk bagian pembayaran
-        Route::resource('pembayaran', PembayaranController::class);
+        Route::controller(PembayaranController::class)->group(function(){
+            Route::get('pembayaran', 'index');
+            Route::get('pembayaran/show/{id}', 'show');
 
-         // ini adalah route untuk bagian detail_pesanan
-        //  Route::resource('detail_pesanan', DetailController::class);
-         Route::get('detail_pesanan', [DetailController::class, 'index'])->name('detail_pesanan');
-
+        });
+         
          // ini adalah route untuk bagian detail_testimoni
-         Route::resource('testimoni', TestimoniController::class); 
+         Route::controller(TestimoniController::class)->group(function(){
+            Route::get('testimoni', 'index');
+            Route::get('testimoni/show/{id}', 'show');
+    
+            });
     });

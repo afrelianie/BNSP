@@ -49,8 +49,10 @@ class DestinasiController extends Controller
 
     public function show(string $id)
     {
+
         $data['destinasi'] = Destinasi::findOrfail($id);
         return view('admin.destinasi.show', $data);
+
     }
 
    public function edit(string $id)

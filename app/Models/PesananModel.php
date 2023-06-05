@@ -21,9 +21,9 @@ class PesananModel extends Model
     ];
 
    //mengirim data dari table sendiri ke table yg berelasi
-    public function detailpesanan()
+    public function testimoni()
     {
-        return $this->hasMany(DetailModel::class, 'id');
+        return $this->hasMany(Testimoni::class, 'id');
     }
     public function pembayaran()
     {

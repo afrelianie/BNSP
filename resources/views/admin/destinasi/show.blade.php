@@ -7,6 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-11">
 
+
           <!-- About Me Box 1 -->
           <div class="card card-secondary">
             <div class="card-header">
@@ -34,6 +35,7 @@
 
             <!-- About Me Box 2 -->
           <div class="card card-info">
+
                 <div class="card-header">
                     <h3 class="card-title">DETAIL DESTINASI</h3>
                     <div class="card-tools">
@@ -46,6 +48,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
+
 
                         <div class="col-md-6">
                             <div class="form-group">
@@ -83,6 +86,7 @@
                                 <hr>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
