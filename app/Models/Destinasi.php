@@ -24,9 +24,5 @@ class Destinasi extends Model
     ];
 
      
-    public function detailpesanan()
-        {
-            return $this->hasMany(DetailModel::class, 'id');
-        }
     
 }

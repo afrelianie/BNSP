@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Destinasi;
-use Iluminate\Support\Facades\DB;
+use App\Models\PesananModel;
+use Illuminate\Support\Facades\DB;
 
 class DestinasiController extends Controller
 {
@@ -63,6 +64,10 @@ class DestinasiController extends Controller
     public function show(string $id)
     {
         //
+        // $destinasi = Destinasi::all();
+        // return view('admin.destinasi.show', compact('destinasi'));
+        $destinasi = Destinasi::findOrfail($id);
+        return view('admin.destinasi.show', compact('destinasi'));
     }
 
     /**
@@ -71,6 +76,11 @@ class DestinasiController extends Controller
     public function edit(string $id)
     {
         //
+        // $destinasi = Destinasi::all();
+        // return view('admin.destinasi.edit', compact( 'destinasi'));
+        $data['destinasi'] = Destinasi::all();
+        return view('admin.destinasi.edit', $data);
+
     }
 
     /**
@@ -79,6 +89,45 @@ class DestinasiController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        {
+            $request->validate([
+               'nama_destinasi' => ['required'],
+               'keunggulan' => ['required'],
+               'alamat_destinasi' => ['required'],
+               'harga' => ['required'],
+               'sejarah' => ['required'],
+               'foto_destinasi' => ['required']
+           ]);
+   
+           $destinasi = Destinasi::findorfail($id);
+           if ($request->has('foto_destinasi')) {
+               if ($destinasi->foto_destinasi <> "") {
+                   unlink(public_path('/') . '/' . $destinasi->foto_destinasi);
+                   }
+               $image = $request->foto_destinasi;
+               $new_image = time().$image->getClientOriginalName();
+               $image->move('uploads/', $new_image);
+               $destinasi_data = [
+                   'nama_destinasi' => $request->nama_destinasi,
+                   'keunggulan' => $request->keunggulan,
+                   'alamat_destinasi' => $request->alamat_destinasi,
+                   'harga' => $request->harga,
+                   'sejarah' => $request->sejarah,
+                   'foto_destinasi' => 'uploads/' . $new_image,
+               ];
+           }
+           else{
+               $destinasi_data = [
+                   'nama_destinasi' => $request->nama_destinasi,
+                   'keunggulan' => $request->keunggulan,
+                   'alamat_destinasi' => $request->alamat_destinasi,
+                   'harga' => $request->harga,
+                   'sejarah' => $request->sejarah,
+               ];
+           }
+           $destinasi->update($destinasi_data);
+           return redirect('admin/destinasi')->with('success','Data Destinasi anda berhasil di Update');
+       }
     }
 
     /**
