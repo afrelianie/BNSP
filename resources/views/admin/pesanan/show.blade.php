@@ -25,7 +25,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <strong><i class="fas fa-user-alt mr-1"></i> Nama Destinasi</strong>
-                                <p class="text-muted">{{ $pesanan->destinasi->nama_destinasi }}</p>
+                                <p class="text-muted">{{ $pesanan->destinasi[0]->nama_destinasi }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-user-alt mr-1"></i> Kode Pesanan</strong>
