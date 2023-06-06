@@ -32,6 +32,13 @@ class DestinasiController extends Controller
             'harga' => ['required'],
             'sejarah' => ['required'],
             'foto_destinasi' => ['required']
+        ],[
+            'nama_destinasi.required' => 'Nama destinasi wajib disii',
+            'keunggulan.required' => 'Keunggulan Wajib disii',
+            'alamat_destinasi.required' => 'Alamat wajib diisi',
+            'harga.required' => 'Harga wajib diisi',
+            'sejarah.required' => 'Sejarah wajib diisi',
+            'foto_destinasi.required' => 'Foto wajib diisi', 
         ]);
         $image = $request->foto_destinasi;
         $new_image = time() . $image->getClientOriginalName();

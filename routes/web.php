@@ -78,6 +78,10 @@ Route::get('/', function () {
          Route::controller(TestimoniController::class)->group(function(){
             Route::get('testimoni', 'index');
             Route::get('testimoni/show/{id}', 'show');
-    
+            Route::get('testimoni/create', 'create');
+            Route::post('testimoni/store', 'store');
+            Route::get('testimoni/{id}/edit', 'edit');
+            Route::post('testimoni/update/{id}', 'update');
+            Route::post('testimoni/destroy/{id}', 'destroy');
             });
     });

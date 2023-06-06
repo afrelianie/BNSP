@@ -11,7 +11,7 @@ class Testimoni extends Model
     use HasFactory;
     protected $table = 'testimoni';
     protected $primarykey = 'id';
-    protected $fillabel = [
+    protected $fillable = [
         'id_pesanan',
         'foto_testi',
         'komentar',
