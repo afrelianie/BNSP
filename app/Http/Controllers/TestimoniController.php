@@ -23,6 +23,9 @@ class TestimoniController extends Controller
     public function create()
     {
         //
+        $testi['pesanan'] = PesananModel::all();
+        $testi['testimoni'] = Testimoni::all();
+        return view('admin.testimoni.create', $testi);
     }
 
     /**
@@ -31,6 +34,19 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         //
+        // dd(request()->all());
+        $request->validate([
+            'id_pesanan' => ['required'],
+            'foto_testi' => ['required'],
+            'komentar' => ['required']
+    
+        ]);
+        $testi = Testimoni::create([
+            'id_pesanan' => $request->id_pesanan,
+            'foto_testi' => $request->foto_testi,
+            'komentar' => $request->komentar,
+        ]);
+        return redirect('admin/testimoni')->with('success', 'Berhasil Ditambahkan');
     }
 
     /**
@@ -50,6 +66,9 @@ class TestimoniController extends Controller
     public function edit(string $id)
     {
         //
+        $pesanan = PesananModel::all();
+        $testimoni = Testimoni::findOrfail($id);
+        return view('admin.testimoni.edit', compact('testimoni', 'pesanan'));
     }
 
     /**
@@ -58,6 +77,22 @@ class TestimoniController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'id_pesanan' => ['required'],
+            'foto_testi' => ['required'],
+            'komentar' => ['required']
+        ]);
+ 
+        $testi = TestimoniModel::findorfail($id);
+        $testimoni_data = [
+            'id_pesanan' => $request->id_pesanan,
+            'foto_testi' => $request->foto_testi,
+            'komentar' => $request->komentar,
+ 
+            ];
+ 
+        $testi->update($testimoni_data);
+        return redirect('admin/testimoni')->with('success','Data testimoni anda berhasil di Update');
     }
 
     /**

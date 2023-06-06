@@ -15,7 +15,7 @@
                       <h5 class="card-header">Tabel Detail Pesanan</h5>
                   </div>
                   <div class="col-6">
-                      <a href="{{ url('admin/user/create')}}" class="btn btn-dark float-right"><i class="fa fa-plus"></i></a>
+                      <a href="{{ url('admin/user/create')}}" class="btn btn-dark float-right">Tambah Data &nbsp;<i class="fa fa-plus"></i></a>
                   </div>
               </div>
           </div>

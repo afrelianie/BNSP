@@ -19,17 +19,24 @@
 </div>
 @endif
 
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Table Testimoni</h3>
+<div class="card">
+          <div class="container">
+              <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="col-6">
+                      <h5 class="card-header">Tabel Destinasi Wisata</h5>
+                  </div>
+                  <div class="col-6">
+                      <a href="{{url('admin/testimoni/create')}}" class="btn btn-dark float-right">Tambah Data &nbsp;<i class="fa fa-plus"></i></a>
+                  </div>
               </div>
+          </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>ID Pesanan</th>
+                    <th>Kode Pesanan</th>
                     <th>Foto Testimoni</th>
                     <th>Komentar</th>
                     <th>Action</th>
@@ -40,14 +47,14 @@
                     @foreach ($data_testimoni as $testimoni)
                     <tr>
                          <td> {{ $loop->iteration }} </td>
-                         <td> {{ $testimoni->id_pesanan }} </td>
+                         <td> {{ $testimoni->pesanan->kode_pesanan }} </td>
                          <td> {{ $testimoni->foto_testi }} </td>
                          <td> {{ $testimoni->komentar }} </td>
                          
                         <td>
                             <div class="btn btn-group">
                                    <a href="{{url('admin/testimoni/show/'.$testimoni->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
-                                   <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
+                                   <a href="{{ url('admin/testimoni', $testimoni->id) }}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit"> Edit </i></a> &nbsp; &nbsp;
                                           <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$testimoni->id}}">
                                    <i class="fa fa-edit"> Hapus </i>

@@ -39,6 +39,10 @@ class PesananController extends Controller
             'kode_pesanan' => ['required'],
             'tanggal_pesanan' => ['required']
     
+        ],[
+            'id_destinasi.required' => 'Destinasi wajib diisi',
+            'kode_pesanan.required' => 'Kode Pesanan wajib diisi',
+            'tanggal_pesanan.required' => 'Tanggal pesanan wajib diisi', 
         ]);
         $pesanan = PesananModel::create([
             'id_destinasi' => $request->id_destinasi,

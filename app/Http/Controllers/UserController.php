@@ -31,6 +31,13 @@ class UserController extends Controller
             'alamat' => ['required'],
             'password' => ['required'],
             'role' => ['required']
+        ],[
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email Pesanan wajib diisi',
+            'no_hp.required' => 'No HP wajib diisi', 
+            'alamat.required' => 'Alamat wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'role.required' => 'Level pengguna wajib diisi', 
         ]);
         $user = User::create([
             'name' => $request->name,
