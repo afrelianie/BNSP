@@ -66,8 +66,20 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => 'required|min:3|max:37',
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'no_hp' => ['required'],
+            'alamat' => ['required'],
+            'password' => ['required'],
+            'role' => ['required']
+        ],[
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email Pesanan wajib diisi',
+            'no_hp.required' => 'No HP wajib diisi', 
+            'alamat.required' => 'Alamat wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'role.required' => 'Level pengguna wajib diisi', 
         ]);
 
         if($request->input('password')) {
@@ -79,6 +91,11 @@ class UserController extends Controller
         else{
             $user_data = [
             'name' => $request->name,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'password' => $request->password,
+            'role' => $request->role,
             ];
         }
 
@@ -89,6 +106,8 @@ class UserController extends Controller
 
     }
 
+
+   
 
     public function destroy($id)
     {

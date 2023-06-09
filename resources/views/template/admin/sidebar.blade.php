@@ -90,8 +90,7 @@
 
 
         <li class="nav-item">
-            {{-- <a href="{{ route('logout') }}" class="nav-link {{ request ()->is('logout') ? 'active' : ''}}"> --}}
-            <a class="nav-link">
+            <a href="{{ url('logout') }}" class="nav-link {{ request ()->is('logout') ? 'active' : ''}}">
               <i class="fas fa-power-off mr-2"></i>
               <p>Logout</p>
             </a>

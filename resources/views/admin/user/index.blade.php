@@ -42,8 +42,6 @@
                          <td> {{ $user->alamat }} </td>
                         <td>
                             <div class="btn btn-group">
-                                <a href="{{ url('admin/user/show', $user->id) }}"
-                                    class="btn btn-success"><i class="fa fa-eye"></i></a>
                                 <a href="{{ url('admin/user', $user->id) }}/edit"
                                     class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                  
