@@ -57,51 +57,51 @@ class UserController extends Controller
         return view('user.show', $data);
     }
     
-    public function edit(user $user)
+    // public function edit(user $user)
+    // {
+    //     $data['user'] = $user;
+    //     return view('admin.user.edit', $data);
+    // }
+
+    public function edit(string $id)
     {
-        $data['user'] = $user;
+        $data['user'] = User::findOrfail($id);
         return view('admin.user.edit', $data);
+
     }
     
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => ['required'],
-            'email' => ['required'],
-            'no_hp' => ['required'],
-            'alamat' => ['required'],
-            'password' => ['required'],
-            'role' => ['required']
-        ],[
-            'name.required' => 'Nama wajib diisi',
-            'email.required' => 'Email Pesanan wajib diisi',
-            'no_hp.required' => 'No HP wajib diisi', 
-            'alamat.required' => 'Alamat wajib diisi',
-            'password.required' => 'Password wajib diisi',
-            'role.required' => 'Level pengguna wajib diisi', 
-        ]);
+        //  dd(request()->all());
 
-        if($request->input('password')) {
+        $user = User::findorfail($id);
+        if ($request->has('profil')) {
+            if ($user->image <> "") {
+                unlink(public_path('/') . '/' . $user->image);
+                }
+            $image = $request->profil;
+            $new_image = time().$image->getClientOriginalName();
+            $image->move('img/', $new_image);
             $user_data = [
-            'name' => $request->name,
-            'password' => bcrypt($request->password)
+                'name' => $request->name,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
+                'password' => bcrypt($request->password),
+                'profil' => 'img/' . $new_image,
             ];
         }
         else{
             $user_data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'password' => $request->password,
-            'role' => $request->role,
+                'name' => $request->name,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
+                'password' => bcrypt($request->password),
             ];
         }
-
-        $user = User::find($id);
         $user->update($user_data);
-
         return redirect('admin/user')->with('success','Berhasil Diupdate');
 
     }

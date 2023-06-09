@@ -30,7 +30,7 @@ Route::get('/', function () {
     ///////////  ADMIN /////////////
     Route::prefix('admin')->group(function(){
 
-        Route::group(['middleware' => ['auth','cek_login:admin,user']],function(){
+        Route::group(['middleware' => ['auth','cek_login:admin']],function(){
 
         // ini adalah route untuk bagian user
         Route::controller(UserController::class)->group(function(){
