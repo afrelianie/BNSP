@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Destinasi;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\DestinasiImport;
 
 class DestinasiController extends Controller
 {
@@ -112,5 +114,13 @@ class DestinasiController extends Controller
         $destinasi = DestinasiModel::find($id);
         $destinasi->delete();
         return redirect('admin/destinasi')->with('danger', 'data berhasil dihapus');
+    }
+
+    public function importExcel(Request $request){
+        $file = $request->file('file');
+        $nama_file = rand().$file->getClientOriginalName();
+        $file->move('file_excel', $nama_file);
+        Excel::import(new DestinasiImport, public_path('/file_excel/'.$nama_file));
+        return redirect('admin/destinasi');
     }
 }

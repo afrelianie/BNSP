@@ -51,6 +51,7 @@ Route::get('/', function () {
             Route::post('destinasi/update/{id}', 'update');
             Route::post('destinasi/destroy/{id}', 'destroy');
             Route::get('destinasi/show/{id}', 'show');
+            Route::post('/destinasi/importexcel', 'importExcel');
 
         });
 
