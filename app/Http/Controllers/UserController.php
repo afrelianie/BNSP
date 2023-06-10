@@ -57,38 +57,57 @@ class UserController extends Controller
         return view('user.show', $data);
     }
     
-    public function edit(user $user)
+    // public function edit(user $user)
+    // {
+    //     $data['user'] = $user;
+    //     return view('admin.user.edit', $data);
+    // }
+
+    public function edit(string $id)
     {
-        $data['user'] = $user;
+        $data['user'] = User::findOrfail($id);
         return view('admin.user.edit', $data);
+
     }
     
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $this->validate($request,[
-            'name' => 'required|min:3|max:37',
-        ]);
+        //  dd(request()->all());
 
-        if($request->input('password')) {
+        $user = User::findorfail($id);
+        if ($request->has('profil')) {
+            if ($user->image <> "") {
+                unlink(public_path('/') . '/' . $user->image);
+                }
+            $image = $request->profil;
+            $new_image = time().$image->getClientOriginalName();
+            $image->move('img/', $new_image);
             $user_data = [
-            'name' => $request->name,
-            'password' => bcrypt($request->password)
+                'name' => $request->name,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
+                'password' => bcrypt($request->password),
+                'profil' => 'img/' . $new_image,
             ];
         }
         else{
             $user_data = [
-            'name' => $request->name,
+                'name' => $request->name,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
+                'password' => bcrypt($request->password),
             ];
         }
-
-        $user = User::find($id);
         $user->update($user_data);
-
         return redirect('admin/user')->with('success','Berhasil Diupdate');
 
     }
 
+
+   
 
     public function destroy($id)
     {
