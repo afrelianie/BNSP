@@ -32,19 +32,7 @@
                 <a href="{{url('admin/pesanan')}}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <div class="small-box bg-blue">
-                <div class="inner">
-                  <h3>{{$pembayaran}}</h3>
-                  <h4>Pembayaran</h4>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-receipt"></i>
-                </div>
-                <a href="{{url('admin/pembayaran')}}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
+           
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <div class="small-box bg-warning">
@@ -71,109 +59,165 @@
                 <a href="{{url('admin/user')}}" class="small-box-footer">Detail info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Jumlah Pengguna
-                                    </div>
-                                    <div class="card-body"><canvas id="pieChart" width="100%" height="50"></canvas></div>
-                                   <!-- <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div> -->
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Price List Book
-                                    </div>
-                                    <div class="card-body"><canvas id="barChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
+            
+                         
         </div>
     </div>
 </section>
 
-<script>
+
+
+  <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Jumlah Pengguna</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col (LEFT) -->
+
+          <div class="col-md-6">
+            <!-- BAR CHART -->
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Harga Tempat Wisata</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col (RIGHT) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+  <!-- /.content -->
 
 
 
-// Bar Chart Example
-var lbl = [@foreach($ar_destinasi as $destinasi)'{{$destinasi->nama_destinasi}}',
-@endforeach];
-var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->harga}},
-@endforeach];
-// var ctx = document.getElementById("myBarChart");
-// var myLineChart = new Chart(ctx, {
-    document.addEventListener("DOMContentLoaded",()=>{
-        new Chart(document.querySelector('#barChart'),
-    {
-  type: 'bar',
-  data: {
-    labels: lbl,
-    datasets: [{
-      label: "Price List",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: hrt,
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
+  <script>
+
+    // Bar Chart Example
+    var lbl = [@foreach($ar_destinasi as $destinasi)'{{$destinasi->nama_destinasi}}',
+    @endforeach];
+    var hrt = [@foreach($ar_destinasi as $destinasi){{$destinasi->harga}},
+    @endforeach];
+    // var ctx = document.getElementById("myBarChart");
+    // var myLineChart = new Chart(ctx, {
+        document.addEventListener("DOMContentLoaded",()=>{
+            new Chart(document.querySelector('#barChart'),
+        {
+      type: 'bar',
+      data: {
+        labels: lbl,
+        datasets: [{
+          label: "Price List",
+          backgroundColor: "rgba(2,117,216,1)",
+          borderColor: "rgba(2,117,216,1)",
+          data: hrt,
+        }],
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 20000000,
+              maxTicksLimit: 5
+            },
+            gridLines: {
+              display: true
+            }
+          }],
         },
-        gridLines: {
+        legend: {
           display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
         }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 20000000,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          display: true
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-});
-</script>
-<script>
-//             var ctx = document.getElementById("myPieChart");
-// var myPieChart = new Chart(ctx, 
-var lbl2 = [@foreach ($ar_user as $role) '{{$role->role}}',
-@endforeach];
-var jml = [@foreach($ar_user as $role) {{$role->jumlah}}, @endforeach];
-document.addEventListener("DOMContentLoaded", () => {
-    new Chart(document.querySelector('#pieChart'), {
-  type: 'pie',
-  data: {
-    labels: lbl2,
-    datasets: [{
-      data: jml,
-      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-    }],
-  },
+      }
     });
-});
-</script>
+    });
+  
+  </script>
+
+  <script>
+      // var ctx = document.getElementById("myPieChart");
+      // var myPieChart = new Chart(ctx, 
+      var lbl2 = [@foreach ($ar_user as $role) '{{$role->role}}',
+                  @endforeach];
+      var jml = [@foreach($ar_user as $role) {{$role->jumlah}}, @endforeach];
+                document.addEventListener("DOMContentLoaded", () => {
+                    new Chart(document.querySelector('#pieChart'), {
+        type: 'pie',
+        data: {
+          labels: lbl2,
+          datasets: [{
+            data: jml,
+            backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+              }], },
+          });
+      });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @endsection

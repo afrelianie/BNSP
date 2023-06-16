@@ -9,6 +9,7 @@
   <div class="row justify-content-center">
     <div class="col-md-11">
       <div class="card">
+
           <div class="container">
               <div class="row card-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="col-6">
@@ -20,36 +21,37 @@
               </div>
           </div>
 
-              <!-- /.card-header -->
-              <div class="card-body">
+          <div class="card-body p-2">
+            <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Alamat</th>
-                    <th width="100px">Action</th>
-                  </tr>
+                    <tr>
+                      <th width="20px">No</th>
+                      <th>Nama</th>
+                      <th>Email</th>
+                      <th>Alamat</th>
+                      <th>Role</th>
+                      <th width="50px">Action</th>
+                    </tr>
                   </thead>
                   <tbody>
                    
                     @foreach ($list_user as $user)
                     <tr>
-                         <td> {{ $loop->iteration }} </td>
-                         <td> {{ $user->name }} </td>
-                         <td> {{ $user->email }} </td>
-                         <td> {{ $user->alamat }} </td>
+                        <td> {{ $loop->iteration }} </td>
+                        <td> {{ $user->name }} </td>
+                        <td> {{ $user->email }} </td>
+                        <td> {{ $user->alamat }} </td>
+                        <td> {{ $user->role }} </td>
                         <td>
                             <div class="btn btn-group">
                                 <a href="{{ url('admin/user', $user->id) }}/edit"
-                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    class="btn btn-warning"><i class="fa fa-edit"></i></a> &nbsp; 
                                  
                                     @include('template.delete', [
+                                      'id'=> $user->id, 
                                     'url' => url('admin/user/destroy', $user->id),
                                 ])
-  
-                  
                             </div>
                         </td>
                     </tr>
@@ -58,8 +60,9 @@
 
                   </tbody>
                 </table>
-              </div>
-              <!-- /.card-body -->
+            </div>
+          </div>
+
       </div>
     </div>
   </div>   

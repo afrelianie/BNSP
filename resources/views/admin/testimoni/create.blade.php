@@ -21,12 +21,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Kode Pesanan</label>
-                            <input type="text" name="kode_pesanan" class="form-control" >
-                            @error('kode_pesanan')
-                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                            @enderror
+                            <label for="exampleFormControlTextarea1">Komentar</label>
+                            <textarea name="komentar" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
                         </div>
+                        @error('komentar')
+                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -38,15 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Komentar</label>
-                            <textarea name="komentar" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
-                        </div>
-                        @error('komentar')
-                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                        @enderror
-                </div>
+                
                 
 
                 <div class="modal-footer">

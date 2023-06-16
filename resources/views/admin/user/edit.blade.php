@@ -79,20 +79,13 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Nomor Hp</label>
                                                     <input type="text" name="no_hp" class="form-control" placeholder="Nomor Hp" value="{{ $user->no_hp }}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="" class="control-label">Edit Foto</label>
-                                                    <input type="file" name="profil" class="form-control" placeholder="" accept="image/jpeg,image/png">
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Password Baru</label>
                                                     <input type="password" name="password" class="form-control" placeholder="Password Baru">

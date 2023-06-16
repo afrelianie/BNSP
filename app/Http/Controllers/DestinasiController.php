@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DestinasiImport;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
+
+
 class DestinasiController extends Controller
 {
     
@@ -107,20 +113,57 @@ class DestinasiController extends Controller
     }
 
 
-
-
     public function destroy($id)
     {
-        $destinasi = DestinasiModel::find($id);
+        $destinasi = Destinasi::find($id);
+
+        //hapus gambar di public
+        if ($destinasi->image <> "") {
+            unlink(public_path('/') . '/' . $destinasi->image);
+        }
+        foreach($destinasi->pesanan as $pesanan){
+            $pesanan->delete();
+        }
         $destinasi->delete();
         return redirect('admin/destinasi')->with('danger', 'data berhasil dihapus');
     }
 
-    public function importExcel(Request $request){
+    public function __invoke(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
         $file = $request->file('file');
         $nama_file = rand().$file->getClientOriginalName();
         $file->move('file_excel', $nama_file);
-        Excel::import(new DestinasiImport, public_path('/file_excel/'.$nama_file));
-        return redirect('admin/destinasi');
+        Excel::import(new DestinasiImport, public_path('file_excel/'.$nama_file));
+        return redirect('admin/destinasi')->with('success', 'data berhasil dihapus');
     }
+
+
+    // public function __invoke(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'file' => 'required|mimes:csv,xls,xlsx'
+    //     ]);
+    //     $file = $request->file('file');
+
+    //     // membuat nama file unik
+    //     $nama_file = $file->hashName();
+
+    //     //temporary file
+    //     $path = $file->storeAs('file_excel', $nama_file);
+    //     // import data
+    //     $filepath = public_path('file_excel' . $nama_file);
+    //     $import = Excel::import(new DestinasiImport(), $filepath);
+
+    //     //remove from server
+    //     Storage::delete($path);
+
+    //     if ($import) {
+    //         //redirect
+    //         return redirect('admin/destinasi')->with(['success' => 'Data Berhasil Diimport!']);
+    //     }
+    // }
+
 }

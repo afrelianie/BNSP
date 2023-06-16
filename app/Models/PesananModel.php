@@ -13,7 +13,7 @@ class PesananModel extends Model
 {
     public $table = "pesanan";
     protected $primaryKey = "id";
-    protected $fillable = ['id_destinasi','kode_pesanan','tanggal_pesanan'];
+    protected $fillable = ['id_destinasi','kode_pesanan','tanggal_pesanan','status'];
     
 
     //mengambil data dari table lain yg berelasi dengan table ini

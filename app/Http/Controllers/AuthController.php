@@ -31,41 +31,92 @@ class AuthController extends Controller
             if ($hakAkses == "admin") {
                 return redirect('admin/home')->with('success', 'login berhasil');
             }elseif ($hakAkses == "user") {
-                return redirect('user')->with('success', 'login berhasil');
+                return redirect('/')->with('success', 'login berhasil');
             }
         }
 
         return back()->with('danger', 'login gagal, silahkan cek username dan password anda');
     }
 
-    public function daftar(Request $request)
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+
+    public function proses_register(Request $request)
     {
         // dd($request->all());
         $request->validate([
             'name' => ['required'],
             'role' => ['required'],
+            'no_hp' => ['required'],
             'email' => ['required'],
-            'nik' => ['required'],
-            'nib' => ['required'],
+            'alamat' => ['required'],
             'password' => ['required'],
         ]);
-        // $this->validate($request,[
-        //     'name' => 'required|min:3|max:37',
-        //     'email' => 'required|email',
-        //     'nik' => 'required|min:16|max:16',
-        //     'role' =>'required',
-        //     'nib' =>'required|min:6|max:6',
-        //     'password' =>'required|min:5|max:37',
-        // ]);
+        $this->validate($request,[
+            'name' => 'required|min:3|max:37',
+            'role' =>'required',
+            'no_hp' => 'required|min:12|max:14',
+            'email' => 'required|email',
+            'alamat' =>'required',
+            'password' =>'required|min:5|max:37',
+        ]);
 
         User::create([
             'name' => $request->name,
             'role' => $request->role,
             'email' => $request->email,
-            'nik' => $request->nik,
-            'nib' => $request->nib,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
             'password' => bcrypt($request->password),
         ]);
         return redirect()->route('login');
     }
+
+    public function lupaSandi()
+    {
+        return view('auth.forget');
+    }
+
+
+    public function konfirPassword(Request $request)
+    {
+         $credentials = $request->validate([
+            'email' => ['required','email'],
+        ]);
+        $user = User::where('email', $request->email)->first();
+        if( $user)
+        {
+           $users['list'] = User::where('email', $request->email)->first();
+            return view('auth.update', $users)->with('success', 'Email anda ditemukan');
+        }
+        else
+        {
+             return redirect('lupaSandi')->with('danger', 'Email konfirmasi anda tidak ditemukan');
+        }
+    }
+
+
+    public function update()
+    {
+         return view('auth.update');
+    }
+
+
+    public function updateSandi(Request $request, User $user)
+    {
+        $oldPassword = $request->old;
+        $newPassword = $request->new;
+
+        if ($oldPassword === $newPassword) {
+            $user->password = bcrypt($oldPassword);
+            $user->update();
+            return redirect('login')->with('success', 'Silahkan login menggunakan password baru anda');
+        }
+        return redirect('login')->back()->with('danger', 'Konfirmasi password baru tidak sama');
+    }
+
 }

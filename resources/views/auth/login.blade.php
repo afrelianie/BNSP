@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Destinasi | Web</title>
-  <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/img/PTSP.png" />
+  <title>Login | Web Wisata</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/img/logo1.jpg" />
 
 
   <!-- Google Font: Source Sans Pro -->
@@ -24,6 +24,9 @@
 </style>
 
 <body class="hold-transition login-page">
+
+    @include('template.notif')
+
     <div class="login-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
@@ -62,10 +65,17 @@
             </form>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                 <div class="icheck-primary">
                     <label for="agreeTerms">
-                    Belum Punya Akun? <a href="register">Ayo Daftar</a>
+                        <a href="{{ url('register') }}">Daftar Segera</a>
+                    </label>
+                </div>
+                </div>
+                <div class="col-6">
+                <div class="icheck-primary">
+                    <label for="agreeTerms">
+                        <a href="{{ url('lupaSandi') }}">Lupa Password?</a>
                     </label>
                 </div>
                 </div>

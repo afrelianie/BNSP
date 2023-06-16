@@ -23,27 +23,6 @@
                
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Kode Pesanan</label>
-                            <input type="text" name="kode_pesanan" class="form-control" value="{{ $pesanan->kode_pesanan }}">
-                            @error('kode_pesanan')
-                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Tanggal Pesanan</label>
-                            <input type="date" name="tanggal_pesanan" class="form-control" value="{{ $pesanan->tanggal_pesanan }}" placeholder="Tanggal Pesanan">
-                            @error('tanggal_pesanan')
-                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
                          <div class="form-group">
                               <label>Tempat Destinasi</label>
                               <select name="id_destinasi" class="form-control">
@@ -56,6 +35,15 @@
                                    <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                               @enderror
                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Tanggal Boking</label>
+                            <input type="date" name="tanggal_pesanan" class="form-control" value="{{ $pesanan->tanggal_pesanan }}" placeholder="Tanggal Pesanan">
+                            @error('tanggal_pesanan')
+                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 

@@ -27,6 +27,8 @@ class Destinasi extends Model
     protected $table = 'destinasi';
     protected $guarded =['id'];
 
-   
+    function pesanan(){
+        return $this->hasMany(PesananModel::class,'id_destinasi');
+    }
     
 }

@@ -22,7 +22,6 @@ class TestimoniController extends Controller
      */
     public function create()
     {
-        //
         $testi['pesanan'] = PesananModel::all();
         $testi['testimoni'] = Testimoni::all();
         return view('admin.testimoni.create', $testi);
@@ -33,8 +32,8 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        //
         // dd(request()->all());
+
         $request->validate([
             'id_pesanan' => ['required'],
             'foto_testi' => ['required'],
@@ -65,7 +64,6 @@ class TestimoniController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $pesanan = PesananModel::all();
         $testimoni = Testimoni::findOrfail($id);
         return view('admin.testimoni.edit', compact('testimoni', 'pesanan'));
@@ -76,7 +74,7 @@ class TestimoniController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
         $request->validate([
             'id_pesanan' => ['required'],
             'foto_testi' => ['required'],

@@ -1,12 +1,12 @@
      <!-- Button trigger modal -->
-     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$id}}">
           <i class="fa fa-trash"></i>
      </button>
                                    
      <!-- Modal -->
      <form action="{{ $url }}" class="form-horizontal" method="post" enctype="multipart/form-data">
           @csrf
-          <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="exampleModal{{$id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
                     <div class="modal-content">
                          <div class="modal-header">
@@ -24,4 +24,4 @@
                </div>
           </div>
      </form>
-  
+   

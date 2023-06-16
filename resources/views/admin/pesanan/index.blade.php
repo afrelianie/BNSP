@@ -5,20 +5,6 @@
 
 
 
-@if(count($errors)>0)
-@foreach ($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-@endif
-
-@if (Session::has('success'))
-<div class="alert alert-success" role="alert">
-    {{ Session('success') }}
-</div>
-@endif
-
 
 
 
@@ -38,17 +24,18 @@
               </div>
           </div>
 
-              <!-- /.card-header -->
-              <div class="card-body">
+            <div class="card-body p-2">
+              <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>No</th>
+                    <th width="20px">No</th>
                     <th>Nama Destinasi</th>
                     <th>Kode Pesanan</th>
-                    <th>Tanggal</th>
+                    <th>Tanggal Boking</th>
                     <th>Harga</th>
-                    <th width="100px">Action</th>
+                    <th>Status</th>
+                    <th width="90px"><center>Action</center></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -60,14 +47,16 @@
                          <td> {{ $pesanan->kode_pesanan }} </td>
                          <td> {{ $pesanan->tanggal_pesanan }} </td>
                          <td> {{ $pesanan->destinasi[0]->harga }} </td>
+                         <td> {{ $pesanan->status }} </td>
                         <td>
                             <div class="btn btn-group">
                                 <a href="{{ url('admin/pesanan/show', $pesanan->id) }}"
-                                    class="btn btn-success"><i class="fa fa-eye"></i></a>
+                                    class="btn btn-success"><i class="fa fa-eye"></i></a>&nbsp;
                                 <a href="{{ url('admin/pesanan', $pesanan->id) }}/edit"
-                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    class="btn btn-warning"><i class="fa fa-edit"></i></a>&nbsp;
                                  
                                   @include('template.delete', [
+                                    'id'=> $pesanan->id, 
                                     'url' => url('admin/pesanan/destroy', $pesanan->id),
                                 ])
   
@@ -81,10 +70,10 @@
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
+            </div>
       </div>
     </div>
   </div>   
-    
+ 
 
 @endsection

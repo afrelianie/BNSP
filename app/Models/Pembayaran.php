@@ -15,7 +15,6 @@ class Pembayaran extends Model
     protected $fillabel = [
         'id_pesanan',
         'bukti_bayar',
-        'status',
     ];
 
     public function pesanan(){

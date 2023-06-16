@@ -5,20 +5,6 @@
 
 
 
-@if(count($errors)>0)
-@foreach ($errors->all() as $error)
-<div class="alert alert-danger" role="alert">
-    {{ $error }}
-</div>
-@endforeach
-@endif
-
-@if (Session::has('success'))
-<div class="alert alert-success" role="alert">
-    {{ Session('success') }}
-</div>
-@endif
-
 
 
   <div class="row justify-content-center">
@@ -33,16 +19,17 @@
                 
             </div>
         </div>
-              <!-- /.card-header -->
-            <div class="card-body">
+
+          <div class="card-body p-2">
+            <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>No</th>
+                    <th width="20px">No</th>
                     <th>Kode Pesanan</th>
                     <th>Bukti Pembayaran</th>
                     <th>Status Pembayaran</th>
-                    <th>Action</th>
+                    <th width="90px">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,29 +43,13 @@
                          
                       <td>
                         <div class="btn btn-group">
-                          <a href="{{url('admin/pembayaran/show/'.$pembayaran->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> Detail </i></a> &nbsp; &nbsp;
+                          <a href="{{url('admin/pembayaran/show/'.$pembayaran->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a> &nbsp;
                           
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pembayaran->id}}">
-                                  <i class="fa fa-edit"> Hapus </i>
-                                </button>
-                                   
-                                   <!-- Modal -->
-                              <div class="modal fade" id="exampleModal{{$pembayaran->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body"> Apakah anda yakin akan menghapus data ? </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <a class="btn btn-danger" href="#">Hapus</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                              @include('template.delete', [
+                                    'id'=> $pembayaran->id, 
+                                    'url' => url('admin/testimoni/destroy', $pembayaran->id),
+                                ])
+
                         </div>
                       </td>
                     </tr>
@@ -87,7 +58,7 @@
                 </table>
               </div>
             </div>
-
+          </div>
       
     </div>
   </div>

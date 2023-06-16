@@ -14,7 +14,7 @@
             <img src="{{ asset ('dist/img/AdminLTELogo.png') }}"  >
         </div>
         <div class="info">
-            <a href="#" class="d-block">Selamat Datang Admin</a>
+            <a href="#" class="d-block">Selamat Datang {{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -31,14 +31,15 @@
           </li>
 
         <li class="nav-item">
-            <a href="{{url('admin/destinasi')}}" class="nav-link">
+            <a href="{{url('admin/destinasi')}}" class="nav-link {{ request ()->is('admin/destinasi','admin/destinasi/create') ? 'active' : ''}}">
               <i class="nav-icon fas fa-map"></i>
-              <p>Sejarah</p>
+              <p>Tempat Wisata</p>
             </a>
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link 
+            {{ request ()->is('admin/pesanan','admin/pesanan/create','admin/pembayaran','admin/testimoni','admin/testimoni/create') ? 'active' : ''}}">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Master Data
@@ -47,42 +48,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('admin/destinasi')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tempat Wisata</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{url('admin/pesanan')}}" class="nav-link">
+                <a href="{{url('admin/pesanan')}}" class="nav-link {{ request ()->is('admin/pesanan','admin/pesanan/create') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pesanan</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{url('admin/pembayaran')}}" class="nav-link">
+              <!-- <li class="nav-item">
+                <a href="{{url('admin/pembayaran')}}" class="nav-link {{ request ()->is('admin/pembayaran') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembayaran</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a href="{{url('admin/testimoni')}}" class="nav-link">
+                <a href="{{url('admin/testimoni')}}" class="nav-link {{ request ()->is('admin/testimoni','admin/testimoni/create') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Testimoni</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{url('admin/user')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User</p>
                 </a>
               </li>
             </ul>
         </li>
 
         <li class="nav-item">
-
-            <a href="{{ url('admin/user') }}" class="nav-link {{ request ()->is('admin/user') ? 'active' : ''}}">
-
+            <a href="{{ url('admin/user') }}" class="nav-link {{ request ()->is('admin/user','admin/user/create') ? 'active' : ''}}">
               <i class="nav-icon fas fa-users"></i>
               <p>Pengguna</p>
             </a>

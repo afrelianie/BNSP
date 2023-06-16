@@ -16,12 +16,16 @@
   <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-  <link href="{{asset('admin/css/styles.css')}}" rel="stylesheet" />
-  <!-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script> -->
-  <!-- <link href="{{asset('admin/css/detail.css')}}" rel="stylesheet"> -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- -->
+
+
+
+  <!-- <link href="{{asset('admin/css/styles.css')}}" rel="stylesheet" /> -->
+
+  <!-- <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="{{asset('admin/css/detail.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
 
 
 
@@ -62,6 +66,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <div class="container-fluid">
+            
             <div class="row mb-2">
               <div class="col-sm-6">
                 <h1>Wisata | Sistem Informasi Wisata</h1>
@@ -73,6 +78,15 @@
                 </ol>
               </div>
             </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                       @include('template.notif')
+                    </div>
+                </div>
+            </div>
+
           </div>
         </section>
 
@@ -93,6 +107,10 @@
 <script src="{{ url('/') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('/') }}/dist/js/adminlte.min.js"></script>
+
+<!-- ChartJS -->
+<script src="{{ url('/') }}/plugins/chart.js/Chart.min.js"></script>
+
 <!-- DataTables  & Plugins -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
@@ -161,6 +179,16 @@ integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52n
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

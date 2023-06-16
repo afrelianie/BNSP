@@ -17,57 +17,56 @@ class PesananController extends Controller
         return view('admin.pesanan.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
+        // dd($this->getNomorPesanan());
         $pesan['destinasi'] = Destinasi::all();
         $pesan['pesanan'] = PesananModel::all();
         return view('admin.pesanan.create', $pesan);
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        // dd(request()->all());
-        $request->validate([
-            'id_destinasi' => ['required'],
-            'kode_pesanan' => ['required'],
-            'tanggal_pesanan' => ['required']
-    
-        ],[
-            'id_destinasi.required' => 'Destinasi wajib diisi',
-            'kode_pesanan.required' => 'Kode Pesanan wajib diisi',
-            'tanggal_pesanan.required' => 'Tanggal pesanan wajib diisi', 
-        ]);
-        $pesanan = PesananModel::create([
-            'id_destinasi' => $request->id_destinasi,
-            'kode_pesanan' => $request->kode_pesanan,
-            'tanggal_pesanan' => $request->tanggal_pesanan,
-        ]);
-        return redirect('admin/pesanan')->with('success', 'Berhasil Ditambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-        $destinasi = Destinasi::all();
-        $pesanan = PesananModel::findOrfail($id);
-        return view('admin.pesanan.show', compact('pesanan', 'destinasi'));
 
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+    public function store(Request $request)
+    {
+        // dd(request()->all());
+        //    input kode otomatis
+        $status = "Proses";
+        $kode1 = "PS";
+        $kode2 = date("ymd");
+        $kode3 = rand(100,999);
+        $kode = "$kode1-$kode2-$kode3";
+
+        $request->validate([
+            'id_destinasi' => ['required'],
+            'tanggal_pesanan' => ['required']
+    
+        ],[
+            'id_destinasi.required' => 'Destinasi wajib diisi',
+            'tanggal_pesanan.required' => 'Tanggal pesanan wajib diisi', 
+        ]);
+        $pesanan = PesananModel::create([
+            'id_destinasi' => $request->id_destinasi,
+            'kode_pesanan' => $kode,
+            'status' => $status,
+            'tanggal_pesanan' => $request->tanggal_pesanan,
+
+        ]);
+
+        return redirect('admin/pesanan')->with('success', 'Berhasil Ditambahkan');
+    }
+
+    
+    public function show(string $id)
+    {
+        $destinasi = Destinasi::all();
+        $pesanan = PesananModel::findOrfail($id);
+        return view('admin.pesanan.show', compact('pesanan', 'destinasi'));
+    }
+
+   
     public function edit(string $id)
     {
         $destinasi = Destinasi::all();
@@ -75,21 +74,23 @@ class PesananController extends Controller
         return view('admin.pesanan.edit', compact('pesanan', 'destinasi'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
     {
+        $kode1 = "PS";
+        $kode2 = date("ymd");
+        $kode3 = rand(100,999);
+        $kode = "$kode1-$kode2-$kode3";
+
         $request->validate([
            'id_destinasi' => ['required'],
-           'kode_pesanan' => ['required'],
            'tanggal_pesanan' => ['required']
        ]);
 
        $pesanan = PesananModel::findorfail($id);
        $pesanan_data = [
            'id_destinasi' => $request->id_destinasi,
-           'kode_pesanan' => $request->kode_pesanan,
+           'kode_pesanan' => $kode,
            'tanggal_pesanan' => $request->tanggal_pesanan,
 
            ];
@@ -99,14 +100,72 @@ class PesananController extends Controller
    }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(string $id)
     {
         $pesanan = PesananModel::find($id);
         $pesanan->delete();
         return redirect('admin/pesanan')->with('danger', 'data berhasil dihapus');
-}
+    }
+
+
+    public function getNomorPesanan(){
+        $kode1 = "PS";
+        $kode2 = date("ymd");
+        $kode3 = rand(100,999);
+        $kode = "$kode1-$kode2-$kode3";
+        return $kode;
+    }
+
+
+
+
+
+
+
+
+
+    
+
+    public function print(string $id)
+    {
+        $destinasi = Destinasi::all();
+        $pesanan = PesananModel::findOrfail($id);
+        return view('admin.pesanan.print', compact('pesanan', 'destinasi'));
+    }
+
+
+    public function bayar(Request $request)
+    {
+        // dd($request->all());
+        PesananModel::where('id', $request->delete)->delete();
+        // $image = $request->bukti_bayar;
+        // $new_image = time() . $image->getClientOriginalName();
+        PesananModel::create([
+            'id' => $request->id,
+            'kode_pesanan' => $request->kode_pesanan,
+            'status' => $request->status,
+            'id_destinasi' => $request->id_destinasi,
+            'tanggal_pesanan' => $request->tanggal_pesanan,
+            // 'bukti_bayar' => 'upload/' . $new_image,
+        ]);
+        // $image->move('upload/', $new_image);
+        return redirect('admin/pesanan')->with('success', 'Boking Tempat Wisata Sudah Dibayar');
+    }
+
+    public function tolak(Request $request)
+    {
+        // dd($request->all());
+        PesananModel::where('id', $request->delete)->delete();
+        PesananModel::create([
+            'id' => $request->id,
+            'kode_pesanan' => $request->kode_pesanan,
+            'status' => $request->status,
+            'id_destinasi' => $request->id_destinasi,
+            'tanggal_pesanan' => $request->tanggal_pesanan,
+        ]);
+        return redirect('admin/pesanan')->with('success', 'Data Berhasil Ditolak');
+    }
+
 }
 
