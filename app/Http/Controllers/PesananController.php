@@ -153,7 +153,7 @@ class PesananController extends Controller
         return redirect('admin/pesanan')->with('success', 'Boking Tempat Wisata Sudah Dibayar');
     }
 
-    public function tolak(Request $request)
+    public function batal(Request $request)
     {
         // dd($request->all());
         PesananModel::where('id', $request->delete)->delete();
