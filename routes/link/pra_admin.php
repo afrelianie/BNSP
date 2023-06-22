@@ -18,6 +18,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 Route::group(['middleware' => ['auth','cek_login:admin']],function(){
 
+    // ini adalah route untuk bagian home
+    Route::get('home', [AdminController::class, 'index'])->name('home');
+     
+
      // ini adalah route untuk bagian user
      Route::controller(UserController::class)->group(function(){
          Route::get('user', 'index');
@@ -30,8 +34,6 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
      });
     
 
-     // ini adalah route untuk bagian home
-     Route::get('home', [AdminController::class, 'index'])->name('home');
      
      // ini adalah route untuk bagian destinasi
      Route::controller(DestinasiController::class)->group(function(){
@@ -42,10 +44,11 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
          Route::post('destinasi/update/{id}', 'update');
          Route::post('destinasi/destroy/{id}', 'destroy');
          Route::get('destinasi/show/{id}', 'show');
-         // Route::post('/destinasi/importexcel', 'importExcel');
          Route::post('destinasi/import', '__invoke');
 
      });
+
+
 
      // ini adalah route untuk bagian pesanan
      Route::controller(PesananController::class)->group(function(){
@@ -63,21 +66,15 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
 
      });
      
-     // ini adalah route untuk bagian pembayaran
-     // Route::controller(PembayaranController::class)->group(function(){
-     //     Route::get('pembayaran', 'index');
-     //     Route::get('pembayaran/show/{id}', 'show');
-
-     // });
-      
+     
+     
+     
       // ini adalah route untuk bagian detail_testimoni
       Route::controller(TestimoniController::class)->group(function(){
          Route::get('testimoni', 'index');
          Route::get('testimoni/show/{id}', 'show');
-         Route::get('testimoni/create', 'create');
+         Route::get('testimoni/create/{id}', 'create');
          Route::post('testimoni/store', 'store');
-     //     Route::get('testimoni/{id}/edit', 'edit');
-     //     Route::post('testimoni/update/{id}', 'update');
          Route::post('testimoni/destroy/{id}', 'destroy');
          });
 

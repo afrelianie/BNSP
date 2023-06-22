@@ -19,7 +19,7 @@ class Testimoni extends Model
 
 
         public function pesanan(){
-            return $this->belongsTo(PesananModel::class, 'id');
+            return $this->belongsTo(PesananModel::class, 'id_pesanan');
         }
 
 }

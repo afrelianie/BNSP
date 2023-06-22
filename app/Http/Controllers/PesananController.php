@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\PesananController;
+
 use App\Models\PesananModel;
 use App\Models\Destinasi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 use Iluminate\Support\Facades\DB;
 
@@ -32,7 +35,9 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         // dd(request()->all());
-        //    input kode otomatis
+
+        $userId = Auth::id();
+        // input kode otomatis
         $status = "Proses";
         $kode1 = "PS";
         $kode2 = date("ymd");
@@ -48,6 +53,7 @@ class PesananController extends Controller
             'tanggal_pesanan.required' => 'Tanggal pesanan wajib diisi', 
         ]);
         $pesanan = PesananModel::create([
+            'id_user' => $userId,
             'id_destinasi' => $request->id_destinasi,
             'kode_pesanan' => $kode,
             'status' => $status,
@@ -62,8 +68,9 @@ class PesananController extends Controller
     public function show(string $id)
     {
         $destinasi = Destinasi::all();
+        $user = User::all();
         $pesanan = PesananModel::findOrfail($id);
-        return view('admin.pesanan.show', compact('pesanan', 'destinasi'));
+        return view('admin.pesanan.show', compact('pesanan', 'destinasi','user'));
     }
 
    
@@ -97,15 +104,23 @@ class PesananController extends Controller
 
        $pesanan->update($pesanan_data);
        return redirect('admin/pesanan')->with('success','Data pesanan anda berhasil di Update');
-   }
+    }
 
 
    
-    public function destroy(string $id)
+    public function destroy($id)
     {
+
         $pesanan = PesananModel::find($id);
+        if ($pesanan->bukti_bayar <> "") {
+            unlink(public_path('/') . '/' . $pesanan->bukti_bayar);
+        }
+        foreach($pesanan->testimoni as $testimoni){
+            $testimoni->delete();
+        }
         $pesanan->delete();
         return redirect('admin/pesanan')->with('danger', 'data berhasil dihapus');
+
     }
 
 
@@ -116,12 +131,6 @@ class PesananController extends Controller
         $kode = "$kode1-$kode2-$kode3";
         return $kode;
     }
-
-
-
-
-
-
 
 
 
@@ -139,18 +148,23 @@ class PesananController extends Controller
     {
         // dd($request->all());
         PesananModel::where('id', $request->delete)->delete();
-        // $image = $request->bukti_bayar;
-        // $new_image = time() . $image->getClientOriginalName();
-        PesananModel::create([
+        $bukti_bayar = $request->bukti_bayar;
+        $new_image = time() . $bukti_bayar->getClientOriginalName();
+        $bukti_bayar->move('upload/', $new_image);
+        $pesanan = PesananModel::create([
             'id' => $request->id,
             'kode_pesanan' => $request->kode_pesanan,
             'status' => $request->status,
             'id_destinasi' => $request->id_destinasi,
             'tanggal_pesanan' => $request->tanggal_pesanan,
-            // 'bukti_bayar' => 'upload/' . $new_image,
+            'bukti_bayar' => 'upload/' . $new_image,
         ]);
-        // $image->move('upload/', $new_image);
-        return redirect('admin/pesanan')->with('success', 'Boking Tempat Wisata Sudah Dibayar');
+        return redirect('admin/pesanan')->with('success', 'Berhasil Ditambahkan');
+
+
+
+
+
     }
 
     public function batal(Request $request)

@@ -49,10 +49,10 @@ class AuthController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'name' => ['required'],
+            'name' => ['required', 'unique:users,name'],
             'role' => ['required'],
             'no_hp' => ['required'],
-            'email' => ['required'],
+            'email' => ['required', 'unique:users,email'],
             'alamat' => ['required'],
             'password' => ['required'],
         ]);

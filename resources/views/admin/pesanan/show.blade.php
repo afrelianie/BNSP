@@ -25,15 +25,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong><i class="fas fa-user-alt mr-1"></i> Nama Pengguna</strong>
-                                <p class="text-muted">{{ Auth::user()->name }}</p>
+                                <p class="text-muted">{{ $pesanan->user->name }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-user-alt mr-1"></i> Email</strong>
-                                <p class="text-muted">{{ Auth::user()->email }}</p>
+                                <p class="text-muted">{{ $pesanan->user->email }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-user-alt mr-1"></i> Contact</strong>
-                                <p class="text-muted">{{ Auth::user()->no_hp }}</p>
+                                <p class="text-muted">{{ $pesanan->user->no_hp }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-user-alt mr-1"></i> Status</strong>
@@ -110,14 +110,14 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('bayar') }}" method="post">
+                                                    <form action="{{ route('bayar') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" name="delete" value="{{ $pesanan->id }}">
                                                         <input type="hidden" name="id" value="{{ $pesanan->id }}">
                                                         <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
                                                         <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
                                                         <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
-                                                        <input type="file" name="bukti_bayar" accept="" required>
+                                                        <input type="file" name="bukti_bayar" accept="application/pdf" required>
                                                         <input type="hidden" name="status" value="Lunas">
                                                         <button class="btn btn-success">Bayar</button>
                                                     </form>
@@ -130,7 +130,7 @@
                             </div> -->
                         @else
                             @if ($pesanan->status == 'Lunas')
-                                <a href="{{ url('admin/testimoni/create') }}"><button
+                                <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
                                         class="btn btn-success">Review</button></a>
                                 
                             @else
@@ -143,9 +143,9 @@
                         @endif
                        
                     </div>
-               </div>
+                </div>
             
-          </div>
+            </div>
         </div>
     </div>
 

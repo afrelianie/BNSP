@@ -2,15 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WebController;
 
 
-
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 
@@ -19,13 +13,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 
-Route::prefix('users')->middleware('auth')->group(function () {
+Route::prefix('pengguna')->middleware('auth')->group(function () {
     include('link/pra_user.php');
 });
 
 
 
-    ///////////  AUTH ///////////
+    /////////// AUTH ///////////
     Route::controller(AuthController::class)->group(function(){
         Route::get('login', 'login')->name('login');
         Route::post('proses_login', 'proses_login');
@@ -41,6 +35,18 @@ Route::prefix('users')->middleware('auth')->group(function () {
 
 
     });
+
+
+    /////////// WEB ///////////
+    Route::controller(WebController::class)->group(function(){
+        Route::get('/', 'welcome')->name('/');
+        Route::get('art', 'art');
+        Route::get('about', 'about');
+        Route::get('contact', 'contact');
+        Route::get('destinasi', 'destinasi');
+        
+    });
+
 
     
     

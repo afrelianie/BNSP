@@ -19,7 +19,6 @@ class DestinasiController extends Controller
     
     public function index()
     {
-        //
         $data['data_destinasi'] = Destinasi::all();
         return view('admin.destinasi.index', $data);
     }
@@ -82,8 +81,8 @@ class DestinasiController extends Controller
          
         $destinasi = Destinasi::findorfail($id);
         if ($request->has('foto_destinasi')) {
-            if ($destinasi->image <> "") {
-                unlink(public_path('/') . '/' . $destinasi->image);
+            if ($destinasi->foto_destinasi <> "") {
+                unlink(public_path('/') . '/' . $destinasi->foto_destinasi);
                 }
             $image = $request->foto_destinasi;
             $new_image = time().$image->getClientOriginalName();
@@ -118,8 +117,8 @@ class DestinasiController extends Controller
         $destinasi = Destinasi::find($id);
 
         //hapus gambar di public
-        if ($destinasi->image <> "") {
-            unlink(public_path('/') . '/' . $destinasi->image);
+        if ($destinasi->foto_destinasi <> "") {
+            unlink(public_path('/') . '/' . $destinasi->foto_destinasi);
         }
         foreach($destinasi->pesanan as $pesanan){
             $pesanan->delete();

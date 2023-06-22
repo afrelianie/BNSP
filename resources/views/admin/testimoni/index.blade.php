@@ -26,26 +26,29 @@
                     <tr>
                         <th width="20px">No</th>
                         <th>Kode Pesanan</th>
-                        <th>Foto Testimoni</th>
+                        <th>Nama Pemesan</th>
+                        <th>Status</th>
                         <th>Komentar</th>
-                        <th width="100px">Action</th>
+                        <th width="50px">Action</th>
                     </tr>
                   </thead>
                   <tbody>                
-                    @foreach ($data_testimoni as $testimoni)
+                    @foreach ($testimoni as $data)
                     <tr>
                         <td> {{ $loop->iteration }} </td>
-                        <td> {{ $testimoni->pesanan->kode_pesanan }} </td>
-                        <td> {{ $testimoni->foto_testi }} </td>
-                        <td> {{ $testimoni->komentar }} </td> 
+                        <td> {{ $data->pesanan->kode_pesanan }} </td>
+                        <td> {{ Auth::user()->name }} </td>
+                        <td> {{ $data->pesanan->status }} </td>
+                        <td> {{ $data->komentar }} </td> 
                         <td>
                             <div class="btn btn-group">
-                                <a href="{{url('admin/testimoni/show/'.$testimoni->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i></a> &nbsp;
-                                <a href="{{ url('admin/testimoni', $testimoni->id) }}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit"> </i></a> &nbsp;
+                                <a href="{{url('admin/testimoni/show/'.$data->id)}}"
+                                    class="btn btn-success"><i class="fa fa-eye"></i></a>&nbsp;
+                                
                                    
                                 @include('template.delete', [
-                                    'id'=> $testimoni->id, 
-                                    'url' => url('admin/testimoni/destroy', $testimoni->id),
+                                    'id'=> $data->id, 
+                                    'url' => url('admin/testimoni/destroy', $data->id),
                                 ])                   
                             </div>
                         </td>

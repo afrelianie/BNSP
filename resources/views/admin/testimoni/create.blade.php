@@ -11,18 +11,19 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-                 Data Testimoni
+            Data Testimoni
             </div> 
         </div>
         <div class="card-body">
             <form action="{{ url('admin/testimoni/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-               
+            <input type="hidden" name="id_pesanan" value="{{$www}}">
+           
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Komentar</label>
-                            <textarea name="komentar" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                            <textarea name="komentar" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                         </div>
                         @error('komentar')
                             <div class="text-danger mt-2 text-sm">{{ $message }}</div>
@@ -31,7 +32,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Foto Testimoni</label>
-                            <input type="file" name="foto_testi" class="form-control" >
+                            <input type="file" name="foto_testi" class="form-control" required>
                             @error('foto_testi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror

@@ -25,8 +25,8 @@ class UserController extends Controller
     {
         // dd(request()->all());
         $request->validate([
-            'name' => ['required'],
-            'email' => ['required'],
+            'name' => ['required', 'unique:users,name'],
+            'email' => ['required', 'unique:users,email'],
             'no_hp' => ['required'],
             'alamat' => ['required'],
             'password' => ['required'],
@@ -77,9 +77,6 @@ class UserController extends Controller
 
         $user = User::findorfail($id);
         if ($request->has('profil')) {
-            if ($user->image <> "") {
-                unlink(public_path('/') . '/' . $user->image);
-                }
             $image = $request->profil;
             $new_image = time().$image->getClientOriginalName();
             $image->move('img/', $new_image);
@@ -112,6 +109,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        if ($user->profil <> "") {
+            unlink(public_path('/') . '/' . $user->profil);
+            }
         $user->delete();
         return redirect('admin/user')->with('danger', 'data berhasil dihapus');
     }

@@ -37,15 +37,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <strong>Nama Pengguna</strong>
-                                    <p class="text-muted">{{ Auth::user()->name }}</p>
+                                    <p class="text-muted">{{ $pesanan->user->name }}</p>
                                     <hr>
 
                                     <strong>Email</strong>
-                                    <p class="text-muted">{{ Auth::user()->email }}</p>
+                                    <p class="text-muted">{{ $pesanan->user->email }}</p>
                                     <hr>
 
                                     <strong>Contact</strong>
-                                    <p class="text-muted">{{ Auth::user()->no_hp }}</p>
+                                    <p class="text-muted">{{ $pesanan->user->no_hp }}</p>
                                     <hr>
                                 </div>
                             </div>
