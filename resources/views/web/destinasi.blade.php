@@ -22,8 +22,8 @@
      <div class="box-container">
 
           <!-- destination card 1 -->
-          <div class="box">
           @foreach ($destinasi as $data)
+          <div class="box"> 
                <img src="{{ asset($data->foto_destinasi) }}" alt="">
                <div class="content">
                     <h3><i class="fas fa-map-marker-alt"></i> {{ $data->nama_destinasi }} </h3>
@@ -36,107 +36,11 @@
                          <i class="fas fa-star"></i>
                          <i class="far fa-star"></i>
                     </div>
-                    <div class="price"> Rp. 90.000 <span>Rp. 120.000</span></div>
+                    <!-- <div class="price"> Rp. 90.000 <span>Rp. 120.000</span></div> -->
                     <a href="#" class="btn btn-success float-right">booking now</a>
                </div>
+          </div>
           @endforeach
-          </div>
-
-          <!-- destination card 2 -->
-          <div class="box">
-               <img src="{{ url('/') }}/assest/img/img2.jpg" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> ancol </h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, omnis?</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
-                         <i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> Rp. 50.000 <span>Rp. 100.000</span></div>
-                    <a href="#" class="btn btn-success float-right">booking now</a>
-               </div>
-          </div>
-
-          <!-- destination card 2 -->
-          <div class="box">
-               <img src="{{ url('/') }}/assest/img/img3.jpg" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> ancol </h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, omnis?</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
-                         <i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> Rp. 50.000 <span>Rp. 100.000</span></div>
-                    <a href="#" class="btn btn-success float-right">booking now</a>
-               </div>
-          </div>
-
-          <!-- destination card 2 -->
-          <div class="box">
-               <img src="{{ url('/') }}/assest/img/img4.jpg" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> ancol </h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, omnis?</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
-                         <i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> Rp. 50.000 <span>Rp. 100.000</span></div>
-                    <a href="#" class="btn btn-success float-right">booking now</a>
-               </div>
-          </div>
-
-          <!-- destination card 2 -->
-          <div class="box">
-               <img src="{{ url('/') }}/assest/img/img5.jpg" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> ancol </h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, omnis?</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
-                         <i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> Rp. 50.000 <span>Rp. 100.000</span></div>
-                    <a href="#" class="btn btn-success float-right">booking now</a>
-               </div>
-          </div>
-
-          <!-- destination card 2 -->
-          <div class="box">
-               <img src="{{ url('/') }}/assest/img/img6.jpg" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> ancol </h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, omnis?</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
-                         <i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> Rp. 50.000 <span>Rp. 100.000</span></div>
-                    <a href="#" class="btn btn-success float-right">booking now</a>
-               </div>
-          </div>
-
 
      </div>
 </section>
