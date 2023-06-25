@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
       <img src="{{ asset ('dist/img/AdminLTELogo.png') }}"  class="brand-image" width="100" height="100" alt="Logo">
-      <span class="brand-text font-weight-light"><h2>Web Wisata</h2></span>
+      <span class="brand-text font-weight-light"><h2>JTT</h2></span>
     </a>
 
     <!-- Sidebar -->

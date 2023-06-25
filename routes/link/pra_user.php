@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\BokingController;
+use App\Http\Controllers\ReviewController;
 
 
  ///// Bagian Pengguna //////
@@ -21,10 +22,18 @@ use App\Http\Controllers\BokingController;
           Route::post('pesanan/destroy/{id}', 'destroy');
           Route::get('pesanan/show/{id}', 'show');
  
-          Route::post('pesanan/bayar', 'bayar')->name('bayar');
+          Route::post('pesanan/bayar', 'lunas')->name('lunas');
           Route::get('pesanan/print/{id}', 'print')->name('print');
-          Route::post('pesanan/batal', 'batal')->name('batal');
+          Route::post('pesanan/cancel', 'cancel')->name('cancel');
         
      });
+
+     Route::controller(ReviewController::class)->group(function(){
+          Route::get('review', 'index');
+          Route::get('review/show/{id}', 'show');
+          Route::get('review/create/{id}', 'create');
+          Route::post('review/store', 'store');
+         
+          });
 
 });

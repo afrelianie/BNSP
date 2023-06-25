@@ -147,12 +147,14 @@ class PesananController extends Controller
     public function bayar(Request $request)
     {
         // dd($request->all());
+        $userId = Auth::id();
         PesananModel::where('id', $request->delete)->delete();
         $bukti_bayar = $request->bukti_bayar;
         $new_image = time() . $bukti_bayar->getClientOriginalName();
         $bukti_bayar->move('upload/', $new_image);
         $pesanan = PesananModel::create([
             'id' => $request->id,
+            'id_user' => $userId,
             'kode_pesanan' => $request->kode_pesanan,
             'status' => $request->status,
             'id_destinasi' => $request->id_destinasi,
@@ -170,9 +172,11 @@ class PesananController extends Controller
     public function batal(Request $request)
     {
         // dd($request->all());
+        $userId = Auth::id();
         PesananModel::where('id', $request->delete)->delete();
         PesananModel::create([
             'id' => $request->id,
+            'id_user' => $userId,
             'kode_pesanan' => $request->kode_pesanan,
             'status' => $request->status,
             'id_destinasi' => $request->id_destinasi,

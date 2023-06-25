@@ -22,7 +22,7 @@
 
 <style>
     body {
-        background-image: url("img/bg.jpg");
+        background-image: url("");
     }
 </style>
 
@@ -31,7 +31,7 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ url('/') }}" class="h1"><b>DPMPTSP</b> <br>KETAPANG</a>
+                <a href="{{ url('/') }}" class="h1"><b>JTT</b> <br>Registrasi</a>
             </div>
             <div class="card-body">
                 <form action="{{ url('proses_register') }}" method="post">
