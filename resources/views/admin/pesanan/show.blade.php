@@ -28,15 +28,15 @@
                                 <p class="text-muted">{{ $pesanan->user->name }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Email</strong>
+                                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
                                 <p class="text-muted">{{ $pesanan->user->email }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Contact</strong>
+                                <strong><i class="fas fa-phone mr-1"></i> Contact</strong>
                                 <p class="text-muted">{{ $pesanan->user->no_hp }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Status</strong>
+                                <strong><i class="fas fa-check-circle mr-1"></i> Status</strong>
                                 <p class="text-muted">{{ $pesanan->status }}</p>
                                 <hr>
                             </div>
@@ -44,21 +44,22 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <strong><i class="fas fa-user-alt mr-1"></i> Nama Destinasi</strong>
+                                <strong><i class="fas fas fa-map-marker-alt mr-1 mr-1"></i> Nama Destinasi</strong>
                                 <p class="text-muted">{{ $pesanan->destinasi[0]->nama_destinasi }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Harga</strong>
+                                <strong><i class="fas fa-dollar-sign mr-1"></i> Harga</strong>
                                 <p class="text-muted">{{ $pesanan->destinasi[0]->harga }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Kode Pesanan</strong>
+                                <strong><i class="fas fa-qrcode mr-1"></i> Kode Pesanan</strong>
                                 <p class="text-muted">{{ $pesanan->kode_pesanan }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Tanggal Boking</strong>
+                                <strong><i class="fas fa-calendar-alt mr-1"></i> Tanggal Boking</strong>
                                 <p class="text-muted">{{ $pesanan->tanggal_pesanan }}</p>
-                                <hr>
+
+
                             </div>
                         </div>
                        

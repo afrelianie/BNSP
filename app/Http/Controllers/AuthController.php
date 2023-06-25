@@ -84,18 +84,18 @@ class AuthController extends Controller
 
     public function konfirPassword(Request $request)
     {
-         $credentials = $request->validate([
-            'email' => ['required','email'],
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
         ]);
+
         $user = User::where('email', $request->email)->first();
-        if( $user)
-        {
-           $users['list'] = User::where('email', $request->email)->first();
-            return view('auth.update', $users)->with('success', 'Email anda ditemukan');
-        }
-        else
-        {
-             return redirect('lupaSandi')->with('danger', 'Email konfirmasi anda tidak ditemukan');
+
+        if ($user) {
+            $data['user'] = $user; // Menggunakan $data['user'] untuk menyimpan data pengguna
+            return view('auth.update', $data)->with('success', 'Email Anda ditemukan');
+        } 
+        else {
+            return redirect('lupaSandi')->with('danger', 'Email konfirmasi Anda tidak ditemukan');
         }
     }
 
@@ -116,7 +116,7 @@ class AuthController extends Controller
             $user->update();
             return redirect('login')->with('success', 'Silahkan login menggunakan password baru anda');
         }
-        return redirect('login')->back()->with('danger', 'Konfirmasi password baru tidak sama');
+        return redirect('lupaSandi')->with('danger', 'Konfirmasi password baru tidak sama');
     }
 
 }

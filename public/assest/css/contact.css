@@ -1,0 +1,96 @@
+.container-kontak {
+    width: 100%;
+    padding-right: 1px;
+    padding-left: 190px;
+    margin-right: auto;
+    margin-left: auto; }
+    @media (min-width: 576px) {
+      .container-kontak {
+        max-width: 540px; } }
+    @media (min-width: 768px) {
+      .container-kontak {
+        max-width: 720px; } }
+    @media (min-width: 992px) {
+      .container-kontak {
+        max-width: 960px; } }
+    @media (min-width: 1200px) {
+      .container-kontak {
+        max-width: 1140px; } }
+  
+  
+  @media (min-width: 768px) {
+
+    .col-md-3 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%; }
+    }
+
+
+    /* membuat logo icon di tengah lingkaran */
+  
+  .justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important; }
+  
+
+
+  .align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important; }
+  
+
+   
+  /* membuat text adress dan isinya menjadi ke tengah */
+  .text-center {
+    text-align: center !important; }
+  
+
+
+      /* membuta tulisan nomor nama email dll menjadi besar */
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #1a1a1a; }
+  
+
+  /* membuat tulisan adress email adress dll menjadi bold  */
+  h1, h2, h3, h4, h5,
+  .h1, .h2, .h3, .h4, .h5 {
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    font-family: "Poppins", Arial, sans-serif; }
+  
+
+        /*contact section  */
+  .contact-section .contact-info p a {
+    color: #1a1a1a; }
+  
+  .contact-section .box {
+    width: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.05); }
+    .contact-section .box .icon {
+      width: 100px;
+      height: 100px;
+      background:#24944f;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%; }
+      .contact-section .box .icon span {
+        color: #fff;
+        font-size: 30px; }
+    .contact-section .box h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color:#24944f; }

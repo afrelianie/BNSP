@@ -13,7 +13,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 
-Route::prefix('pengguna')->middleware('auth')->group(function () {
+Route::prefix('pelanggan')->middleware('auth')->group(function () {
     include('link/pra_user.php');
 });
 
@@ -44,6 +44,7 @@ Route::prefix('pengguna')->middleware('auth')->group(function () {
         Route::get('about', 'about');
         Route::get('contact', 'contact');
         Route::get('destinasi', 'destinasi');
+        Route::get('destinasi/detail/{id}', 'detail');
         
     });
 

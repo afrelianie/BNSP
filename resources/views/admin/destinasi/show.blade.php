@@ -53,7 +53,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                               
-                                <strong><i class="fas fa-solid fa-envelope"></i> Nama Destinasi</strong>
+                                <strong><i class="fas fa-building mr-1"></i> Nama Destinasi</strong>
                                 <p class="text-muted">{{ $destinasi->nama_destinasi }}</p>
                                 <hr>
 
@@ -63,7 +63,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                          
-                                <strong><i class="fas fa-file"></i> Harga</strong>
+                                <strong><i class="fas fa-dollar-sign mr-1"></i> Harga</strong>
                                 <p class="text-muted">{{ $destinasi->harga }}</p>
                                 <hr>
 
@@ -73,15 +73,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                               
-                                <strong><i class="fas fa-cubes"></i> Alamat</strong>
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Alamat</strong>
                                 <p class="text-muted">{{ $destinasi->alamat_destinasi }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-solid fa-phone"></i> Keunggulan destinasi</strong>
+                                <strong><i class="fas fa-star mr-1"></i> Keunggulan destinasi</strong>
                                 <p class="text-muted">{{ $destinasi->keunggulan }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-cubes"></i> Sejarah</strong>
+                                <strong><i class="fas fa-history mr-1"></i> Sejarah</strong>
                                 <p class="text-muted">{{ $destinasi->sejarah }}</p>
                                 <hr>
                             </div>
