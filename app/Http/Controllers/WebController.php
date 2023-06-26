@@ -61,6 +61,15 @@ class WebController extends Controller
         $testimoni = Testimoni::all();
         return view('web.destinasi', compact('destinasi','testimoni'));
     }
+ 
+    public function detail(string $id)
+    {
+
+        $data['destinasi'] = Destinasi::findOrfail($id);
+        return view('web.detail', $data);
+
+    }
+
 
 
     public function about()

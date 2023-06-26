@@ -63,6 +63,11 @@
                                 <strong>Tanggal Boking Tempat</strong>
                                 <p class="text-muted">{{ $pesanan->tanggal_pesanan }}</p>
                                 <hr>
+
+                                <!-- <strong>Rekening Tujuan</strong>
+                                <p class="text-muted">&nbsp; &nbsp; BCA  &nbsp; &nbsp;  7677566  &nbsp; &nbsp;   PT.Berkah Jaya</p>
+                                <hr> -->
+
                               </div>
                             </div>
                          </div> 
@@ -76,7 +81,7 @@
         <br>
         <div class="col-auto d-flex align-items-center">
             <div class="ms-1">
-                <a href="{{ url('pengguna/pesanan') }}" class="btn btn-success">Kembali</a>
+                <a href="{{ url('pelanggan/pesanan') }}" class="btn btn-success">Kembali</a>
                 <button id="printButton" onclick="print()" class="btn btn-info"
                     type="button"><span class="fas fa-file-pdf me-1"> </span>Download PDF</button>
             </div>

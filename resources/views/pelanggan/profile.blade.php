@@ -27,7 +27,7 @@
      </div>
 
      <!-- form booking -->
-     <form action="{{ url('pengguna/profil/update', Auth::user()->id) }}"
+     <form action="{{ url('pelanggan/profil/update', Auth::user()->id) }}"
           class="form-horizontal" method="post" enctype="multipart/form-data">
           @csrf
           <div class="inputBox">

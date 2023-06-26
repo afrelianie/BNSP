@@ -59,11 +59,10 @@ imgBtn.forEach(btn =>{
 
 var swiper = new Swiper(".review-slider", {
     spaceBetween: 20,
-    // loop:true,
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     breakpoints: {
         640: {
             slidesPerView: 1,
@@ -90,3 +89,21 @@ var swiper = new Swiper(".review-slider", {
 //     el: ".swiper-pagination",
 //   },
 });
+
+
+var swiper = new Swiper(".blog", {
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+
+
+
+
+// app.get("/:destination", (req, res) => {
+//     res.sendFile(path.join(initial_path, "destination.html"));
+// })
+
+

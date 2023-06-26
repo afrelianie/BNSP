@@ -19,7 +19,7 @@
 
 <style>
     body {
-        background-image: url("img/bg.jpg");
+        background-image: url("");
     }
 </style>
 
@@ -30,7 +30,7 @@
     <div class="login-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="{{ url('/') }}" class="h1"><b>WISATA</b> <br>WEB WISATA</a>
+            <a href="{{ url('/') }}" class="h1"><b>JTT</b> <br>Registrasi</a>
         </div>
 
         <div class="card-body">

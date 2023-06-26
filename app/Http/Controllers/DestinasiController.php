@@ -81,9 +81,9 @@ class DestinasiController extends Controller
          
         $destinasi = Destinasi::findorfail($id);
         if ($request->has('foto_destinasi')) {
-            if ($destinasi->foto_destinasi <> "") {
-                unlink(public_path('/') . '/' . $destinasi->foto_destinasi);
-                }
+            // if ($destinasi->foto_destinasi <> "") {
+            //     unlink(public_path('/') . '/' . $destinasi->foto_destinasi);
+            //     }
             $image = $request->foto_destinasi;
             $new_image = time().$image->getClientOriginalName();
             $image->move('foto/', $new_image);
