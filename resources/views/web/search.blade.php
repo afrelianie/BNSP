@@ -70,19 +70,19 @@
                                             @foreach ( $data as $item )
                                             <tr>
                                                 <td>
-                                                    <a style="color:black; font-size:16px; " href=" {{ url('/destinasi', $item->id) }}"
+                                                    <a style="color:black; font-size:16px; " href=" {{ url('/destinasi/detail', $item->id) }}"
                                                         class="text-decoration-none text-muteds">
                                                         {{ $item->nama_destinasi }}
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi', $item->id) }}"
+                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
                                                         class="text-decoration-none text-muteds">
                                                         {{ $item->harga }}
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi', $item->id) }}"
+                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
                                                         class="text-decoration-none text-muteds">
                                                         {{ $item->alamat_destinasi }}
                                                     </a>
