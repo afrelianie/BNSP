@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-                Edit Data Wisata
+                Tambah Data Wisata
             </div> 
         </div>
         <div class="card-body">
@@ -46,6 +46,15 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Alamat Destinasi</label>
+                            <textarea name="alamat_destinasi" class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Alamat Destinasi"></textarea>
+                        </div>
+                        @error('alamat_destinasi')
+                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="exampleFormControlTextarea1">Sejarah</label>
                             <textarea name="sejarah" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Sejarah "></textarea>
                         </div>
@@ -62,21 +71,12 @@
                             <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Alamat Destinasi</label>
-                            <textarea name="alamat_destinasi" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Alamat Destinasi"></textarea>
-                        </div>
-                        @error('alamat_destinasi')
-                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                        @enderror
-                    </div>
                 </div>
 
                 <div class="row">
                   
                   <div class="modal-footer">
-                      <a href="{{ url('admin/destinasi') }}" class="btn btn-secondary">Kembali</a> &nbsp; &nbsp;
+                      <a href="{{ url('admin/destinasi') }}" class="btn btn-secondary">Kembali</a>
                       <button class="btn btn-primary">Simpan</button>
                   </div>
                 </div>

@@ -17,7 +17,7 @@ use App\Http\Controllers\ReviewController;
 
      Route::controller(BokingController::class)->group(function(){
           Route::get('pesanan', 'index');
-          Route::get('pesanan/create', 'create');
+          Route::get('pesanan/create/{id}', 'create');
           Route::post('pesanan/store', 'store');
           Route::post('pesanan/destroy/{id}', 'destroy');
           Route::get('pesanan/show/{id}', 'show');

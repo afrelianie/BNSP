@@ -50,10 +50,10 @@
                                    @foreach ($list_data as $pesanan)
                                    <tr>
                                         <td> {{ $loop->iteration }} </td>
-                                        <td> {{ $pesanan->destinasi[0]->nama_destinasi }} </td>
+                                        <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
                                         <td> {{ $pesanan->kode_pesanan }} </td>
                                         <td> {{ $pesanan->tanggal_pesanan }} </td>
-                                        <td> {{ $pesanan->destinasi[0]->harga }} </td>
+                                        <td> {{ $pesanan->destinasi->harga }} </td>
                                         <td> {{ $pesanan->status }} </td>
                                         <td>
                                              <a href="{{ url('pelanggan/pesanan/show', $pesanan->id) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>&nbsp;
@@ -82,10 +82,10 @@
                                    @foreach ($list_data as $pesanan)
                                    <tr>
                                         <td> {{ $loop->iteration }} </td>
-                                        <td> {{ $pesanan->destinasi[0]->nama_destinasi }} </td>
+                                        <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
                                         <td> {{ $pesanan->kode_pesanan }} </td>
                                         <td> {{ $pesanan->tanggal_pesanan }} </td>
-                                        <td> {{ $pesanan->destinasi[0]->harga }} </td>
+                                        <td> {{ $pesanan->destinasi->harga }} </td>
                                         <td> {{ $pesanan->status }} </td>
                                         <td>
                                              <a href="{{ url('pelanggan/pesanan/show', $pesanan->id) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>&nbsp;

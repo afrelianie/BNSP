@@ -26,7 +26,7 @@
                <img src="{{ asset($data->foto_destinasi) }}" alt="">
                <div class="content">
                     <h3><i class="fas fa-map-marker-alt"></i> {{ $data->nama_destinasi }} </h3>
-                    <p>{{ $data->keunggulan }}</p>
+                    <p>{{ $data->alamat_destinasi }}</p>
                     <!-- rating bintang -->
                     <div class="stars">
                          <i class="fas fa-star"></i>
@@ -35,7 +35,6 @@
                          <i class="fas fa-star"></i>
                          <i class="far fa-star"></i>
                     </div>
-                    <!-- <div class="price"> Rp. 90.000 <span>Rp. 120.000</span></div> -->
                     <a href="{{ url('destinasi/detail', $data->id) }}" class="btn btn-success float-right">booking sekarang</a>
                </div>
           </div>
@@ -90,34 +89,32 @@
         <span>m</span>
         <span>o</span>
         <span>n</span>
-        <span>i</span>
-
-        
+        <span>i</span>        
     </h1>
 
-    <div class="swiper review-slider">
-  <div class="swiper-wrapper">
-    @foreach ($testimoni as $data)
-    <div class="swiper-slide">
-      <div class="box">
-        <img src="{{ asset($data->foto_testi)}}" alt="">
-        <h3>{{ $data->name }}</h3>
-        <p>{{ $data->komentar }} </p>
-        <div class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
+      <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+          @foreach ($testimoni as $data)
+          <div class="swiper-slide">
+              <div class="box">
+                  <img src="{{ asset($data->foto_testi)}}" alt="">
+                  <h3>{{ $data->name }}</h3>
+                  <p>{{ $data->komentar }} </p>
+                    <div class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+              </div>
+          </div>
+          @endforeach
         </div>
-      </div>
-    </div>
-    @endforeach
+        <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
 
 
 </section>

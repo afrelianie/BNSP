@@ -17,20 +17,6 @@ class WebController extends Controller
 {
     
 
-    public function welcome(Request $request)
-    {
-        $destinasi = DB::table('destinasi');
-        
-        if($request->keyword != nuLL){
-            $destinasi = $destinasi->orWhere('destinasi.nama_destinasi','like','%'.$request->keyword.'%');
-            $destinasi = $destinasi->orWhere('destinasi.harga','like','%'.$request->keyword.'%');
-            $destinasi = $destinasi->orWhere('destinasi.alamat_destinasi','like','%'.$request->keyword.'%');
-        }
-
-        return view('welcome',['destinasi' => $destinasi]);
-
-        // dd($destinasi);
-    }
 
 
     public function art(Request $request)
@@ -55,6 +41,13 @@ class WebController extends Controller
 
 
 
+    public function welcome()
+    {
+        $destinasi = Destinasi::all();
+        $testimoni = Testimoni::all();
+        return view('welcome', compact('destinasi','testimoni'));
+    }
+
     public function destinasi()
     {
         $destinasi = Destinasi::all();
@@ -69,8 +62,6 @@ class WebController extends Controller
         return view('web.detail', $data);
 
     }
-
-
 
     public function about()
     {

@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <strong>Tempat Destinasi</strong><hr>
-                                <img class="image" width="90%" height="90%" src="{{ asset($testimoni->foto_testi)}}" alt="image">
+                                <center><img class="image" width="55%" height="55%" src="{{ asset($testimoni->foto_testi)}}" alt="image"></center>
                             </div>
                         </div>
                     </div>

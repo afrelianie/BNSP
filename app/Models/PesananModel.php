@@ -14,21 +14,35 @@ use App\Models\User;
 
 class PesananModel extends Model
 {
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($item) {
+            $item->id = (string) Str::orderedUuid();
+        });
+    }
+
+    
     public $table = "pesanan";
     protected $primaryKey = "id";
-    protected $fillable = ['id_destinasi','id_user','kode_pesanan','tanggal_pesanan','status','bukti_bayar'];
+    protected $fillable = ['id_destinasi','id_user','kode_pesanan','tanggal_pesanan','status','bukti_bayar','qty','total_harga'];
     
 
     //mengambil data dari table lain yg berelasi dengan table ini
     public function destinasi()
     {
-        return $this->HasMany(Destinasi::class, 'id','id_destinasi');
+        return $this->belongsTo(Destinasi::class, 'id_destinasi', 'id');
     }
 
     //mengirim data dari table sendiri ke table yg berelasi
     public function testimoni()
     {
-        return $this->hasMany(Testimoni::class, 'id');
+        return $this->hasMany(Testimoni::class, 'id_pesanan');
     }
     
     public function user()

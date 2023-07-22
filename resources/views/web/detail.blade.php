@@ -21,10 +21,11 @@
                         <img src="{{ asset($destinasi->foto_destinasi)}}" alt="banner content">
                     </label>
                     <h2 class="published">
-                        <span class="fa fa-map-marker-alt"></span>
-                        <span > {{ $destinasi->alamat_destinasi }} </span>&nbsp;
                         <span class="fa fa-money"></span>
                         <span >Rp. {{ $destinasi->harga }} </span>
+                        <br>
+                        <span class="fa fa-map-marker-alt"></span>
+                        <span > {{ $destinasi->alamat_destinasi }} </span> 
                     </h2>
                     <div class="article">
                          <p>Keunggulan : {{ $destinasi->keunggulan}}</p>   
@@ -32,7 +33,7 @@
                     </div>
 
                          <a href="{{ url('destinasi') }}" class="btn btn-info">Kembali</a>
-                         <a href="{{ url('pelanggan/pesanan/create') }}" class="btn">Boking Tempat</a>
+                         <a href="{{ url('pelanggan/pesanan/create', $destinasi->id) }}" class="btn">Boking Tempat</a>
                 </div>
             </div>
 

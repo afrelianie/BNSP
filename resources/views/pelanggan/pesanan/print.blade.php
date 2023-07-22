@@ -25,7 +25,7 @@
                                     <strong><center>Tempat Destinasi</center></strong>
                                     <hr>
                                     <center>
-                                        <img class="image" width="70%" height="70%" src="{{ asset($pesanan->destinasi[0]->foto_destinasi) }}" alt="image">
+                                        <img class="image" width="70%" height="70%" src="{{ asset($pesanan->destinasi->foto_destinasi) }}" alt="image">
                                     </center>
                                 </div>
                             </div>
@@ -47,13 +47,17 @@
                                     <strong>Contact</strong>
                                     <p class="text-muted">{{ $pesanan->user->no_hp }}</p>
                                     <hr>
+
+                                    <strong>Total Harga</strong>
+                                    <p class="text-muted">{{ $pesanan->total_harga }}</p>
+                                    <hr>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                               <div class="form-group">
                                 <strong>Nama Destinasi</strong>
-                                <p class="text-muted">{{ $pesanan->destinasi[0]->nama_destinasi }}</p>
+                                <p class="text-muted">{{ $pesanan->destinasi->nama_destinasi }}</p>
                                 <hr>
 
                                 <strong>Kode Pesanan</strong>
@@ -64,6 +68,9 @@
                                 <p class="text-muted">{{ $pesanan->tanggal_pesanan }}</p>
                                 <hr>
 
+                                <strong>Jumlah Pesanan</strong>
+                                <p class="text-muted">{{ $pesanan->qty }}</p>
+                                <hr>
                                 <!-- <strong>Rekening Tujuan</strong>
                                 <p class="text-muted">&nbsp; &nbsp; BCA  &nbsp; &nbsp;  7677566  &nbsp; &nbsp;   PT.Berkah Jaya</p>
                                 <hr> -->

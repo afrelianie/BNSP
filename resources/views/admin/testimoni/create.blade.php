@@ -11,13 +11,14 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-            Data Testimoni
+                Tambah Data Testimoni
             </div> 
         </div>
         <div class="card-body">
             <form action="{{ url('admin/testimoni/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
             <input type="hidden" name="id_pesanan" value="{{$www}}">
+            <!-- <input type="hidden" name="id_user" value="{{$www}}"> -->
            
                 <div class="row">
                     <div class="col-md-6">

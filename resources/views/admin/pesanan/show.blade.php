@@ -4,6 +4,81 @@
 @section('content')
 
 
+
+
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+
+            
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>
+                    <i class="fas fa-globe"></i> Wisata Jawa Barat.
+                    <small class="float-right">Tanggal: {{ $currentTime->format('d-m-Y') }}</small> <br>
+                    <small class="float-right">Waktu: {{ $currentTime->format('H:i:s') }}</small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  Admin 1
+                  <address>
+                    <strong>Afrelianie.</strong><br>
+                    Jl. Kalimantan<br>
+                    Indonesia No. 77<br>
+                    Phone: (804) 123-5432<br>
+                    Email: info@alamsemesta.com
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  Admin 2
+                  <address>
+                    <strong>John Roy.</strong><br>
+                    Jl. Penjajahan<br>
+                    Jawa Barat No. 91<br>
+                    Phone: (555) 539-1037<br>
+                    Email: john@email.com
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    Rekening Admin 
+                <address>
+                  <b>No. Rekening:</b> 07612 0000 000<br>
+                  <b>To:</b> Wisata Jawa Barat<br>
+                  <b>Tanggal:</b> {{ $currentTime->format('d-m-Y') }}<br>
+                  <b>Metode Pembayaran:</b> Transfer Bank
+                </address>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+             <div class="callout callout-info">
+                <h5><i class="fas fa-info"></i> Catatan:</h5>
+                <strong>Metode Pembayaran bisa dilakukan secara langsung dengan transfer pembayaran ke rekening admin yang sudah disediakan 
+                Atau melakukan pembayaran dengan cara Generate PDF dan lakukan pembayaran di Alfamart atau Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhit, silakan upload bukti bayar.</strong> 
+             </div>
+
+
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
     <div class="row justify-content-center">
         <div class="col-md-11">
             
@@ -39,17 +114,21 @@
                                 <strong><i class="fas fa-check-circle mr-1"></i> Status</strong>
                                 <p class="text-muted">{{ $pesanan->status }}</p>
                                 <hr>
+
+                                <strong><i class="fas fa-cubes"></i> Jumlah Pesanan</strong>
+                                <p class="text-muted">{{ $pesanan->qty }}</p>
+                                <hr>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <strong><i class="fas fas fa-map-marker-alt mr-1 mr-1"></i> Nama Destinasi</strong>
-                                <p class="text-muted">{{ $pesanan->destinasi[0]->nama_destinasi }}</p>
+                                <p class="text-muted">{{ $pesanan->destinasi->nama_destinasi }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-dollar-sign mr-1"></i> Harga</strong>
-                                <p class="text-muted">{{ $pesanan->destinasi[0]->harga }}</p>
+                                <strong><i class="fas fa-dollar-sign mr-1"></i> Harga Satuan</strong>
+                                <p class="text-muted">{{ $pesanan->destinasi->harga }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-qrcode mr-1"></i> Kode Pesanan</strong>
@@ -58,23 +137,26 @@
 
                                 <strong><i class="fas fa-calendar-alt mr-1"></i> Tanggal Boking</strong>
                                 <p class="text-muted">{{ $pesanan->tanggal_pesanan }}</p>
+                                <hr>
 
-
+                                <strong><i class="fab fa-fw fa-wpforms"></i> Total Harga</strong>
+                                <p class="text-muted">{{ $pesanan->total_harga }}</p>
+                                <hr>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
 
 
-
-                
                 
                 <div class="col-md-12">
                     <div class="modal-footer">
-                         <a href="{{ url('admin/pesanan') }}" class="btn btn-info">Kembali</a>
-                         <a href="{{ url('admin/pesanan/print', $pesanan->id) }}"><button class="btn btn-warning">Print</button></a>
-
+                         <a href="{{ url('admin/pesanan') }}" class="btn btn-primary float-right">Kembali</a>
+                         <a href="{{ url('admin/pesanan/print', $pesanan->id) }}">
+                         <button type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                            <i class="fas fa-download"></i> Generate PDF
+                         </button></a>
 
                         
                          <!-- <div class="card-footer"> -->
@@ -85,9 +167,12 @@
                                         @csrf
                                         <input type="hidden" name="delete" value="{{ $pesanan->id }}">
                                         <input type="hidden" name="id" value="{{ $pesanan->id }}">
-                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
                                         <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
+                                        <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
+                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
                                         <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
+                                        <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
+                                        <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
                                         <input type="hidden" name="status" value="batal">
                                         <button class="btn btn-danger">Batal</button>
                                     </form>
@@ -96,7 +181,7 @@
                                     <div class="col-6"> -->
                                         <!-- Modal -->
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop1">Bayar 
+                                            data-bs-target="#staticBackdrop1"><i class="far fa-credit-card"></i> Bayar 
                                         </button>
                                     <!-- </div> -->
 
@@ -115,11 +200,14 @@
                                                         @csrf
                                                         <input type="hidden" name="delete" value="{{ $pesanan->id }}">
                                                         <input type="hidden" name="id" value="{{ $pesanan->id }}">
-                                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
                                                         <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
+                                                        <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
+                                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
                                                         <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
-                                                        <input type="file" name="bukti_bayar" accept="application/pdf" required>
+                                                        <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
+                                                        <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
                                                         <input type="hidden" name="status" value="Lunas">
+                                                        <input type="file" name="bukti_bayar" accept="application/pdf" required>
                                                         <button class="btn btn-success">Bayar</button>
                                                     </form>
                                                 </div>
@@ -131,9 +219,11 @@
                             </div> -->
                         @else
                             @if ($pesanan->status == 'Lunas')
-                                <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
-                                        class="btn btn-success">Review</button></a>
-                                
+                                <!-- <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
+                                        class="btn btn-success">Review</button></a> -->
+                                <a href="{{ url('admin/pesanan/bukti_bayar', $pesanan->id) }}"><button
+                                        class="btn btn-success">Lihat Bukti Bayar</button></a>
+
                             @else
                                 @if ($pesanan->status == 'batal')
                                 <span class="badge bg-danger">{{ $pesanan->status }}</span>

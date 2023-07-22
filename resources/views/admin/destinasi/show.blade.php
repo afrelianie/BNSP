@@ -24,14 +24,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <strong>Tempat Destinasi</strong><hr>
-                            <img class="image" width="100%" height="100%" src="{{ asset($destinasi->foto_destinasi)}}" alt="image">
+                            <strong>{{ $destinasi->nama_destinasi }}</strong><hr>
+                            <center><img class="image" width="55%" height="55%" src="{{ asset($destinasi->foto_destinasi)}}" alt="image"></center>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.card-body -->
-        </div>
+          </div>
 
             <!-- About Me Box 2 -->
           <div class="card card-info">
@@ -50,40 +50,29 @@
                     <div class="row">
 
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                               
                                 <strong><i class="fas fa-building mr-1"></i> Nama Destinasi</strong>
                                 <p class="text-muted">{{ $destinasi->nama_destinasi }}</p>
                                 <hr>
 
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                         
                                 <strong><i class="fas fa-dollar-sign mr-1"></i> Harga</strong>
-                                <p class="text-muted">{{ $destinasi->harga }}</p>
+                                <p class="text-muted">Rp. {{ $destinasi->harga }}</p>
                                 <hr>
 
-                            </div>
-                        </div>
-                       
-                        <div class="col-md-12">
-                            <div class="form-group">
-                              
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Alamat</strong>
                                 <p class="text-muted">{{ $destinasi->alamat_destinasi }}</p>
+                                <hr>
+
+                                <strong><i class="fas fa-history mr-1"></i> Sejarah</strong>
+                                <p class="text-muted">{{ $destinasi->sejarah }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-star mr-1"></i> Keunggulan destinasi</strong>
                                 <p class="text-muted">{{ $destinasi->keunggulan }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-history mr-1"></i> Sejarah</strong>
-                                <p class="text-muted">{{ $destinasi->sejarah }}</p>
-                                <hr>
                             </div>
                         </div>
 

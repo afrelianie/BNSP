@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Support\Str;
 use App\Models\PesananModel;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,11 +20,26 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($item) {
+            $item->id = (string) Str::orderedUuid();
+        });
+    }
+
+
     protected $fillable = [
         'name',
         'role',
         'email',
         'alamat',
+        'no_hp',
         'password',
         'profil',
     ];
@@ -53,5 +68,10 @@ class User extends Authenticatable
     public function pesanan()
     {
         return $this->hasMany(PesananModel::class, 'id_user');
+    }
+
+    public function testimoni()
+    {
+        return $this->hasMany(Testimoni::class, 'id_user');
     }
 }

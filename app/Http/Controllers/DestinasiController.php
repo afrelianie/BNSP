@@ -136,7 +136,7 @@ class DestinasiController extends Controller
         $nama_file = rand().$file->getClientOriginalName();
         $file->move('file_excel', $nama_file);
         Excel::import(new DestinasiImport, public_path('file_excel/'.$nama_file));
-        return redirect('admin/destinasi')->with('success', 'data berhasil dihapus');
+        return redirect('admin/destinasi')->with('success', 'Data Berhasil Diimport!');
     }
 
 

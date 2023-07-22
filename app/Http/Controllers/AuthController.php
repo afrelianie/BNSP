@@ -24,7 +24,7 @@ class AuthController extends Controller
     }
 
 
-    function proses_login()
+    public function proses_login()
     {
         if (Auth()->attempt(['name' => request('name'), 'password' => request('password')])) {
             $hakAkses = Auth::user()->role;

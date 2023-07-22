@@ -25,21 +25,17 @@
                   <thead>
                     <tr>
                         <th width="20px">No</th>
+                        <th width="50px">Action</th>
                         <th>Kode Pesanan</th>
                         <th>Nama Pemesan</th>
                         <th>Status</th>
                         <th>Komentar</th>
-                        <th width="50px">Action</th>
                     </tr>
                   </thead>
                   <tbody>                
                     @foreach ($testimoni as $data)
                     <tr>
                         <td> {{ $loop->iteration }} </td>
-                        <td> {{ $data->pesanan->kode_pesanan }} </td>
-                        <td> {{ Auth::user()->name }} </td>
-                        <td> {{ $data->pesanan->status }} </td>
-                        <td> {{ $data->komentar }} </td> 
                         <td>
                             <div class="btn btn-group">
                                 <a href="{{url('admin/testimoni/show/'.$data->id)}}"
@@ -52,6 +48,10 @@
                                 ])                   
                             </div>
                         </td>
+                        <td> {{ $data->pesanan->kode_pesanan }} </td>
+                        <td> {{ Auth::user()->name }} </td>
+                        <td> {{ $data->pesanan->status }} </td>
+                        <td> {{ $data->komentar }} </td> 
                     </tr>
                     @endforeach
                   </tbody>

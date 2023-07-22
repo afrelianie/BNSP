@@ -75,7 +75,7 @@
 
 </div>
 
-<h1 class="credit"> created by <span> kelompok 5 </span> | all right reserved! </h1>
+<h1 class="credit"> created by <span> Anggita Afrelia </span> | all right reserved! </h1>
 
 </section>
 <!-- footer sectio end -->

@@ -59,7 +59,8 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
          Route::post('pesanan/update/{id}', 'update');
          Route::post('pesanan/destroy/{id}', 'destroy');
          Route::get('pesanan/show/{id}', 'show');
-
+         Route::get('pesanan/bukti_bayar/{id}', 'bukti_bayar');
+         
          Route::post('pesanan/bayar', 'bayar')->name('bayar');
          Route::get('pesanan/print/{id}', 'print')->name('print');
          Route::post('pesanan/batal', 'batal')->name('batal');

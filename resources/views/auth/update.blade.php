@@ -24,7 +24,7 @@
                     <a href="{{ url('/') }}" class="h1"><b>Web </b>Wisata</a>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('updateSandi, $user->id')}}">
+                    <form method="POST" action="{{ url('updateSandi', $user->id)}}">
                     @csrf
 
                         <div class="input-group mb-3">

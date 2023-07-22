@@ -13,22 +13,29 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Destinasi extends Model
 {
-    // protected $table = 'destinasi'; //ini pemanggilan nama table
-    // protected $primaryKey = 'id';
-    // protected $fillabel = [
-    //     'nama_destinasi',
-    //     'foto_destinasi',
-    //     'sejarah',
-    //     'keunggulan',
-    //     'alamat_destinasi',
-    //     'harga',
-    // ];
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($item) {
+            $item->id = (string) Str::orderedUuid();
+        });
+    }
+
 
     protected $table = 'destinasi';
     protected $guarded =['id'];
 
-    function pesanan(){
+    public function pesanan(){
         return $this->hasMany(PesananModel::class,'id_destinasi');
+    }
+
+    public function testimoni()
+    {
+        return $this->hasMany(Testimoni::class, 'id_destinasi');
     }
     
 }

@@ -11,24 +11,40 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-                Edit Data Pengguna
+                Tambah Data Pengguna
             </div> 
         </div>
         <div class="card-body">
             <form action="{{ url('admin/pesanan/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                
-                <!-- <div class="row">
+        
+
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                              <label>Nama Pengguna</label>
+                              <select name="id_user" class="form-control">
+                                   <option value="" selected disabled>-- Pilih Nama Pengguna --</option>
+                              @foreach ($user as $data)
+                                   <option value="{{ $data->id }}">{{ $data->name }}</option>
+                              @endforeach
+                                   </select>
+                              @error('id_user')
+                                   <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                              @enderror
+                         </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Kode Pesanan</label>
-                            <input type="text" name="kode_pesanan" class="form-control" value='' readonly >
-                            @error('kode_pesanan')
+                            <label for="" class="control-label">Jumlah Pesanan</label>
+                            <input type="text" name="qty" class="form-control" placeholder="Jumlah Pesanan">
+                            @error('qty')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">

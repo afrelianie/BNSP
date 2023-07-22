@@ -24,9 +24,23 @@
                 <div class="row">
                     <div class="col-md-6">
                          <div class="form-group">
+                              <label>Nama Pengguna</label>
+                              <select name="id_user" class="form-control">
+                                   <option value="{{ $pesanan->id_user }}">{{ $pesanan->user->name }}</option>
+                              @foreach ($user as $data)
+                                   <option value="{{ $data->id }}">{{ $data->name }}</option>
+                              @endforeach
+                                   </select>
+                              @error('id_user')
+                                   <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                              @enderror
+                         </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
                               <label>Tempat Destinasi</label>
                               <select name="id_destinasi" class="form-control">
-                                <option value="{{ $pesanan->id_destinasi }}">{{ $pesanan->destinasi[0]->nama_destinasi }}</option>
+                                <option value="{{ $pesanan->id_destinasi }}">{{ $pesanan->destinasi->nama_destinasi }}</option>
                               @foreach ($destinasi as $data)
                                    <option value="{{ $data->id }}">{{ $data->nama_destinasi }}</option>
                               @endforeach
@@ -35,6 +49,15 @@
                                    <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                               @enderror
                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="" class="control-label">Jumlah Pesanan</label>
+                            <input type="number" name="qty" class="form-control" value="{{ $pesanan->qty }}" placeholder="Jumlah Pesanan">
+                            @error('qty')
+                                <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">

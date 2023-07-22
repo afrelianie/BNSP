@@ -44,7 +44,7 @@ class UserController extends Controller
             'email' => $request->email,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'role' => $request->role,
         ]);
         return redirect('admin/user')->with('success', 'Berhasil Ditambahkan');
@@ -85,6 +85,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'alamat' => $request->alamat,
                 'no_hp' => $request->no_hp,
+                'role' => $request->role,
                 'password' => bcrypt($request->password),
                 'profil' => 'img/' . $new_image,
             ];
@@ -95,6 +96,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'alamat' => $request->alamat,
                 'no_hp' => $request->no_hp,
+                'role' => $request->role,
                 'password' => bcrypt($request->password),
             ];
         }
@@ -109,9 +111,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        if ($user->profil <> "") {
-            unlink(public_path('/') . '/' . $user->profil);
-            }
         $user->delete();
         return redirect('admin/user')->with('danger', 'data berhasil dihapus');
     }

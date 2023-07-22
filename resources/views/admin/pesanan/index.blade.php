@@ -29,13 +29,13 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th width="20px">No</th>
-                    <th>Nama Destinasi</th>
-                    <th>Kode Pesanan</th>
-                    <th>Tanggal Boking</th>
-                    <th>Harga</th>
-                    <th>Status</th>
-                    <th width="90px"><center>Action</center></th>
+                      <th width="20px">No</th>
+                      <th width="90px"><center>Action</center></th>
+                      <th>Nama Destinasi</th>
+                      <th>Kode Pesanan</th>
+                      <th>Tanggal Boking</th>
+                      <th>Total Pesanan</th>
+                      <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,12 +43,7 @@
                     @foreach ($list_data as $pesanan)
                     <tr>
                          <td> {{ $loop->iteration }} </td>
-                         <td> {{ $pesanan->destinasi[0]->nama_destinasi }} </td>
-                         <td> {{ $pesanan->kode_pesanan }} </td>
-                         <td> {{ $pesanan->tanggal_pesanan }} </td>
-                         <td> {{ $pesanan->destinasi[0]->harga }} </td>
-                         <td> {{ $pesanan->status }} </td>
-                        <td>
+                         <td>
                             <div class="btn btn-group">
                                 <a href="{{ url('admin/pesanan/show', $pesanan->id) }}"
                                     class="btn btn-success"><i class="fa fa-eye"></i></a>&nbsp;
@@ -59,10 +54,13 @@
                                     'id'=> $pesanan->id, 
                                     'url' => url('admin/pesanan/destroy', $pesanan->id),
                                 ])
-  
-                  
                             </div>
-                        </td>
+                         </td>
+                         <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
+                         <td> {{ $pesanan->kode_pesanan }} </td>
+                         <td> {{ $pesanan->tanggal_pesanan }} </td>
+                         <td> {{ $pesanan->qty }} </td>
+                         <td> {{ $pesanan->status }} </td>
                     </tr>
                     @endforeach
 

@@ -70,10 +70,10 @@
                 <thead>
                   <tr>
                     <th width="20px">No</th>
-                    <th>Nama Destinasi</th>
-                    <th>Alamat</th>
-                    <th>Harga</th>
                     <th width="90px">Action</th>
+                    <th>Nama Destinasi</th>
+                    <th>Harga</th>
+                    <th>Alamat</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,10 +81,7 @@
                     @foreach ($data_destinasi as $destinasi)
                     <tr>
                          <td> {{ $loop->iteration }} </td>
-                         <td> {{ $destinasi->nama_destinasi }} </td>
-                         <td> {{ $destinasi->alamat_destinasi }} </td>
-                         <td> {{ $destinasi->harga}}</td>
-                        <td>
+                         <td>
                             <div class="btn btn-group">
 
                                    <a href="{{ url('admin/destinasi/show', $destinasi->id) }}" 
@@ -97,7 +94,10 @@
                                     'url' => url('admin/destinasi/destroy', $destinasi->id),
                                 ])
                             </div>
-                        </td>
+                         </td>
+                         <td> {{ $destinasi->nama_destinasi }} </td>
+                         <td> {{ $destinasi->harga}} </td>
+                         <td> {{ $destinasi->alamat_destinasi }} </td>
                     </tr>
                     @endforeach
                 </tbody>

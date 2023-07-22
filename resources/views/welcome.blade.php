@@ -6,7 +6,7 @@
 
 
 <!-- search destination section start -->
-<section class="ftco-section ftco-no-pb ftco-no-pt">
+     <section class="ftco-section ftco-no-pb ftco-no-pt">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -19,19 +19,15 @@
 								</div>
 							</div>
 							<div class="col-md-12 tab-wrap">
-								
 								<div class="tab-content" id="v-pills-tabContent">
-
 									<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
 										<form action="{{ url('art') }}" method="get" class="search-property-1">
-                                        @csrf
+                                                       @csrf
 											<div class="row no-gutters">
-
-                                                <div class="col-md d-flex">
+                                                            <div class="col-md d-flex">
 													<div class="form-group p-4">
 														<label for="#">Nama Tempat</label>
 														<div class="search-input">
-															<!-- <div class="icon"><span class=""></span></div> -->
 															<input type="text" name="query" id="keyword" placeholder="Nama Destinasi">
 														</div>
 													</div>
@@ -45,82 +41,25 @@
 													</div>
 												</div>
 											</div>
-										</form><br><br>
-                                        @if (isset($data))
-                                        <!-- hasil search -->
-                                        <main class="table-destinasi">
-                                            <section class="table__header">
-                                                <!-- <h1>Riwayat Pesanan</h1> -->
-                                                <!-- <div class="input-group">
-                                                    <input type="search" placeholder="Search Data...">
-                                                    <i class="fas fa-search" id="search-btn"></i>
-                                                </div> -->
-                                            
-                                            </section>
-                                            <section class="table__body">
-                                                
-                                            <table class="table table-hover">
-                                                  <thead>
-                                                       <tr>
-                                                       <th>Nama Destinasi</th>
-                                                       <th>Harga</th>
-                                                       <th>Alamat</th>
-                                                       </tr>
-                                                  </thead>
-                                             <tbody>
-                                        @if (count($data) > 0)
-                                            @foreach ( $data as $item )
-                                                       <tr>
-                                                            <td>
-                                                                 <a style="color:black; font-size:16px; " href=" {{ url('/destinasi', $item->id) }}"
-                                                                      class="text-decoration-none text-muteds">
-                                                                      {{ $item->nama_destinasi }}
-                                                                 </a>
-                                                            </td>
-                                                            <td>
-                                                                 <a style="color:black; font-size:16px; " href="{{ url('/destinasi', $item->id) }}"
-                                                                      class="text-decoration-none text-muteds">
-                                                                      {{ $item->harga }}
-                                                                 </a>
-                                                            </td>
-                                                            <td>
-                                                                 <a style="color:black; font-size:16px; " href="{{ url('/destinasi', $item->id) }}"
-                                                                      class="text-decoration-none text-muteds">
-                                                                      {{ $item->alamat_destinasi }}
-                                                                 </a>
-                                                            </td>
-                                                       </tr>
-                                                       @endforeach
-                                                       @else
-                                                       <tr><td>No Result Found!</td></tr>
-                                                       @endif
-                                                  </tbody>
-                                             </table>
-                                                    <div class="pagination-block">
-                                                            {{ $data->links() }}
-                                                        </div>
-                                                        @endif
-                                            </section>
-                                        </main>
+										</form>
 									</div>
-
-									
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+          </div>
+	</section>
 <!-- search destination section end -->
 
-<div class="container">
+          <div class="container">
                 <div class="row">
                     <div class="col-md-12 mt-2">
                        @include('template.notif')
                     </div>
                 </div>
-            </div>  
+          </div>  
 <!-- firs contect section start -->
      <div class="section section-2">
      <div class="container">

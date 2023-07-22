@@ -40,7 +40,7 @@
 <!-- home section star-->
 <section class="home" id="home">
 <div class="content">
-    <h3>JELAJAH TEMPAT WISATA POPULER DI PULAW JAWA</h3>
+    <h3>JELAJAH TEMPAT WISATA POPULER DI PULAU JAWA</h3>
 
     <p>Temukan Pengalaman Baru Bersama Kami, Petualangan Menanti</p>
     

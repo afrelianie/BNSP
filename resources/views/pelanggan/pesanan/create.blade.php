@@ -29,22 +29,18 @@
             <form action="{{ url('pelanggan/pesanan/store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                
-                <div class="inputBox">
-                    <h3>Tempat Destinasi</h3>
-                         <select name="id_destinasi" class="form-control" >
-                              <option value="" selected disabled>-- Pilih Tempat Destinasi --</option>
-                         @foreach ($destinasi as $data)
-                              <option value="{{ $data->id }}">{{ $data->nama_destinasi }}</option>
-                         @endforeach
-                         </select>
-                         @error('id_destinasi')
-                              <div class="text-danger mt-2 text-sm">{{ $message }}</div>
-                         @enderror     
-                </div>
+                <input type="hidden" name="id_destinasi" value="{{$www}}">
                 <div class="inputBox">
                     <h3>Tanggal Boking</h3>
                     <input type="date" name="tanggal_pesanan" placeholder="Tanggal Pesanan">
                          @error('tanggal_pesanan')
+                              <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                         @enderror
+                </div>
+                <div class="inputBox">
+                    <h3>Jumlah Pesanan</h3>
+                    <input type="number" name="qty" placeholder="Jumlah Pesanan">
+                         @error('qty')
                               <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                          @enderror
                 </div>
