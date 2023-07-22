@@ -221,7 +221,7 @@
                             @if ($pesanan->status == 'Lunas')
                                 <!-- <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
                                         class="btn btn-success">Review</button></a> -->
-                                <a href="{{ url('admin/pesanan/bukti_bayar', $pesanan->id) }}"><button
+                                <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
                                         class="btn btn-success">Lihat Bukti Bayar</button></a>
 
                             @else
