@@ -31,7 +31,7 @@
                   <tr>
                       <th width="20px">No</th>
                       <th width="90px"><center>Action</center></th>
-                      <th>Nama Destinasi</th>
+                      <th>Nama Pemesan</th>
                       <th>Kode Pesanan</th>
                       <th>Tanggal Boking</th>
                       <th>Total Pesanan</th>
@@ -56,10 +56,10 @@
                                 ])
                             </div>
                          </td>
-                         <td> {{ $pesanan->destinasi->nama_destinasi }} </td>
+                         <td> {{ $pesanan->user->name }} </td>
                          <td> {{ $pesanan->kode_pesanan }} </td>
                          <td> {{ $pesanan->tanggal_pesanan }} </td>
-                         <td> {{ $pesanan->qty }} </td>
+                         <td> {{ $pesanan->qty }} Tiket </td>
                          <td> {{ $pesanan->status }} </td>
                     </tr>
                     @endforeach

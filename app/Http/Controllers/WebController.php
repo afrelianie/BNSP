@@ -50,9 +50,10 @@ class WebController extends Controller
 
     public function destinasi()
     {
+        $user = User::all();
         $destinasi = Destinasi::all();
         $testimoni = Testimoni::all();
-        return view('web.destinasi', compact('destinasi','testimoni'));
+        return view('web.destinasi', compact('destinasi','testimoni','user'));
     }
  
     public function detail(string $id)

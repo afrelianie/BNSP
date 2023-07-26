@@ -54,10 +54,10 @@ class ReviewController extends Controller
    
     public function show(string $id)
     {
-        $pesanan = PesananModel::all();
         $user = User::all();
         $pesanan = PesananModel::all();
+        $destinasi = Destinasi::all();
         $testimoni = Testimoni::findOrfail($id);
-        return view('pelanggan.review.show', compact('testimoni', 'pesanan'));
+        return view('pelanggan.review.show', compact('testimoni', 'pesanan', 'destinasi', 'user'));
     }
 }

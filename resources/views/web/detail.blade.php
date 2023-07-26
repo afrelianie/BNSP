@@ -1,46 +1,41 @@
 
-@extends('template.pelanggan.header')
+
+@extends('template.user.header')
 @section('content')
 
-
-
-
-    <!-- new destination content section -->
-    <div class="swiper blog">
-        <div class="swiper-wrapper">
-
-            <!-- content 1 -->
-            <div class="swiper-slide">
-                <br>
-                <div class="box">
-                     <br>
-                    <h1 class="title">{{ $destinasi->nama_destinasi }}</h1>
-                     <br>
-                     <br>
-                    <label for="banner-content" class="banner-content-btn">
-                        <img src="{{ asset($destinasi->foto_destinasi)}}" alt="banner content">
-                    </label>
-                    <h2 class="published">
-                        <span class="fa fa-money"></span>
-                        <span >Rp. {{ $destinasi->harga }} </span>
-                        <br>
-                        <span class="fa fa-map-marker-alt"></span>
-                        <span > {{ $destinasi->alamat_destinasi }} </span> 
-                    </h2>
-                    <div class="article">
-                         <p>Keunggulan : {{ $destinasi->keunggulan}}</p>   
-                         <p>Sejarah : {{ $destinasi->sejarah }}</p>
+   
+     
+    <!-- Detail Destinasi -->
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{ asset($destinasi->foto_destinasi)}}" alt="" style="object-fit: cover;">
                     </div>
-
-                         <a href="{{ url('destinasi') }}" class="btn btn-info">Kembali</a>
-                         <a href="{{ url('pelanggan/pesanan/create', $destinasi->id) }}" class="btn">Boking Tempat</a>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Detail Wisata</h6>
+                    <h2 class="mb-4">Nama Wisata <span class="text-primary">{{ $destinasi->nama_destinasi }}</span></h2>
+                    <p class="mb-4">Sejarah : {{ $destinasi->sejarah }}</p>
+                    <p class="mb-4">Keunggulan : {{ $destinasi->keunggulan}}</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-12">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Harga : Rp. {{ $destinasi->harga }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Alamat : {{ $destinasi->alamat_destinasi }} </p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="{{ url('pelanggan/pesanan/create', $destinasi->id) }}">Boking Tempat</a>
+                    <a href="{{ url('destinasi') }}" class="btn btn-secondary py-3 px-5 mt-2">Kembali</a>
+            
                 </div>
             </div>
-
         </div>
-
     </div>
-    <!-- end -->
+    <!-- About End -->
 
 
 

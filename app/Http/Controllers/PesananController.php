@@ -193,7 +193,7 @@ class PesananController extends Controller
          // Hitung total harga berdasarkan kuantitas dan harga destinasi
          $total_harga = $request->qty * $destination->harga;  
 
-        $pesanan = PesananModel::create([
+         $pesanan = PesananModel::create([
             'id' => $request->id,
             'id_user' => $request->id_user,
             'kode_pesanan' => $request->kode_pesanan,
@@ -204,11 +204,11 @@ class PesananController extends Controller
             'total_harga' => $total_harga,
             'bukti_bayar' => 'upload/' . $new_image,
         ]);
-        return redirect('admin/pesanan')->with('success', 'Berhasil Ditambahkan');
-
+        return redirect('admin/pesanan')->with('success', 'Berhasil Di Bayar');
 
     }
 
+  
     public function batal(Request $request)
     {
         // dd($request->all());
@@ -233,12 +233,21 @@ class PesananController extends Controller
     }
 
 
-    public function bukti_bayar(string $id)
+    public function verifikasi(Request $request, string $id)
     {
-        $destinasi = Destinasi::all();
-        $user = User::all();
-        $pesanan = PesananModel::findOrfail($id);
-        return view('admin.pesanan.bukti', compact('pesanan', 'destinasi','user') );
+        $pesanan = PesananModel::findorfail($id);
+        $pesanan_data = [
+            'id' => $request->id,
+            'id_user' => $request->id_user,
+            'kode_pesanan' => $request->kode_pesanan,
+            'status' => $request->status,
+            'id_destinasi' => $request->id_destinasi,
+            'tanggal_pesanan' => $request->tanggal_pesanan,
+            'qty' => $request->qty,
+            'total_harga' => $request->total_harga,
+        ];
+        $pesanan->update($pesanan_data);
+        return redirect('admin/pesanan')->with('success', 'Data Berhasil Di Verifikasi');
     }
 
 }

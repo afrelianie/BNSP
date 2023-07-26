@@ -18,6 +18,10 @@ Route::prefix('pelanggan')->middleware('auth')->group(function () {
 });
 
 
+// Route::get('coba', function () {
+//     return view('coba');
+// });
+
 
     /////////// AUTH ///////////
     Route::controller(AuthController::class)->group(function(){

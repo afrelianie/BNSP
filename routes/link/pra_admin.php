@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
          Route::post('pesanan/bayar', 'bayar')->name('bayar');
          Route::get('pesanan/print/{id}', 'print')->name('print');
          Route::post('pesanan/batal', 'batal')->name('batal');
+         Route::post('pesanan/verifikasi/{id}', 'verifikasi')->name('verifikasi');
+         
 
      });
      

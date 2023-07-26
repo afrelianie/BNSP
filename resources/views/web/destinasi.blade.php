@@ -1,126 +1,73 @@
-@extends('template.pelanggan.header')
+
+@extends('template.user.header')
 @section('content')
 
 
 
- <!-- destination section start -->
- <section class="destination" id="destination">
-     <h1 class="heading">
-     <span>d</span>
-     <span>e</span>
-     <span>s</span>
-     <span>t</span>
-     <span>i</span>
-     <span>n</span>
-     <span>a</span>
-     <span>s</span>
-     <span>i</span>
-    
-     </h1>
 
-     <div class="box-container">
-
-          <!-- destination card 1 -->
-          @foreach ($destinasi as $data)
-          <div class="box"> 
-               <img src="{{ asset($data->foto_destinasi) }}" alt="">
-               <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> {{ $data->nama_destinasi }} </h3>
-                    <p>{{ $data->alamat_destinasi }}</p>
-                    <!-- rating bintang -->
-                    <div class="stars">
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
-                         <i class="far fa-star"></i>
+    <!-- DESTINASI -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Destinasi</h6>
+                <h1 class="mb-5">Jawa Barat</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+              @foreach ($destinasi as $data)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">  
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset($data->foto_destinasi) }}" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ $data->nama_destinasi }}</small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0">Rp. {{ $data->harga }}</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>{{ $data->alamat_destinasi }}</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="{{ url('destinasi/detail', $data->id) }}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Boking Sekarang</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="{{ url('destinasi/detail', $data->id) }}" class="btn btn-success float-right">booking sekarang</a>
-               </div>
-          </div>
-          @endforeach
-
-     </div>
-</section>
-<!-- destination section end -->
-
-
-
-<!-- galeri section start -->
-<section class="galeri" id="galeri">
-    <h1 class="heading">
-        <span>g</span>
-        <span>a</span>
-        <span>l</span>
-        <span>e</span>
-        <span>r</span>
-        <span>i</span>
-
-    </h1>
-
-    <div class="box-container">
-        <!-- galeri card 1 -->
-        @foreach ($testimoni as $gal)
-        <div class="box">
-            <img src="{{ asset($gal->foto_testi) }}" alt="">
-            <div class="content">
-                <br><br>
-                <h3>Ulasan</h3>
-                <p>{{ $gal->komentar}}</p>
-                <!-- <a href="#" class="btn">see more</a> -->
+                </div>
+              @endforeach
             </div>
         </div>
-        @endforeach
     </div>
-</section>
-<!-- galeri section end -->
+    <!-- Package End -->
 
 
-
-<!-- testimoni section start -->
-<section class="review" id="review">
-
-    <h1 class="heading">
-        <span>t</span>
-        <span>e</span>
-        <span>s</span>
-        <span>t</span>
-        <span>i</span>
-        <span>m</span>
-        <span>o</span>
-        <span>n</span>
-        <span>i</span>        
-    </h1>
-
-      <div class="swiper review-slider">
-        <div class="swiper-wrapper">
-          @foreach ($testimoni as $data)
-          <div class="swiper-slide">
-              <div class="box">
-                  <img src="{{ asset($data->foto_testi)}}" alt="">
-                  <h3>{{ $data->name }}</h3>
-                  <p>{{ $data->komentar }} </p>
-                    <div class="stars">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-              </div>
-          </div>
-          @endforeach
+    
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimoni</h6>
+                <h1 class="mb-5">Sampaikan Pendapat Anda!!!</h1>
+            </div>
+            @foreach ($testimoni as $data)
+            <div class="owl-carousel testimonial-carousel position-relative">
+              
+                <div class="testimonial-item bg-white text-center border p-4">
+                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ url('/') }}/assest2/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">{{ $data->user->name }}</h5>
+                    <p>{{ $data->destinasi->nama_destinasi }}</p>
+                    <p class="mb-0">{{ $data->komentar }}</p>
+                </div>
+              
+            </div>
+            @endforeach
         </div>
-        <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-
-
-</section>
-<!-- testimoni section end -->
-
-
+    </div>
+    <!-- Testimonial End -->
 
 
 

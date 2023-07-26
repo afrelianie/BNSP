@@ -11,9 +11,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-          
-
-            
+       
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
               <!-- title row -->
@@ -61,15 +59,14 @@
                 </address>
                 </div>
                 <!-- /.col -->
-              </div>
+            </div>
               <!-- /.row -->
 
-             <div class="callout callout-info">
+            <div class="callout callout-info">
                 <h5><i class="fas fa-info"></i> Catatan:</h5>
                 <strong>Metode Pembayaran bisa dilakukan secara langsung dengan transfer pembayaran ke rekening admin yang sudah disediakan 
                 Atau melakukan pembayaran dengan cara Generate PDF dan lakukan pembayaran di Alfamart atau Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhit, silakan upload bukti bayar.</strong> 
-             </div>
-
+            </div>
 
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -116,7 +113,7 @@
                                 <hr>
 
                                 <strong><i class="fas fa-cubes"></i> Jumlah Pesanan</strong>
-                                <p class="text-muted">{{ $pesanan->qty }}</p>
+                                <p class="text-muted">{{ $pesanan->qty }} Tiket</p>
                                 <hr>
                             </div>
                         </div>
@@ -128,7 +125,7 @@
                                 <hr>
 
                                 <strong><i class="fas fa-dollar-sign mr-1"></i> Harga Satuan</strong>
-                                <p class="text-muted">{{ $pesanan->destinasi->harga }}</p>
+                                <p class="text-muted">Rp. {{ $pesanan->destinasi->harga }}</p>
                                 <hr>
 
                                 <strong><i class="fas fa-qrcode mr-1"></i> Kode Pesanan</strong>
@@ -140,8 +137,9 @@
                                 <hr>
 
                                 <strong><i class="fab fa-fw fa-wpforms"></i> Total Harga</strong>
-                                <p class="text-muted">{{ $pesanan->total_harga }}</p>
+                                <p class="text-muted">Rp. {{ $pesanan->total_harga }}</p>
                                 <hr>
+
                             </div>
                         </div>
 
@@ -159,79 +157,138 @@
                          </button></a>
 
                         
-                         <!-- <div class="card-footer"> -->
                         @if ($pesanan->status == 'Proses')
-                            <!-- <div class="row col-6">
-                                <div class="col-2"> -->
-                                    <form action="{{ route('batal') }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="delete" value="{{ $pesanan->id }}">
-                                        <input type="hidden" name="id" value="{{ $pesanan->id }}">
-                                        <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
-                                        <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
-                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
-                                        <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
-                                        <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
-                                        <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
-                                        <input type="hidden" name="status" value="batal">
-                                        <button class="btn btn-danger">Batal</button>
-                                    </form>
-                                <!-- </div> -->
-                                <!-- <div class="col-3">
-                                    <div class="col-6"> -->
-                                        <!-- Modal -->
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop1"><i class="far fa-credit-card"></i> Bayar 
-                                        </button>
-                                    <!-- </div> -->
-
-                                    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-success">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Upload Bukti Bayar</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="{{ route('bayar') }}" method="post" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <input type="hidden" name="delete" value="{{ $pesanan->id }}">
-                                                        <input type="hidden" name="id" value="{{ $pesanan->id }}">
-                                                        <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
-                                                        <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
-                                                        <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
-                                                        <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
-                                                        <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
-                                                        <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
-                                                        <input type="hidden" name="status" value="Lunas">
-                                                        <input type="file" name="bukti_bayar" accept="application/pdf" required>
-                                                        <button class="btn btn-success">Bayar</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                <!-- </div>
-                            </div> -->
-                        @else
-                            @if ($pesanan->status == 'Lunas')
-                                <!-- <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
-                                        class="btn btn-success">Review</button></a> -->
-                                <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
-                                        class="btn btn-success">Lihat Bukti Bayar</button></a>
-
-                            @else
-                                @if ($pesanan->status == 'batal')
-                                <span class="badge bg-danger">{{ $pesanan->status }}</span>
+                            <form action="{{ route('batal') }}" method="post" onclick="return confirm('Yakin ingin membatalkan Pesanan ini ?!');">
+                                @csrf
+                                <input type="hidden" name="delete" value="{{ $pesanan->id }}">
+                                <input type="hidden" name="id" value="{{ $pesanan->id }}">
+                                <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
+                                <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
+                                <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
+                                <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
+                                <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
+                                <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
+                                <input type="hidden" name="status" value="Batal">
+                                <button class="btn btn-danger">Batal</button>
+                            </form>
                                 
-                                @else
+                            <!-- Modal -->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop1"><i class="far fa-credit-card"></i> Bayar 
+                            </button>
+                                   
+                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Upload Bukti Bayar</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('bayar') }}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="delete" value="{{ $pesanan->id }}">
+                                                <input type="hidden" name="id" value="{{ $pesanan->id }}">
+                                                <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
+                                                <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
+                                                <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
+                                                <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
+                                                <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
+                                                <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
+                                                <input type="hidden" name="status" value="Bayar">
+                                                <input type="file" name="bukti_bayar" accept="application/pdf" required>
+                                                <button type="submit" class="btn btn-success">Bayar</button>
+                                            </form>
+                                        </div>                                            
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+
+
+                        @if ($pesanan->status == 'Bayar')
+                            <!-- <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
+                                    class="btn btn-success">Review</button></a> -->
+                            <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
+                                    class="btn btn-success">Lihat Bukti Bayar</button></a>
+                                
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Verifikasi Pesanan
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{ url('admin/pesanan/verifikasi', $pesanan->id) }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Verifikasi Pembayaran</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                        
+                                                <input type="hidden" name="id" value="{{ $pesanan->id }}">
+                                                <input type="hidden" name="id_user" value="{{ $pesanan->id_user }}">
+                                                <input type="hidden" name="id_destinasi" value="{{ $pesanan->id_destinasi }}">
+                                                <input type="hidden" name="kode_pesanan" value="{{ $pesanan->kode_pesanan }}">
+                                                <input type="hidden" name="tanggal_pesanan" value="{{ $pesanan->tanggal_pesanan }}">
+                                                <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
+                                                <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Status</label>
+                                                        <select name="status" class="form-control" required>
+                                                            <option value="" selected disabled>-- Status --</option>
+                                                            <option value="Selesai">Selesai</option>
+                                                            <option value="Data Tidak Sesuai">Data Tidak Sesuai</option>
+                                                        </select>
+                                                        @error('status')
+                                                            <div class="text-danger mt-2 text-sm">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                                <button type="submit" class="btn btn-primary">Verifikasi Sekarang</button>
+                                            </div>
+                                        </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+
+
+                        @if ($pesanan->status == 'Selesai')
+                            <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
+                                class="btn btn-success">Lihat Bukti Bayar</button></a>       
+                        @else
+
+
+                        @if ($pesanan->status == 'Batal')
+                            <span class="badge bg-danger">{{ $pesanan->status }}</span>     
+                        @else
+
+
+                        @if ($pesanan->status == 'Data Tidak Sesuai')
+                            <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
+                                class="btn btn-success">Lihat Bukti Bayar</button></a>
+                            <span class="badge bg-danger">{{ $pesanan->status }}</span>           
+                        @else
+
+
+                                    @endif
                                 @endif
                             @endif
                         @endif
+                    @endif
                        
                     </div>
                 </div>
