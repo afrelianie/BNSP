@@ -33,7 +33,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Foto Testimoni</label>
-                            <input type="file" name="foto_testi" class="form-control" required>
+                            <input type="file" name="foto_testi" accept="image/jpeg,image/png" class="form-control" required>
                             @error('foto_testi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror

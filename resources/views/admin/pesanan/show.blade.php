@@ -65,7 +65,7 @@
             <div class="callout callout-info">
                 <h5><i class="fas fa-info"></i> Catatan:</h5>
                 <strong>Metode Pembayaran bisa dilakukan secara langsung dengan transfer pembayaran ke rekening admin yang sudah disediakan 
-                Atau melakukan pembayaran dengan cara Generate PDF dan lakukan pembayaran di Alfamart atau Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhit, silakan upload bukti bayar.</strong> 
+                Atau melakukan pembayaran dengan cara Generate PDF dan lakukan pembayaran di Alfamart atau Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhir, silakan upload bukti bayar.</strong> 
             </div>
 
           </div><!-- /.col -->

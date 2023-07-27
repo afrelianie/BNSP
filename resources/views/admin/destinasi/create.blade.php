@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="control-label">Foto</label>
-                            <input type="file" name="foto_destinasi" class="form-control" placeholder="Foto Destinasi">
+                            <input type="file" name="foto_destinasi" accept="image/jpeg,image/png" class="form-control" placeholder="Foto Destinasi">
                             @error('foto_destinasi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
                             @enderror

@@ -38,7 +38,7 @@
                 @csrf
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" class="form-control @error('name') is-invalid @enderror form-control-lg" id="name" placeholder="Full name" name="name" required>
+                    <input type="email" class="form-control" class="form-control @error('email') is-invalid @enderror form-control-lg" id="email" placeholder="Masukkan email" name="email" required>
                     <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-user">

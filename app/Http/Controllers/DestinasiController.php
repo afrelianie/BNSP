@@ -123,6 +123,11 @@ class DestinasiController extends Controller
         foreach($destinasi->pesanan as $pesanan){
             $pesanan->delete();
         }
+
+        foreach($destinasi->testimoni as $testimoni){
+            $testimoni->delete();
+        }
+
         $destinasi->delete();
         return redirect('admin/destinasi')->with('danger', 'data berhasil dihapus');
     }

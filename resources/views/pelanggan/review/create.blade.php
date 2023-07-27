@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-floating date"id="date3" data-target-input="nearest">
-                                    <input class="form-control" id="name" type="file" name="foto_testi" >
+                                    <input class="form-control" id="name" accept="image/jpeg,image/png" type="file" name="foto_testi" >
                                     <label for="file">Upload Foto</label>
                                     @error('foto_testi')
                                         <div class="text-danger mt-2 text-sm">{{ $message }}</div>

@@ -46,6 +46,8 @@
 
 
     
+ 
+    
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -53,21 +55,28 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Testimoni</h6>
                 <h1 class="mb-5">Sampaikan Pendapat Anda!!!</h1>
             </div>
-            @foreach ($testimoni as $data)
             <div class="owl-carousel testimonial-carousel position-relative">
-              
+                @foreach ($testimoni as $data)
                 <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ url('/') }}/assest2/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <!-- <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ url('/') }}/assest2/img/testimonial-1.jpg" style="width: 80px; height: 80px;"> -->
+    
+                         @if ($data->user->profil)
+                              <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset($data->user->profil) }}"style="width: 80px; height: 80px;">                                               
+                         @else
+                              <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset('img/img.jpg')}}"style="width: 80px; height: 80px;">
+                         @endif
+                    
                     <h5 class="mb-0">{{ $data->user->name }}</h5>
                     <p>{{ $data->destinasi->nama_destinasi }}</p>
                     <p class="mb-0">{{ $data->komentar }}</p>
                 </div>
-              
+                @endforeach
             </div>
-            @endforeach
+            
         </div>
     </div>
     <!-- Testimonial End -->
+
 
 
 

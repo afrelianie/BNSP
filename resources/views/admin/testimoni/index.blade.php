@@ -49,7 +49,7 @@
                             </div>
                         </td>
                         <td> {{ $data->pesanan->kode_pesanan }} </td>
-                        <td> {{ Auth::user()->name }} </td>
+                        <td> {{ $data->user->name }} </td>
                         <td> {{ $data->pesanan->status }} </td>
                         <td> {{ $data->komentar }} </td> 
                     </tr>

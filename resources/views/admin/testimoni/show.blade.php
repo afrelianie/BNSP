@@ -52,10 +52,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <strong><i class="fas fa-user-alt mr-1"></i> Nama Pengguna</strong>
-                                <p class="text-muted">{{ Auth::user()->name }}</p>
+                                <p class="text-muted">{{ $testimoni->user->name }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Status</strong>
+                                <strong><i class="fas fa-check-circle mr-1"></i> Status</strong>
                                 <p class="text-muted">{{ $testimoni->pesanan->status }}</p>
                                 <hr>
                             </div>
@@ -63,11 +63,11 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong><i class="fas fa-user-alt mr-1"></i> Nama Destinasi</strong>
-                                <p class="text-muted">{{ $testimoni->pesanan->id_destinasi }}</p>
+                                <strong><i class="fas fas fa-map-marker-alt mr-1"></i> Nama Destinasi</strong>
+                                <p class="text-muted">{{ $testimoni->destinasi->nama_destinasi }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-user-alt mr-1"></i> Komentar</strong>
+                                <strong><i class="fas fa-home mr-1"></i> Komentar</strong>
                                 <p class="text-muted">{{ $testimoni->komentar }}</p>
                                 <hr>
                             </div>

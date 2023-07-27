@@ -143,7 +143,7 @@ class BokingController extends Controller
             'total_harga' => $total_harga,
             'bukti_bayar' => 'upload/' . $new_image,
         ]);
-        return redirect('pelanggan/pesanan')->with('success', 'Berhasil Ditambahkan');
+        return redirect('pelanggan/pesanan')->with('success', 'Berhasil Dibayar, Silakan Tunggu Verifikasi Admin');
 
     }
 
@@ -168,7 +168,7 @@ class BokingController extends Controller
             'total_harga' => $total_harga,
             'tanggal_pesanan' => $request->tanggal_pesanan,
         ]);
-        return redirect('pelanggan/pesanan')->with('success', 'Data Berhasil Ditolak');
+        return redirect('pelanggan/pesanan')->with('danger', 'Pesanan Berhasil Batalkan');
     }
 
 }

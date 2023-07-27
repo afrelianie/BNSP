@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function proses_login()
     {
-        if (Auth()->attempt(['name' => request('name'), 'password' => request('password')])) {
+        if (Auth()->attempt(['email' => request('email'), 'password' => request('password')])) {
             $hakAkses = Auth::user()->role;
             if ($hakAkses == "admin") {
                 return redirect('admin/home')->with('success', 'login berhasil');
@@ -35,7 +35,7 @@ class AuthController extends Controller
             }
         }
 
-        return back()->with('danger', 'login gagal, silahkan cek username dan password anda');
+        return back()->with('danger', 'login gagal, silahkan cek email dan password anda');
     }
 
 

@@ -24,7 +24,7 @@
                         <h5 class="mt-4">1. Pemesanan Destinasi</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Nikmati pengalaman perjalanan yang tak terlupakan dengan menggunakan Layanan Booking Destinasi yang telah disediakan, untuk mempermudah pemesanan tempat wisata yang anda inginkan. Lakukan pemesanan destinasi dengan cara pilih tanggal bokingan yang anda inginkan dan kuota tiket yang anda butuhkan.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -35,7 +35,7 @@
                         <h5 class="mt-4">2. Pembayaran</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Pembayaran bisa dilakukan secara langsung dengan transfer pembayaran ke rekening perusahan yang sudah disediakan atau lakukan pembayaran di Alfamart dan Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhir, silakan upload bukti bayar anda, untuk di verifikasi oleh admin.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -46,15 +46,13 @@
                         <h5 class="mt-4">3. Testimoni Pelanggan</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Jelajahi Dunia bersama Kami! Ceritakan Pengalaman Penuh Petualangan Anda dan Berikan Pandangan Istimewa tentang Tempat Wisata yang Telah Anda Kunjungi. Setiap Kisah dan Pendapat Anda akan Kami Jadikan Masukan Berharga untuk Menghadirkan Pengalaman Wisata yang Lebih Luar Biasa di Masa Depan!</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Process Start -->
-
-
 
 
 
@@ -106,27 +104,31 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Testimoni</h6>
                 <h1 class="mb-5">Sampaikan Pendapat Anda!!!</h1>
             </div>
-            @foreach ($testimoni as $data)
             <div class="owl-carousel testimonial-carousel position-relative">
-              
+                @foreach ($testimoni as $data)
                 <div class="testimonial-item bg-white text-center border p-4">
-                    <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ url('/') }}/assest2/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <!-- <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ url('/') }}/assest2/img/testimonial-1.jpg" style="width: 80px; height: 80px;"> -->
+    
+                         @if ($data->user->profil)
+                              <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset($data->user->profil) }}"style="width: 80px; height: 80px;">                                               
+                         @else
+                              <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset('img/img.jpg')}}"style="width: 80px; height: 80px;">
+                         @endif
+                    
                     <h5 class="mb-0">{{ $data->user->name }}</h5>
                     <p>{{ $data->destinasi->nama_destinasi }}</p>
                     <p class="mb-0">{{ $data->komentar }}</p>
                 </div>
-              
+                @endforeach
             </div>
-            @endforeach
+            
         </div>
     </div>
     <!-- Testimonial End -->
 
 
 
-
-
-    <!-- Destination Start -->
+    <!-- Galeri Start -->
     <div class="container-xxl py-5 destination">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">

@@ -5,7 +5,7 @@
 
 
 <!-- DETAIL PESANAN TAHAP PEMBAYARAN -->
-    <!-- Process Start -->
+<!-- Process Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -21,7 +21,7 @@
                         <h5 class="mt-4">1. Pemesanan Destinasi</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Nikmati pengalaman perjalanan yang tak terlupakan dengan menggunakan Layanan Booking Destinasi yang telah disediakan, untuk mempermudah pemesanan tempat wisata yang anda inginkan. Lakukan pemesanan destinasi dengan cara pilih tanggal bokingan yang anda inginkan dan kuota tiket yang anda butuhkan.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -32,7 +32,7 @@
                         <h5 class="mt-4">2. Pembayaran</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Pembayaran bisa dilakukan secara langsung dengan transfer pembayaran ke rekening perusahan yang sudah disediakan atau lakukan pembayaran di Alfamart dan Indomaret terdekat yang mendukung proses pembayaran dan langkah terakhir, silakan upload bukti bayar anda, untuk di verifikasi oleh admin.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -43,13 +43,14 @@
                         <h5 class="mt-4">3. Testimoni Pelanggan</h5>
                         <hr class="w-25 mx-auto bg-primary mb-1">
                         <hr class="w-50 mx-auto bg-primary mt-0">
-                        <p class="mb-0">Tempor erat elitr rebum clita dolor diam ipsum sit diam amet diam eos erat ipsum et lorem et sit sed stet lorem sit</p>
+                        <p class="mb-0">Jelajahi Dunia bersama Kami! Ceritakan Pengalaman Penuh Petualangan Anda dan Berikan Pandangan Istimewa tentang Tempat Wisata yang Telah Anda Kunjungi. Setiap Kisah dan Pendapat Anda akan Kami Jadikan Masukan Berharga untuk Menghadirkan Pengalaman Wisata yang Lebih Luar Biasa di Masa Depan!</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Process Start -->
+<!-- Process Start -->
+
 
 
     <!-- Contact Start -->

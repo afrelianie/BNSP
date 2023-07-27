@@ -13,8 +13,8 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ url('/') }}" class="nav-item nav-link {{ request ()->is('/') ? 'active' : ''}}">Home</a>
                     <a href="{{ url('destinasi') }}" class="nav-item nav-link {{ request ()->is('destinasi') ? 'active' : ''}}">Destinasi</a>
-                    <a href="{{ url('pelanggan/review') }}" class="nav-item nav-link {{ request ()->is('pelanggan/review') ? 'active' : ''}}">Review</a>
                     <a href="{{ url('pelanggan/pesanan') }}" class="nav-item nav-link {{ request ()->is('pelanggan/pesanan') ? 'active' : ''}}">Pesanan</a>
+                    <a href="{{ url('pelanggan/review') }}" class="nav-item nav-link {{ request ()->is('pelanggan/review') ? 'active' : ''}}">Review</a>
                 </div>
 
                 @if (Route::has('login'))

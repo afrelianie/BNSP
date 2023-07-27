@@ -63,8 +63,8 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
                     <a href="{{ url('destinasi') }}" class="nav-item nav-link">Destinasi</a>
-                    <a href="{{ url('contact') }}" class="nav-item nav-link">Kontak</a>
                     <a href="{{ url('pelanggan/pesanan') }}" class="nav-item nav-link">Pesanan</a>
+                    <a href="{{ url('pelanggan/review') }}" class="nav-item nav-link">Review</a>
                 </div>
 
                 @if (Route::has('login'))
@@ -117,13 +117,7 @@
 
 
 
-
-
-
-
-
-                        @if (isset($data))
-                        
+        @if (isset($data))                
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -131,54 +125,104 @@
                     <h1 class="mb-5">Lihat Destinasi Anda...</h1>
                 </div>
                 <div class="card-header">
-                            <div class="card-body p-2">
-                                <div class="table-responsive">
-                                    <table id="example1" class="table table-light table-striped">
-                                        <thead>
+                    <div class="card-body p-2">
+                        <div class="table-responsive">
+                                <table id="example1" class="table table-light table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Destinasi</th>
+                                            <th>Harga</th>
+                                            <th>Alamat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($data) > 0)
+                                            @foreach ( $data as $item )
                                             <tr>
-                                                <th>Nama Destinasi</th>
-                                                <th>Harga</th>
-                                                <th>Alamat</th>
+                                                <td>
+                                                    <a style="color:black; font-size:16px; " href=" {{ url('/destinasi/detail', $item->id) }}"
+                                                        class="text-decoration-none text-muteds">
+                                                        {{ $item->nama_destinasi }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
+                                                        class="text-decoration-none text-muteds">
+                                                        {{ $item->harga }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
+                                                        class="text-decoration-none text-muteds">
+                                                        {{ $item->alamat_destinasi }}
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if (count($data) > 0)
-                                                @foreach ( $data as $item )
-                                                <tr>
-                                                    <td>
-                                                        <a style="color:black; font-size:16px; " href=" {{ url('/destinasi/detail', $item->id) }}"
-                                                            class="text-decoration-none text-muteds">
-                                                            {{ $item->nama_destinasi }}
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
-                                                            class="text-decoration-none text-muteds">
-                                                            {{ $item->harga }}
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a style="color:black; font-size:16px; " href="{{ url('/destinasi/detail', $item->id) }}"
-                                                            class="text-decoration-none text-muteds">
-                                                            {{ $item->alamat_destinasi }}
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            @else
-                                            <tr><td>No Result Found!</td></tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                    <div class="pagination-block">
-                                        {{ $data->links() }}
-                                    </div>
+                                            @endforeach
+                                        @else
+                                            <tr><td>Data yang Anda cari tidak Ada!</td></tr>
                                         @endif
-                                </div>
+                                    </tbody>
+                                </table>
+                            <div class="pagination-block">
+                                {{ $data->links() }}
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        
+    <!-- DESTINASI -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Destinasi</h6>
+                <h1 class="mb-5">Jawa Barat</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+            @if (count($data) > 0)
+              @foreach ($data as $data)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">  
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{{ asset($data->foto_destinasi) }}" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ $data->nama_destinasi }}</small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0">Rp. {{ $data->harga }}</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>{{ $data->alamat_destinasi }}</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="{{ url('destinasi/detail', $data->id) }}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Boking Sekarang</a>
                             </div>
                         </div>
+                    </div>
+                </div>
+              @endforeach
+            @else
+                <tr><td>Data yang Anda cari tidak Ada!</td></tr>
+            @endif
+            </div>
+        </div>
     </div>
-</div>
+    <!-- Package End -->
 
 
 
@@ -188,9 +232,7 @@
 
 
 
-    
-    @yield('content')
-    
+
         
     @include('template.user.footer')
 

@@ -111,6 +111,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
+        foreach($user->pesanan as $pesanan){
+            $pesanan->delete();
+        }
+
+        foreach($user->testimoni as $testimoni){
+            $testimoni->delete();
+        }
+
         $user->delete();
         return redirect('admin/user')->with('danger', 'data berhasil dihapus');
     }

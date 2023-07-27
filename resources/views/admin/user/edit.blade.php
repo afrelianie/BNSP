@@ -64,6 +64,7 @@
                                         @csrf
 
                                         <div class="row">
+                                        <input type="hidden" name="role" class="form-control" placeholder="role" value="{{ $user->role  }}">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="" class="control-label">Nama</label>

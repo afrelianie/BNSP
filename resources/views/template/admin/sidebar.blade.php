@@ -11,7 +11,14 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="{{ asset ('dist/img/AdminLTELogo.png') }}"  >
+            <!-- <img src="{{ asset ('dist/img/AdminLTELogo.png') }}"> -->
+
+            @if (auth()->user()->profil)
+                <img src="{{ asset(Auth::user()->profil)}}" alt="" class="bg-white rounded-circle shadow p-1 mx-auto mb-3">                                               
+            @else
+                <img src="{{ asset('img/img.jpg')}}" alt="" class="bg-white rounded-circle shadow p-1 mx-auto mb-3">
+            @endif
+
         </div>
         <div class="info">
             <a href="#" class="d-block">Selamat Datang {{ Auth::user()->name }}</a>

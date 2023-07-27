@@ -45,8 +45,8 @@ Route::prefix('pelanggan')->middleware('auth')->group(function () {
     Route::controller(WebController::class)->group(function(){
         Route::get('/', 'welcome')->name('/');
         Route::get('art', 'art');
-        Route::get('about', 'about');
-        Route::get('contact', 'contact');
+        // Route::get('about', 'about');
+        // Route::get('contact', 'contact');
         Route::get('destinasi', 'destinasi');
         Route::get('destinasi/detail/{id}', 'detail');
         
