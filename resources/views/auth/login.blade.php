@@ -30,7 +30,7 @@
     <div class="login-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="{{ url('/') }}" class="h1"><b>JTT</b> <br>Registrasi</a>
+            <a href="{{ url('/') }}" class="h1"><b>JTT</b> <br>Silakan Login</a>
         </div>
 
         <div class="card-body">

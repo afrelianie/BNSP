@@ -46,11 +46,13 @@ class PesananController extends Controller
 
         $request->validate([
             'id_destinasi' => ['required'],
+            'id_user' => ['required'],
             'qty' => ['required', 'integer', 'min:1'], 
             'tanggal_pesanan' => ['required']
     
         ],[
             'id_destinasi.required' => 'Destinasi wajib diisi',
+            'id_user.required' => 'Pengguna wajib diisi',
             'qty.required' => 'Jumlah wajib diisi',
             'qty.integer' => 'Jumlah harus berupa angka',
             'qty.min' => 'Jumlah minimal 1',
