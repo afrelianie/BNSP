@@ -3,6 +3,43 @@
 
 
 
+<style>
+
+    /* CSS untuk gambar produk .product-image */
+    .product-image {
+    max-width: 95%;
+    height: auto;
+    }
+
+    /* CSS untuk thumbnail gambar produk .product-image-thumb */
+    .product-image-thumb {
+    width: 35%;
+    height: 35%;
+    margin-right: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    }
+
+    /* CSS untuk thumbnail gambar produk aktif .product-image-thumb.active */
+    .product-image-thumb.active {
+    border-color: #007bff;
+    }
+
+
+    /* CSS untuk thumbnail gambar produk .product-image-thumbs */
+    .product-image-thumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Memusatkan vertikal */
+    overflow-x: auto; /* Memungkinkan scrolling horizontal jika gambar lebih lebar dari container */
+    padding: 10px 0; /* Menambahkan sedikit ruang di atas dan bawah */
+    }
+
+</style>
+
+
+
 
 <!-- DETAIL PESANAN TAHAP PEMBAYARAN -->
 <!-- Process Start -->
@@ -61,11 +98,17 @@
                 <h1 class="mb-5">Silakan Lakukan Pembayaran</h1>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{{ asset($pesanan->destinasi->foto_destinasi)}}" alt="" style="object-fit: cover;">
-                    </div>
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                  <img src="{{ asset($pesanan->destinasi->foto_destinasi)}}" class="product-image" alt="Product Image">
+                    <div class="col-12 product-image-thumbs" data-wow-delay="0.1s">
+                        <div class="product-image-thumb active"><img class="img-fluid" src="{{ asset($pesanan->destinasi->foto_destinasi)}}" alt="Product Image"></div>
+                        <div class="product-image-thumb"><img class="img-fluid" src="{{ url('/') }}/dist/img/1.jpeg" alt="Product Image"></div>
+                        <div class="product-image-thumb"><img class="img-fluid" src="{{ url('/') }}/dist/img/2.jpeg" alt="Product Image"></div>
+                        <div class="product-image-thumb"><img class="img-fluid" src="{{ url('/') }}/dist/img/3.jpeg" alt="Product Image"></div>
+                        <div class="product-image-thumb"><img class="img-fluid" src="{{ url('/') }}/dist/img/pantai.jpeg" alt="Product Image"></div>
+                    </div> 
                 </div>
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h5>Nama Destinasi : {{ $pesanan->destinasi->nama_destinasi }}</h5>
                     <h6 class="mb-4">No. Rekening Admin: 07612 0000 000 <br> Metode Pembayaran: Transfer Bank</h6>
@@ -98,16 +141,16 @@
                     </div> &nbsp;
                     <div class="d-flex align-items-center">
                         <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fas fa-dollar-sign text-white"></i>
+                            <i class="fas fa-regular fa-wallet text-white"></i>
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Harga Satuan</h5>
-                            <p class="mb-0">Rp. {{ $pesanan->destinasi->harga }}</p>
+                            <p class="mb-0">Rp. {{ $pesanan->destinasi->harga }},00</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                     &nbsp;
                     <div class="d-flex align-items-center">
                         <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
@@ -129,11 +172,11 @@
                     </div>
                     <div class="d-flex align-items-center mb-4">
                         <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fas fa-dollar-sign text-white"></i>
+                            <i class="fas fa-regular fa-wallet text-white"></i>
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Total Harga</h5>
-                            <p class="mb-0">Rp. {{ $pesanan->total_harga }}</p>
+                            <p class="mb-0">Rp. {{ $pesanan->total_harga }},00</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -289,5 +332,20 @@
 
 
 
+
+
+<!-- jQuery -->
+<script src="{{ url('/') }}/plugins/jquery/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
+</script>
 
 @endsection

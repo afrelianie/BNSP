@@ -124,8 +124,8 @@
                                 <p class="text-muted">{{ $pesanan->destinasi->nama_destinasi }}</p>
                                 <hr>
 
-                                <strong><i class="fas fa-dollar-sign mr-1"></i> Harga Satuan</strong>
-                                <p class="text-muted">Rp. {{ $pesanan->destinasi->harga }}</p>
+                                <strong><i class="fas fa-regular fa-wallet"></i> Harga Satuan</strong>
+                                <p class="text-muted">Rp. {{ $pesanan->destinasi->harga }},00</p>
                                 <hr>
 
                                 <strong><i class="fas fa-qrcode mr-1"></i> Kode Pesanan</strong>
@@ -137,7 +137,7 @@
                                 <hr>
 
                                 <strong><i class="fab fa-fw fa-wpforms"></i> Total Harga</strong>
-                                <p class="text-muted">Rp. {{ $pesanan->total_harga }}</p>
+                                <p class="text-muted">Rp. {{ $pesanan->total_harga }},00</p>
                                 <hr>
 
                             </div>
@@ -150,7 +150,8 @@
                 
                 <div class="col-md-12">
                     <div class="modal-footer">
-                         <a href="{{ url('admin/pesanan') }}" class="btn btn-primary float-right">Kembali</a>
+                         <a href="{{ url('admin/pesanan') }}" class="btn btn-primary float-right">
+                            <i class="fas fa-arrow-left"></i> Kembali</a>
                          <a href="{{ url('admin/pesanan/print', $pesanan->id) }}">
                          <button type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
                             <i class="fas fa-download"></i> Generate PDF
@@ -169,22 +170,21 @@
                                 <input type="hidden" name="qty" value="{{ $pesanan->qty }}">
                                 <input type="hidden" name="total_harga" value="{{ $pesanan->total_harga }}">
                                 <input type="hidden" name="status" value="Batal">
-                                <button class="btn btn-danger">Batal</button>
+                                <button class="btn btn-danger"><i class="fas fa-times"></i> Batal</button>
                             </form>
                                 
-                            <!-- Modal -->
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop1"><i class="far fa-credit-card"></i> Bayar 
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                                <i class="far fa-credit-card"></i> Bayar 
                             </button>
-                                   
-                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      
+                            <div class="modal fade" id="modal-default" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header bg-success">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Upload Bukti Bayar</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <h4 class="modal-title">Upload Bukti Bayar</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <form action="{{ route('bayar') }}" method="post" enctype="multipart/form-data">
@@ -201,7 +201,7 @@
                                                 <input type="file" name="bukti_bayar" accept="application/pdf" required>
                                                 <button type="submit" class="btn btn-success">Bayar</button>
                                             </form>
-                                        </div>                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -211,12 +211,15 @@
                         @if ($pesanan->status == 'Bayar')
                             <!-- <a href="{{ url('admin/testimoni/create', $pesanan->id) }}"><button
                                     class="btn btn-success">Review</button></a> -->
-                            <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
-                                    class="btn btn-success">Lihat Bukti Bayar</button></a>
+                            <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"> 
+                                <button class="btn btn-success">
+                                    <i class="fa fa-eye"></i> Lihat Bukti Bayar
+                                </button>
+                            </a>
                                 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Verifikasi Pesanan
+                                <i class="fas fa-check-circle mr-1"></i> Verifikasi Pesanan
                             </button>
 
                             <!-- Modal -->
@@ -227,7 +230,7 @@
                                             @csrf
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Verifikasi Pembayaran</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                         
@@ -268,7 +271,7 @@
 
                         @if ($pesanan->status == 'Selesai')
                             <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
-                                class="btn btn-success">Lihat Bukti Bayar</button></a>       
+                                class="btn btn-success"><i class="fa fa-eye"></i> Lihat Bukti Bayar</button></a>       
                         @else
 
 
@@ -279,7 +282,7 @@
 
                         @if ($pesanan->status == 'Data Tidak Sesuai')
                             <a href="{{ asset($pesanan->bukti_bayar)}}" target="_blank"><button
-                                class="btn btn-success">Lihat Bukti Bayar</button></a>
+                                class="btn btn-success"><i class="fa fa-eye"></i> Lihat Bukti Bayar</button></a>
                             <span class="badge bg-danger">{{ $pesanan->status }}</span>           
                         @else
 
