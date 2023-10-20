@@ -329,6 +329,7 @@
             <ul>
                 <li class="active"><a href="{{ url('/utama') }}">HOME</a></li>
                 <li><a href="{{ url('/about') }}">ABOUT</a></li>
+                <li><a  href="{{ url('/artikel') }}">ARTIKEL</a></li>
                 <li><a  href="{{ url('/contact') }}">CONTACT</a></li>
 
 

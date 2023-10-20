@@ -324,28 +324,24 @@
         </div>
      </div>
      <header>
-        <div class="container">
+          <div class="container">
             <h1><a href="TUGAS1.html">Bride Story</a></h1>
-            <ul>
-                <li><a href="{{ url('/utama') }}">HOME</a></li>
-                <li><a href="{{ url('/about') }}">ABOUT</a></li>
-                <li><a  href="{{ url('/artikel') }}">ARTIKEL</a></li>
-                <li class="active"><a  href="{{ url('/contact') }}">CONTACT</a></li>
+               <ul>
+                    <li><a href="{{ url('/utama') }}">HOME</a></li>
+                    <li><a href="{{ url('/about') }}">ABOUT</a></li>
+                    <li class="active"><a  href="{{ url('/artikel') }}">ARTIKEL</a></li>
+                    <li><a  href="{{ url('/contact') }}">CONTACT</a></li>
 
-
-                @if (Route::has('login'))
-                    
+                    @if (Route::has('login')) 
                          @auth
                          <li><a href="{{ url('logout') }}">LOGOUT</a></li>
                          @else
                          
                          <li><a href="{{ route('login') }}">LOGIN</a></li>
                          @endauth
-               
-                @endif
-
-            </ul>
-        </div>
+                    @endif
+               </ul>
+          </div>
      </header>
      <!-- penutup -->
 
@@ -355,61 +351,42 @@
       <div class="container">
           <div class="navbar">    
           </div>
-       <div class="row">
-          <div class="col-2">
-               <h1>Paket Lengkap <br> Pernikahan Impian!</h1>
-               <p>Paket Sudah Termasuk Beragam Jasa Untuk Wujudkan Impian Anda <br> Mulai dari pemesanan tempat, undangan, hingga perlengkapan pernikahan dan tata rias pengantin.</p>
-               <a href="" class="btn">Pesan Sekarang &#8594;</a>
+          <div class="row">
+               <div class="col-2">
+                    <h1>Paket Lengkap <br> Pernikahan Impian!</h1>
+                    <p>Paket Sudah Termasuk Beragam Jasa Untuk Wujudkan Impian Anda <br> Mulai dari pemesanan tempat, undangan, hingga perlengkapan pernikahan dan tata rias pengantin.</p>
+                    <a href="" class="btn">Pesan Sekarang &#8594;</a>
+               </div>
+               <div class="col-2">
+                    <img src="{{ url('/') }}/nikah/t3.jpg">
+               </div>
           </div>
-          <div class="col-2">
-               <img src="{{ url('/') }}/nikah/t3.jpg">
-          </div>
-       </div>
       </div>
     </div>
 
 
 
-     <!--service-->
-     <section class="service">
-        <div class="container">
-            <h3>CONTACT</h3>
-            <div class="box">
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-map-marker-alt me-3"></i></div>
-                    <h4>Kalimantan Barat</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-phone-alt me-3"></i></i></div>
-                    <h4>+62 617003044</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-envelope me-3"></i></div>
-                    <h4>bs.info@gmail.com</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-home"></i></div>
-                    <h4>Cabang Perusahaan</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-mobile"></i></div>
-                    <h4>Mobile App</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fab fa-chrome"></i></i></div>
-                    <h4>Web Developer</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-edit"></i></div>
-                    <h4>Desin Grafis</h4>
-                </div>
-                <div class="col-4">
-                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
-                    <h4>Digital Marketing</h4>
-                </div>
-            </div>
-        </div>
-     </section>
+
+
+
+     <!------ offer ------>
+     <div class="offer">
+     <div class="small-container">
+          <div class="row">
+          @foreach ($artikel as $data)
+               <div class="col-2">
+                    <img src="{{ asset($data->image) }}" class="offer-img">
+               </div>
+               <div class="col-2">
+                    <h2>ARTIKEL</h2>
+                    <h3>{{ $data->name }}</h3>
+                    <small> {{ $data->content }}</small> <br>
+               </div>
+          @endforeach
+          </div>
+     </div>
+     </div>
+     </div>
 
 
      <!--footer-->

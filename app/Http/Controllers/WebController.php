@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\PesananModel;
 use App\Models\Destinasi;
 use App\Models\Testimoni;
+use App\Models\Category;
 
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -64,15 +65,6 @@ class WebController extends Controller
 
     }
 
-    public function about()
-    {
-        return view('web.about');
-    }
-
-    public function contact()
-    {
-        return view('web.contact');
-    }
 
 
 
@@ -93,4 +85,12 @@ class WebController extends Controller
         $data['destinasi'] = Destinasi::findOrfail($id);
         return view('template.depan.detail', $data);
     }
+
+
+    public function artikel()
+    {
+        $data['artikel'] = Category::all();
+        return view('template.depan.artikel', $data);
+    }
+
 }

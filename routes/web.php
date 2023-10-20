@@ -56,6 +56,7 @@ Route::get('contact', function () {
         Route::get('/', 'welcome')->name('/');
         Route::get('utama', 'utama');
         Route::get('detail/pernikahan/{id}', 'pernikahan');
+        Route::get('artikel', 'artikel');
         
     });
 
