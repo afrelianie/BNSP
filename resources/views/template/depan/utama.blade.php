@@ -370,10 +370,9 @@
       </div>
     </div>
 
-     <!------ Galeri Pernikahan ------>
+     <!------ featured categories ------>
      <div class="categories">
      <div class="small-container">
-     <h2 class="title">Galeri Pernikahan</h2>
      <div class="row">
           <div class="col-3">
                <img src="{{ url('/') }}/nikah/nikah2.jpg">
@@ -458,7 +457,7 @@
      </div>
      </div>
 
-
+   
 
 
 
@@ -472,4 +471,3 @@
 
   </body>
 </html>
-

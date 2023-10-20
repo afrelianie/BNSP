@@ -1,6 +1,6 @@
 @extends('template.admin.header')
 @section('judul','Web Wisata | Sistem Informasi Tempat Wisata')
-@section('sub_judul','Destinasi')
+@section('sub_judul','Paket Prewedding')
 @section('content')
 
 
@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-                Edit Data Destinasi
+                Edit Paket Prewedding
             </div> 
         </div>
         <div class="card-body">
@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="" class="control-label">Nama Destinasi</label>
+                            <label for="" class="control-label">Nama Tempat</label>
                             <input type="text" name="nama_destinasi" class="form-control" value="{{ $destinasi->nama_destinasi }}">
                             @error('nama_destinasi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Sejarah</label>
+                            <label for="exampleFormControlTextarea1">Jasa Atau Paket</label>
                             <textarea name="sejarah" class="form-control" id="exampleFormControlTextarea1" rows="4" >{{ $destinasi->sejarah }}</textarea>
                         </div>
                         @error('sejarah')

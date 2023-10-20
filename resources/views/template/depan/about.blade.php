@@ -327,8 +327,8 @@
         <div class="container">
             <h1><a href="TUGAS1.html">Bride Story</a></h1>
             <ul>
-                <li class="active"><a href="{{ url('/utama') }}">HOME</a></li>
-                <li><a href="{{ url('/about') }}">ABOUT</a></li>
+                <li><a href="{{ url('/utama') }}">HOME</a></li>
+                <li class="active"><a href="{{ url('/about') }}">ABOUT</a></li>
                 <li><a  href="{{ url('/contact') }}">CONTACT</a></li>
 
 
@@ -343,13 +343,10 @@
                
                 @endif
 
-
-
             </ul>
         </div>
      </header>
      <!-- penutup -->
-
 
 
   <body>
@@ -370,96 +367,90 @@
       </div>
     </div>
 
-     <!------ Galeri Pernikahan ------>
-     <div class="categories">
-     <div class="small-container">
-     <h2 class="title">Galeri Pernikahan</h2>
-     <div class="row">
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah2.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah3.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah4.jpg">
-          </div>
-     </div>
-     </div>
-     </div>
 
-     <!------ featured Products ------>
-     <div class="small-container">
-     <h2 class="title">Produk Utama Yang Mungkin Anda Suka</h2>
-     <div class="row">
-        @foreach ($destinasi as $data)
-          <div class="col-4">
-               <img src="{{ asset($data->foto_destinasi) }}">
-               <h4>{{ $data->nama_destinasi }}</h4>
-               <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-               </div>
-               <p>Rp. {{ $data->harga }}</p>
-               <div class="d-flex justify-content-center mb-2">
-                    <a href="{{ url('detail/pernikahan', $data->id) }}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Boking Sekarang</a>
-               </div>
-          </div>
-        @endforeach
-     </div>
-     </div>
+
+
+
+     <!--Profile-->
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <hr />
+
+    <header style="text-align: center;">
+    <section class="profile">
+            <h2>PROFILE PERUSAHAAN</h2>
+        <h3>Bride Story</h3>
+            <img src="{{ url('/') }}/nikah/logo.jpg" width="200px" height="200px" style="border-radius: 50%">
+        <p>(Pemilik Perusahaan : Anggita Afrelia)</p>
+    </header>
+
+    <article style="text-align: center;">
+        <p>
+            Hi, saya adalah web developer yang berdomisisli di Ketapang.
+            ini adalah perusahaan saya yang berjalan dibidang jasa prewedding
+        </p>
+    </article>
+
+    <div style="max-width: 600px; margin: 3em auto">
+        <table border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>JASA</th>
+                    <th>PAKET</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Fotografer Prewedding</li>
+                            <li>Make UP Prewedding</li>
+                            <li>Udangan Preweding</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Paket Sewa Temat</li>
+                            <li>Paket Foto Pernikahan</li>
+                            <li>Paket Alat dan Makanan</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
 
      <!------ offer ------>
      <div class="offer">
      <div class="small-container">
      <div class="row">
                <div class="col-2">
-                    <img src="{{ url('/') }}/nikah/ud1.jpg" class="offer-img">
+                    <img src="{{ url('/') }}/nikah/t1.jpg" class="offer-img">
                </div>
                <div class="col-2">
-                    <h1>Berbagai Tampilan Desain Undangan</h1>
-                    <small>Sedang mencari inspirasi untuk hari pernikahan Anda? 
-                         Lihat rangkaian event pernikahan yang dapat Anda kunjungi di bawah ini! Rencanakan kunjungan Anda dan jangan lupa untuk melakukan reply dan pemesanan. </small> <br>
-                    <a href="{{ url('/login') }}" class="btn">Pesan Sekarang &#8594; </a>
+                    <h2>ABOUT</h2>
+                    <small> 1. Tim Profesional dan Berpengalaman: Didedikasikan untuk memberikan pelayanan terbaik, didukung oleh tim yang berpengalaman dalam industri pernikahan. <br>
+                         2. Menyediakan Solusi Terpadu: Memberikan paket lengkap yang mencakup segala kebutuhan pernikahan, mulai dari persiapan hingga acara selesai. <br>
+                         3. Menghormati Keinginan Pasangan: Mengutamakan keinginan dan visi pasangan untuk menciptakan pernikahan sesuai dengan impian mereka. <br>
+                         4. Elegan dan Berkelas: Menghadirkan pernikahan yang elegan dan penuh dengan sentuhan kelas untuk setiap pasangan. <br>
+                         5. Mengabadikan Momen Bahagia: Setiap momen istimewa akan diabadikan dengan indah, menciptakan kenangan seumur hidup. <br>
+                         6. Detail Tiada Tanding: Setiap aspek dari pernikahan direncanakan dengan teliti, dari dekorasi hingga logistik, demi menciptakan acara yang sempurna. <br>
+                         7. Kreatif dan Inovatif: Selalu mencari cara baru untuk membuat setiap pernikahan menjadi unik dan tak terlupakan.
+                    </small> <br>
                </div>
           </div>
      </div>
      </div>
      </div>
-
-     <!------ testimonial ------>
-     <div class="testimonial">
-     <div class="small-container">
-     <h2 class="title">Kepuasan Pelanggan</h2>
-          <div class="row">
-            @foreach ($testimoni as $data)
-               <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>{{ $data->komentar }}</p>
-                    <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                    </div>
-                    @if ($data->user->profil)
-                    <img src="{{ asset($data->user->profil) }}" style="width: 80px; height: 80px;">
-                    @else
-                    <img src="{{ asset('img/img.jpg')}}" style="width: 80px; height: 80px;">
-                    @endif
-                    <h3>{{ $data->user->name }}</h3>
-               </div>
-            @endforeach
-          </div>
-     </div>
-     </div>
-
-
-
 
 
      <!--footer-->
@@ -472,4 +463,3 @@
 
   </body>
 </html>
-

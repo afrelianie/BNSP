@@ -5,8 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\PesananController;
-// use App\Http\Controllers\PembayaranController;
-// use App\Http\Controllers\Detail_PesananController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TestimoniController;
 
 use App\Imports\DestinasiImport;
@@ -35,6 +34,19 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
     
 
      
+
+     // ini adalah route untuk bagian Category
+     Route::controller(CategoryController::class)->group(function(){
+        Route::get('category', 'index');
+        Route::get('category/show/{id}', 'show');
+        Route::post('category/update/{id}', 'update');
+        Route::post('category/store', 'store');
+        Route::post('category/destroy/{id}', 'destroy');
+     });
+
+
+
+     
      // ini adalah route untuk bagian destinasi
      Route::controller(DestinasiController::class)->group(function(){
          Route::get('destinasi', 'index');
@@ -51,33 +63,33 @@ Route::group(['middleware' => ['auth','cek_login:admin']],function(){
 
 
      // ini adalah route untuk bagian pesanan
-     Route::controller(PesananController::class)->group(function(){
-         Route::get('pesanan', 'index');
-         Route::get('pesanan/create', 'create');
-         Route::post('pesanan/store', 'store');
-         Route::get('pesanan/{id}/edit', 'edit');
-         Route::post('pesanan/update/{id}', 'update');
-         Route::post('pesanan/destroy/{id}', 'destroy');
-         Route::get('pesanan/show/{id}', 'show');
+    //  Route::controller(PesananController::class)->group(function(){
+    //      Route::get('pesanan', 'index');
+    //      Route::get('pesanan/create', 'create');
+    //      Route::post('pesanan/store', 'store');
+    //      Route::get('pesanan/{id}/edit', 'edit');
+    //      Route::post('pesanan/update/{id}', 'update');
+    //      Route::post('pesanan/destroy/{id}', 'destroy');
+    //      Route::get('pesanan/show/{id}', 'show');
          
-         Route::post('pesanan/bayar', 'bayar')->name('bayar');
-         Route::get('pesanan/print/{id}', 'print')->name('print');
-         Route::post('pesanan/batal', 'batal')->name('batal');
-         Route::post('pesanan/verifikasi/{id}', 'verifikasi')->name('verifikasi');
+    //      Route::post('pesanan/bayar', 'bayar')->name('bayar');
+    //      Route::get('pesanan/print/{id}', 'print')->name('print');
+    //      Route::post('pesanan/batal', 'batal')->name('batal');
+    //      Route::post('pesanan/verifikasi/{id}', 'verifikasi')->name('verifikasi');
          
 
-     });
+    //  });
      
      
      
      
       // ini adalah route untuk bagian detail_testimoni
-      Route::controller(TestimoniController::class)->group(function(){
-         Route::get('testimoni', 'index');
-         Route::get('testimoni/show/{id}', 'show');
-         Route::get('testimoni/create/{id}', 'create');
-         Route::post('testimoni/store', 'store');
-         Route::post('testimoni/destroy/{id}', 'destroy');
-         });
+    //   Route::controller(TestimoniController::class)->group(function(){
+    //      Route::get('testimoni', 'index');
+    //      Route::get('testimoni/show/{id}', 'show');
+    //      Route::get('testimoni/create/{id}', 'create');
+    //      Route::post('testimoni/store', 'store');
+    //      Route::post('testimoni/destroy/{id}', 'destroy');
+    //      });
 
 });

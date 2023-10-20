@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login | Web Wisata</title>
+  <title>Login | Bride Story</title>
   <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/img/logo1.jpg" />
 
 
@@ -30,7 +30,7 @@
     <div class="login-box">
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="{{ url('/') }}" class="h1"><b>JTT</b> <br>Silakan Login</a>
+            <a href="{{ url('/utama') }}" class="h1"><b>BS</b> <br>Silakan Login</a>
         </div>
 
         <div class="card-body">

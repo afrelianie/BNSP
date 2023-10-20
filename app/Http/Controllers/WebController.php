@@ -73,5 +73,24 @@ class WebController extends Controller
     {
         return view('web.contact');
     }
+
+
+
+
+
+
+
+
+    public function utama()
+    {
+        $destinasi = Destinasi::all();
+        $testimoni = Testimoni::all();
+        return view('template.depan.utama', compact('destinasi','testimoni'));
+    }
     
+    public function pernikahan(string $id)
+    {
+        $data['destinasi'] = Destinasi::findOrfail($id);
+        return view('template.depan.detail', $data);
+    }
 }

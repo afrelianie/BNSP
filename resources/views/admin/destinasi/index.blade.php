@@ -1,10 +1,7 @@
 @extends('template.admin.header')
-@section('judul','Web Wisata | Sistem Informasi Tempat Wisata')
-@section('sub_judul','Destinasi')
+@section('judul','Bride Story | Sistem Informasi Paket Prewedding')
+@section('sub_judul','Paket Prewedding')
 @section('content')
-
-
-
 
 
 
@@ -18,7 +15,7 @@
           <div class="card-header">
               <div class="card-title">
                   <h5 class="mx-4 pt-2">
-                      Tabel Destinasi
+                      Tabel Paket Prewedding
                   </h5>
               </div>
               <div class="float-right">
@@ -37,7 +34,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Import Data Destinasi</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Import Data Prewedding</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -71,7 +68,7 @@
                   <tr>
                     <th width="20px">No</th>
                     <th width="90px">Action</th>
-                    <th>Nama Destinasi</th>
+                    <th>Nama Tempat</th>
                     <th>Harga</th>
                     <th>Alamat</th>
                   </tr>

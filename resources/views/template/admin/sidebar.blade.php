@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
-      <img src="{{ asset ('dist/img/AdminLTELogo.png') }}"  class="brand-image" width="100" height="100" alt="Logo">
-      <span class="brand-text font-weight-light"><h2>JTT</h2></span>
+    <a href="{{ url('/utama') }}" class="brand-link">
+      <img src="{{ url('/') }}/nikah/logo.jpg"  class="brand-image" width="100" height="100" alt="Logo">
+      <span class="brand-text font-weight-light"><h2>Bride Story</h2></span>
     </a>
 
     <!-- Sidebar -->
@@ -40,39 +40,8 @@
         <li class="nav-item">
             <a href="{{url('admin/destinasi')}}" class="nav-link {{ request ()->is('admin/destinasi','admin/destinasi/create') ? 'active' : ''}}">
               <i class="nav-icon fas fa-map"></i>
-              <p>Tempat Wisata</p>
+              <p>Paket Prewedding</p>
             </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="#" class="nav-link 
-            {{ request ()->is('admin/pesanan','admin/pesanan/create','admin/pembayaran','admin/testimoni','admin/testimoni/create') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Master Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{url('admin/pesanan')}}" class="nav-link {{ request ()->is('admin/pesanan','admin/pesanan/create') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pesanan</p>
-                </a>
-              </li>
-              <!-- <li class="nav-item">
-                <a href="{{url('admin/pembayaran')}}" class="nav-link {{ request ()->is('admin/pembayaran') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pembayaran</p>
-                </a>
-              </li> -->
-              <li class="nav-item">
-                <a href="{{url('admin/testimoni')}}" class="nav-link {{ request ()->is('admin/testimoni','admin/testimoni/create') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Testimoni</p>
-                </a>
-              </li>
-            </ul>
         </li>
 
         <li class="nav-item">
@@ -82,6 +51,12 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="{{ url('admin/category') }}" class="nav-link {{ request ()->is('admin/category') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Artikel</p>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a href="{{ url('logout') }}" class="nav-link {{ request ()->is('logout') ? 'active' : ''}}">

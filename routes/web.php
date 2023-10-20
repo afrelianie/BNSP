@@ -18,8 +18,18 @@ Route::prefix('pelanggan')->middleware('auth')->group(function () {
 });
 
 
-// Route::get('coba', function () {
-//     return view('coba');
+
+Route::get('about', function () {
+    return view('template/depan/about');
+});
+
+
+Route::get('contact', function () {
+    return view('template/depan/contact');
+});
+
+// Route::get('detail', function () {
+//     return view('template/depan/detail');
 // });
 
 
@@ -44,14 +54,12 @@ Route::prefix('pelanggan')->middleware('auth')->group(function () {
     /////////// WEB ///////////
     Route::controller(WebController::class)->group(function(){
         Route::get('/', 'welcome')->name('/');
-        Route::get('art', 'art');
-        // Route::get('about', 'about');
-        // Route::get('contact', 'contact');
-        Route::get('destinasi', 'destinasi');
-        Route::get('destinasi/detail/{id}', 'detail');
+        Route::get('utama', 'utama');
+        Route::get('detail/pernikahan/{id}', 'pernikahan');
         
     });
 
 
+    
     
     

@@ -1,5 +1,5 @@
 @extends('template.admin.header')
-@section('judul','Web Wisata | Sistem Informasi Tempat Wisata')
+@section('judul','Bride Story | Sistem Informasi Paket Prewedding')
 @section('sub_judul','Home')
 @section('content')
 
@@ -99,7 +99,7 @@
             <!-- BAR CHART -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Harga Tempat Wisata</h3>
+                <h3 class="card-title">Harga Tempat Pernikahan</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">

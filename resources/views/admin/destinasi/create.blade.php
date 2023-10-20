@@ -1,6 +1,6 @@
 @extends('template.admin.header')
-@section('judul','Web Wisata | Sistem Informasi Tempat Wisata')
-@section('sub_judul','Destinasi')
+@section('judul','Bride Story | Sistem Informasi Paket Prewedding')
+@section('sub_judul','Paket Prewedding')
 @section('content')
   
 
@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-header">
             <div class="card-title"> 
-                Tambah Data Wisata
+                Tambah Paket Prewedding
             </div> 
         </div>
         <div class="card-body">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="control-label">Nama Destinasi</label>
+                            <label for="" class="control-label">Nama Tempat</label>
                             <input type="text" name="nama_destinasi" class="form-control" placeholder="Nama Destinasi">
                             @error('nama_destinasi')
                                 <div class="text-danger mt-2 text-sm">{{ $message }}</div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Alamat Destinasi</label>
+                            <label for="exampleFormControlTextarea1">Alamat Prewedding</label>
                             <textarea name="alamat_destinasi" class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Alamat Destinasi"></textarea>
                         </div>
                         @error('alamat_destinasi')
@@ -55,8 +55,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Sejarah</label>
-                            <textarea name="sejarah" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Sejarah "></textarea>
+                            <label for="exampleFormControlTextarea1">Jasa atau Paket</label>
+                            <textarea name="sejarah" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Isi Paket"></textarea>
                         </div>
                         @error('sejarah')
                             <div class="text-danger mt-2 text-sm">{{ $message }}</div>

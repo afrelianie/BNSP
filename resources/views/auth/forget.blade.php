@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Web Wisata | Forgot Password</title>
+        <title>Bride Story | Forgot Password</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -42,7 +42,7 @@
         <div class="login-box">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="{{ url('/') }}" class="h1"><b>Web </b>Wisata</a>
+                    <a href="{{ url('/') }}" class="h1"><b>Bride </b>Story</a>
                 </div>
                 <div class="card-body">    
                     <p class="login-box-msg">Kamu Lupa Password? Disini silakan Konfirmasi email anda terlebih dahulu.</p>

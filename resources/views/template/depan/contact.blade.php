@@ -327,9 +327,9 @@
         <div class="container">
             <h1><a href="TUGAS1.html">Bride Story</a></h1>
             <ul>
-                <li class="active"><a href="{{ url('/utama') }}">HOME</a></li>
+                <li><a href="{{ url('/utama') }}">HOME</a></li>
                 <li><a href="{{ url('/about') }}">ABOUT</a></li>
-                <li><a  href="{{ url('/contact') }}">CONTACT</a></li>
+                <li class="active"><a  href="{{ url('/contact') }}">CONTACT</a></li>
 
 
                 @if (Route::has('login'))
@@ -343,13 +343,10 @@
                
                 @endif
 
-
-
             </ul>
         </div>
      </header>
      <!-- penutup -->
-
 
 
   <body>
@@ -370,96 +367,48 @@
       </div>
     </div>
 
-     <!------ Galeri Pernikahan ------>
-     <div class="categories">
-     <div class="small-container">
-     <h2 class="title">Galeri Pernikahan</h2>
-     <div class="row">
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah2.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah3.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah4.jpg">
-          </div>
-     </div>
-     </div>
-     </div>
-
-     <!------ featured Products ------>
-     <div class="small-container">
-     <h2 class="title">Produk Utama Yang Mungkin Anda Suka</h2>
-     <div class="row">
-        @foreach ($destinasi as $data)
-          <div class="col-4">
-               <img src="{{ asset($data->foto_destinasi) }}">
-               <h4>{{ $data->nama_destinasi }}</h4>
-               <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-               </div>
-               <p>Rp. {{ $data->harga }}</p>
-               <div class="d-flex justify-content-center mb-2">
-                    <a href="{{ url('detail/pernikahan', $data->id) }}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Boking Sekarang</a>
-               </div>
-          </div>
-        @endforeach
-     </div>
-     </div>
-
-     <!------ offer ------>
-     <div class="offer">
-     <div class="small-container">
-     <div class="row">
-               <div class="col-2">
-                    <img src="{{ url('/') }}/nikah/ud1.jpg" class="offer-img">
-               </div>
-               <div class="col-2">
-                    <h1>Berbagai Tampilan Desain Undangan</h1>
-                    <small>Sedang mencari inspirasi untuk hari pernikahan Anda? 
-                         Lihat rangkaian event pernikahan yang dapat Anda kunjungi di bawah ini! Rencanakan kunjungan Anda dan jangan lupa untuk melakukan reply dan pemesanan. </small> <br>
-                    <a href="{{ url('/login') }}" class="btn">Pesan Sekarang &#8594; </a>
-               </div>
-          </div>
-     </div>
-     </div>
-     </div>
-
-     <!------ testimonial ------>
-     <div class="testimonial">
-     <div class="small-container">
-     <h2 class="title">Kepuasan Pelanggan</h2>
-          <div class="row">
-            @foreach ($testimoni as $data)
-               <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>{{ $data->komentar }}</p>
-                    <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-                    </div>
-                    @if ($data->user->profil)
-                    <img src="{{ asset($data->user->profil) }}" style="width: 80px; height: 80px;">
-                    @else
-                    <img src="{{ asset('img/img.jpg')}}" style="width: 80px; height: 80px;">
-                    @endif
-                    <h3>{{ $data->user->name }}</h3>
-               </div>
-            @endforeach
-          </div>
-     </div>
-     </div>
 
 
-
+     <!--service-->
+     <section class="service">
+        <div class="container">
+            <h3>CONTACT</h3>
+            <div class="box">
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-map-marker-alt me-3"></i></div>
+                    <h4>Kalimantan Barat</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-phone-alt me-3"></i></i></div>
+                    <h4>+62 617003044</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-envelope me-3"></i></div>
+                    <h4>bs.info@gmail.com</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-home"></i></div>
+                    <h4>Cabang Perusahaan</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-mobile"></i></div>
+                    <h4>Mobile App</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fab fa-chrome"></i></i></div>
+                    <h4>Web Developer</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-edit"></i></div>
+                    <h4>Desin Grafis</h4>
+                </div>
+                <div class="col-4">
+                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                    <h4>Digital Marketing</h4>
+                </div>
+            </div>
+        </div>
+     </section>
 
 
      <!--footer-->
@@ -472,4 +421,3 @@
 
   </body>
 </html>
-

@@ -327,9 +327,9 @@
         <div class="container">
             <h1><a href="TUGAS1.html">Bride Story</a></h1>
             <ul>
-                <li class="active"><a href="{{ url('/utama') }}">HOME</a></li>
+                <li><a href="{{ url('/utama') }}">HOME</a></li>
                 <li><a href="{{ url('/about') }}">ABOUT</a></li>
-                <li><a  href="{{ url('/contact') }}">CONTACT</a></li>
+                <li class="active"><a  href="{{ url('/contact') }}">CONTACT</a></li>
 
 
                 @if (Route::has('login'))
@@ -343,13 +343,10 @@
                
                 @endif
 
-
-
             </ul>
         </div>
      </header>
      <!-- penutup -->
-
 
 
   <body>
@@ -370,95 +367,38 @@
       </div>
     </div>
 
-     <!------ Galeri Pernikahan ------>
-     <div class="categories">
-     <div class="small-container">
-     <h2 class="title">Galeri Pernikahan</h2>
-     <div class="row">
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah2.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah3.jpg">
-          </div>
-          <div class="col-3">
-               <img src="{{ url('/') }}/nikah/nikah4.jpg">
-          </div>
-     </div>
-     </div>
-     </div>
 
-     <!------ featured Products ------>
-     <div class="small-container">
-     <h2 class="title">Produk Utama Yang Mungkin Anda Suka</h2>
-     <div class="row">
-        @foreach ($destinasi as $data)
-          <div class="col-4">
-               <img src="{{ asset($data->foto_destinasi) }}">
-               <h4>{{ $data->nama_destinasi }}</h4>
-               <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
-               </div>
-               <p>Rp. {{ $data->harga }}</p>
-               <div class="d-flex justify-content-center mb-2">
-                    <a href="{{ url('detail/pernikahan', $data->id) }}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Boking Sekarang</a>
-               </div>
-          </div>
-        @endforeach
-     </div>
-     </div>
 
-     <!------ offer ------>
-     <div class="offer">
-     <div class="small-container">
-     <div class="row">
-               <div class="col-2">
-                    <img src="{{ url('/') }}/nikah/ud1.jpg" class="offer-img">
-               </div>
-               <div class="col-2">
-                    <h1>Berbagai Tampilan Desain Undangan</h1>
-                    <small>Sedang mencari inspirasi untuk hari pernikahan Anda? 
-                         Lihat rangkaian event pernikahan yang dapat Anda kunjungi di bawah ini! Rencanakan kunjungan Anda dan jangan lupa untuk melakukan reply dan pemesanan. </small> <br>
-                    <a href="{{ url('/login') }}" class="btn">Pesan Sekarang &#8594; </a>
-               </div>
-          </div>
-     </div>
-     </div>
-     </div>
-
-     <!------ testimonial ------>
-     <div class="testimonial">
-     <div class="small-container">
-     <h2 class="title">Kepuasan Pelanggan</h2>
-          <div class="row">
-            @foreach ($testimoni as $data)
-               <div class="col-3">
-                    <i class="fa fa-quote-left"></i>
-                    <p>{{ $data->komentar }}</p>
-                    <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" width="70%" src="{{ asset($destinasi->foto_destinasi)}}" alt="" style="object-fit: cover;">
                     </div>
-                    @if ($data->user->profil)
-                    <img src="{{ asset($data->user->profil) }}" style="width: 80px; height: 80px;">
-                    @else
-                    <img src="{{ asset('img/img.jpg')}}" style="width: 80px; height: 80px;">
-                    @endif
-                    <h3>{{ $data->user->name }}</h3>
-               </div>
-            @endforeach
-          </div>
-     </div>
-     </div>
-
-
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h3 class="section-title bg-white text-start text-primary pe-3">Detail Paket Pernikahan</h3>
+                    <h2 class="mb-4">Nama Tempat <span class="text-primary">{{ $destinasi->nama_destinasi }}</span></h2>
+                    <p class="mb-4">Paket : {{ $destinasi->sejarah }}</p>
+                    <p class="mb-4">Keunggulan : {{ $destinasi->keunggulan}}</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-12">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Harga : Rp. {{ $destinasi->harga }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Alamat : {{ $destinasi->alamat_destinasi }} </p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="{{ url('pelanggan/pesanan/create', $destinasi->id) }}">Boking Tempat</a>
+                    <a href="{{ url('utama') }}" class="btn btn-secondary py-3 px-5 mt-2">Kembali</a>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
 
 
 
@@ -472,4 +412,3 @@
 
   </body>
 </html>
-
